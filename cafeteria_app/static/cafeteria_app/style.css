@@ -1,0 +1,76 @@
+/* fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap'); /*Montserrat*/
+
+@import url('https://fonts.googleapis.com/css2?family=Bubbler+One&display=swap'); /*Bubbler One*/
+
+
+
+/*Estilos de la pagina*/
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FDFBFF;
+    border-bottom: none;
+}
+
+
+/*Barras*/
+.navbar-cafe{
+    background-color: #FFFEFB;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px
+}
+
+.navbar-brand{
+    font-family: 'Bubbler One', sans-serif !important;
+    color: #1FBBE7 !important;
+    font-size: 1.4rem !important;
+    font-weight: bold !important;
+    letter-spacing: 0.5px !important;
+    ;
+}
+
+.nav-links a {
+    color: #7B7171; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;           
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+}
+.nav-links a:hover {
+    color: #c3b3b3;
+} 
+
+.nav-identification{
+    color: #B3AAAA; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;           
+    font-size: 0.80rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+
+}
+
+.nav-identification:hover{
+    color: #a58181;
+}
+
+
+#carousel-Indicators {
+    max-width: 900px; 
+    margin: 30px auto !important; 
+}
+
+
+.carousel-inner {
+    border-radius: 50px; 
+    overflow: hidden;
+    box-shadow: 0px 10px 30px rgb(255, 255, 255); 
+}
+
+
+.carousel-item img {
+    height: 350px !important;
+    object-fit: cover; 
+    object-position: center; 
+}
