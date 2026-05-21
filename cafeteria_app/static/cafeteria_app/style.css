@@ -15,8 +15,8 @@ body{
 
 /*Barras*/
 .navbar-cafe{
-    background-color: #FFFEFB;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    background-color: #FDFAF7;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.05);
     margin-bottom: 20px
 }
 
@@ -55,22 +55,72 @@ body{
     color: #a58181;
 }
 
+/*Carusel banner*/
 
 #carousel-Indicators {
-    max-width: 900px; 
+    max-width: 1300px; 
     margin: 30px auto !important; 
+
 }
 
 
 .carousel-inner {
     border-radius: 50px; 
     overflow: hidden;
-    box-shadow: 0px 10px 30px rgb(255, 255, 255); 
+    box-shadow: 4px 4px 20px #FDFBFF !important;
 }
 
 
 .carousel-item img {
-    height: 350px !important;
+    height: 450px !important;
     object-fit: cover; 
     object-position: center; 
+}
+
+/*Carusel nuevo menu*/
+
+.contenedor-productos{
+    width: 1300px !important;
+    height: auto !important;
+    margin: 40px auto; 
+    padding: 0px 40px !important;
+    border-radius: 50px !important;
+    background-color: #FFFEFB !important;
+    box-shadow: 4px 4px 20px #b89dd2;
+}
+
+#carousel-NewMenu {
+    max-width: 900px; 
+    margin: 0px auto !important; 
+    border-radius: 50px;
+    background-color: transparent !important;
+}
+
+#carousel-NewMenu .carousel-inner {
+    border-radius: 50px; 
+    overflow: hidden;
+    padding-top: 15px !important;
+    padding-bottom: 24px !important;
+}
+#carousel-NewMenu .carousel-item img {
+    height: 200px !important;
+    object-fit: cover; 
+    object-position: center; 
+}
+
+/*Imagenes de productos ajustes*/
+.product-image {
+    height: 250px !important;
+    width: 200px !important;
+    border-radius: 30px !important; 
+    border: none !important;
+    background-color: #FDFBFF !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 15px rgba(123, 113, 113, 0.08) !important;
+}
+.product-image img {
+    border-radius: 30px !important; 
+    object-fit: cover !important; 
+    object-position: center !important;
+    height: 180px !important;
 }
