@@ -103,9 +103,11 @@ body{
     padding-bottom: 24px !important;
 }
 #carousel-NewMenu .carousel-item img {
-    height: 200px !important;
+    width: 100% !important;
+    height: auto !important;
     object-fit: cover; 
     object-position: center; 
+    aspect-ratio: 1 / 1 !important
 }
 
 /*Imagenes de productos ajustes*/
@@ -124,3 +126,49 @@ body{
     object-position: center !important;
     height: 180px !important;
 }
+
+/*Botones carrusel*/
+#carousel-NewMenu .carousel-control-prev,
+#carousel-NewMenu .carousel-control-next {
+	box-shadow:0px 1px 0px 0px #b4a2a2 !important;
+	background-color:#FFFEFB !important;
+    opacity: 1 !important;
+	border-radius: 50% !important;
+	border:1px solid #dcdcdc !important;
+	cursor:pointer !important;
+    /*Tamano circulo*/
+    height: 50px !important;
+    width: 50px !important;
+    /*Posicionamiento*/
+    top: 50% !important;
+    transform:translateY(-50%) !important;
+
+}
+
+#carousel-NewMenu .carousel-control-prev { 
+    left: -35px !important; 
+    transform: translateX(5px) rotate(-45deg) !important;
+    margin-left: 4px !important;
+
+}
+#carousel-NewMenu .carousel-control-next {
+    right: -35px !important; 
+    TRANSFORM: translateX(-5px) rotate(135deg) !important;
+    margin-right: 4px !important;
+    
+    }
+
+/*Colrores flechas*/
+#carousel-NewMenu .carousel-control-prev-icon,
+#carousel-NewMenu .carousel-control-next-icon {
+    height: 15px !important;
+    width: 15px !important;
+    margin:0 !important;
+    padding:0 !important;
+    border-top: 2px solid #ada2a2 !important; 
+    border-left: 2px solid #ada2a2 !important;
+}
+
+
+
+
