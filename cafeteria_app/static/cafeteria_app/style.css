@@ -84,9 +84,6 @@ body{
     height: auto !important;
     margin: 40px auto; 
     padding: 0px 40px !important;
-    border-radius: 50px !important;
-    background-color: #FFFEFB !important;
-    box-shadow: 4px 4px 20px #b89dd2;
 }
 
 #carousel-NewMenu {
@@ -127,7 +124,7 @@ body{
     height: 180px !important;
 }
 
-/*Botones carrusel*/
+/*Botones carrusel Menu nuevo*/
 #carousel-NewMenu .carousel-control-prev,
 #carousel-NewMenu .carousel-control-next {
 	box-shadow:0px 1px 0px 0px #b4a2a2 !important;
@@ -169,6 +166,51 @@ body{
     border-left: 2px solid #ada2a2 !important;
 }
 
+/*Botones carrusel recomendados*/
+#carousel-BestMenu .carousel-control-prev,
+#carousel-BestMenu .carousel-control-next {
+	box-shadow:0px 1px 0px 0px #b4a2a2 !important;
+	background-color:#FFFEFB !important;
+    opacity: 1 !important;
+	border-radius: 50% !important;
+	border:1px solid #dcdcdc !important;
+	cursor:pointer !important;
+    /*Tamano circulo*/
+    height: 50px !important;
+    width: 50px !important;
+    /*Posicionamiento*/
+    top: 50% !important;
+    transform:translateY(-50%) !important;
 
+}
 
+#carousel-BestMenu .carousel-control-prev { 
+    left: -35px !important; 
+    transform: translateX(5px) rotate(-45deg) !important;
+    margin-left: 4px !important;
 
+}
+#carousel-BestMenu .carousel-control-next {
+    right: -35px !important; 
+    TRANSFORM: translateX(-5px) rotate(135deg) !important;
+    margin-right: 4px !important;
+    
+    }
+
+/*Colrores flechas*/
+#carousel-BestMenu .carousel-control-prev-icon,
+#carousel-BestMenu .carousel-control-next-icon {
+    height: 15px !important;
+    width: 15px !important;
+    margin:0 !important;
+    padding:0 !important;
+    border-top: 2px solid #ada2a2 !important; 
+    border-left: 2px solid #ada2a2 !important;
+}
+
+/*Eventos*/
+
+.event-container{
+    background-color: #fce3ff !important;
+    border-radius: 50px !important;
+}

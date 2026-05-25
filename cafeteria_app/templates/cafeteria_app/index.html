@@ -11,27 +11,25 @@
 
 <body>
   <div class="container-principal">
-
     <nav class="navbar navbar-expand-lg navbar-cafe py-3">
-  <div class="container-fluid d-flex justify-content-between align-items-center px-5">
-    
-    <div class="navbar-brand-container">
-      <a class="navbar-brand" href="{% url 'index' %}">SHIBAL</a>
-    </div>
-    
-    <ul class="nav-links" style="display: flex; gap: 40px; margin: 0; list-style: none; padding: 0; align-items: center;">
-      <li><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
-      <li><a class="nav-link" href="{% url 'menu' %}">Menu</a></li>
-      <li><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
-      <li><a class="nav-link" href="{% url 'events' %}">Events</a></li>
-    </ul>
+      <div class="container-fluid d-flex justify-content-between align-items-center px-5">
+        <div class="navbar-brand-container">
+          <a class="navbar-brand" href="{% url 'index' %}">SHIBAL</a>
+        </div>
+        
+        <ul class="nav-links" style="display: flex; gap: 40px; margin: 0; list-style: none; padding: 0; align-items: center;">
+          <li><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
+          <li><a class="nav-link" href="{% url 'menu' %}">Menu</a></li>
+          <li><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
+          <li><a class="nav-link" href="{% url 'events' %}">Events</a></li>
+        </ul>
 
-    <ul class="nav-user" style="display: flex; gap: 20px; margin: 0; list-style: none; padding: 0; align-items: center;">
-      <li><a class="nav-identification" href="{% url 'login' %}">Login</a></li>
-      <li><a class="nav-identification" href="{% url 'cart' %}">Carro</a></li>
-      </ul>
-  </div>
-</nav>
+        <ul class="nav-user" style="display: flex; gap: 20px; margin: 0; list-style: none; padding: 0; align-items: center;">
+          <li><a class="nav-identification" href="{% url 'login' %}">Login</a></li>
+          <li><a class="nav-identification" href="{% url 'cart' %}">Carro</a></li>
+        </ul>
+      </div>
+    </nav>
 
 <!-- CARRUSEL PRODUCTOS BANNER-->
 <div id="carousel-Indicators" class="carousel slide" data-bs-ride="carousel">
@@ -45,114 +43,395 @@
     <div class="carousel-item active">
       <img src="{% static 'cafeteria_app/img/banners/Drinks.jpg' %}" class="d-block w-100" alt="Banner 1">
     </div>
-<div class="carousel-item">
-  <img src="{% static 'cafeteria_app/img/banners/Cookies.jpg' %}" class="d-block w-100" alt="Banner 2">
-</div>
-<div class="carousel-item">
-  <img src="{% static 'cafeteria_app/img/banners/Macarrons.jpg' %}" class="d-block w-100" alt="Banner 3">
-</div>
+    <div class="carousel-item">
+      <img src="{% static 'cafeteria_app/img/banners/Cookies.jpg' %}" class="d-block w-100" alt="Banner 2">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'cafeteria_app/img/banners/Macarrons.jpg' %}" class="d-block w-100" alt="Banner 3">
+    </div>
   </div>
-  
 </div>
-  </div>
-
 
 <!-- CARRUSEL NUEVOS PRODUCTOS -->
-<div class="contenedor-productos p-5 shadow-sm">
-  <div> <h2 style="text-align: center; margin-top: 20px; color: #7B7171; font-size: 20px; letter-spacing: 0.5px;font-weight: lighter;">Nuevo Menu</h2> </div>
-    <div id="carousel-NewMenu" class="carousel slide" data-bs-ride="carousel">
-        
-      <div class="carousel-inner"> 
-          <div class="carousel-item active">
-            <div class="d-flex flex-row justify-content-center align-items-center py-5 gap-4 flex-nowrap">  
-              <div class="card h-100 p-2 product-image">
-                <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="card-img-top img-fluid" alt="Matcha Roll" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-                <div class="card-body pb-0 text-center">
-                  <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Matcha Roll</p>
-                </div>
-              </div>
-<!-- CARRUSEL NUEVOS PRODUCTOS PRIMERO -->
-              <div class="card h-100 p-2 product-image">
-                <img src="{% static 'cafeteria_app/img/newProducts/new_orangeCake.jpg' %}" class="card-img-top img-fluid" alt="Orange Cake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-                <div class="card-body pb-0 text-center">
-                  <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Orange Cake</p>
-                </div>
-              </div>
-
-              <div class="card h-100 p-2 product-image">
-                <img src="{% static 'cafeteria_app/img/newProducts/new_coffe.jpg' %}" class="card-img-top img-fluid" alt="Cafe Caramelo" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-                <div class="card-body pb-0 text-center">
-                  <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Caramel Latte</p>
-                </div>
-              </div>
-                    
-              <div class="card h-100 p-2 product-image">
-                <img src="{% static 'cafeteria_app/img/newProducts/new_cheescake.jpg' %}" class="card-img-top img-fluid" alt="Cheescake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-                <div class="card-body pb-0 text-center">
-                  <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Cheescake</p>
-                </div>
-              </div>
-            </div> 
-          </div> 
-<!-- CARRUSEL NUEVOS PRODUCTOS SEGUNDO-->
-      <div class="carousel-item">
-        <div class="d-flex flex-row justify-content-center align-items-center py-5 gap-4 flex-nowrap"> 
-
-          <div class="card h-100 p-2 product-image">
+<div class="contenedor-productos p-5 shadow-sm"style="border-radius: 50px !important;">
+  <div><h2 style="text-align: center; margin-top: 20px; color: #7B7171; font-size: 20px; letter-spacing: 0.5px; font-weight: lighter;">Nuevo Menu</h2></div>
+  <div id="carousel-NewMenu" class="carousel slide w-75 mx-auto" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="3000">
+        <div class="d-flex flex-row justify-content-center align-items-center py-5 gap-4 flex-nowrap">
+          <!-- MATCHA ROLL -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalMatchaRoll">
+            <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="card-img-top img-fluid" alt="Matcha Roll" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            <div class="card-body pb-0 text-center">
+              <span class="badge bg-info text-dark mb-1">NEW</span>
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Matcha Roll</p>
+            </div>
+          </div>
+          <!-- ORANGE CAKE -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalOrangeCake">
+            <img src="{% static 'cafeteria_app/img/newProducts/new_orangeCake.jpg' %}" class="card-img-top img-fluid" alt="Orange Cake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            <div class="card-body pb-0 text-center">
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Orange Cake</p>
+            </div>
+          </div>
+          <!-- Caramel Latte -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalCaramelLatte">
+            <img src="{% static 'cafeteria_app/img/newProducts/new_coffe.jpg' %}" class="card-img-top img-fluid" alt="Cafe Caramelo" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            <div class="card-body pb-0 text-center">
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Caramel Latte</p>
+            </div>
+          </div>
+          <!-- CHEESECAKE -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalCheesecake">
+            <img src="{% static 'cafeteria_app/img/newProducts/new_cheescake.jpg' %}" class="card-img-top img-fluid" alt="Cheescake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            <div class="card-body pb-0 text-center">
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Cheescake</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- CARRUSEL NUEVOS PRODUCTOS SEGUNDO-->
+      <div class="carousel-item" data-bs-interval="3000">
+        <div class="d-flex flex-row justify-content-center align-items-center py-5 gap-4 flex-nowrap">
+          <!--grape cake -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalGrapeCake">
             <img src="{% static 'cafeteria_app/img/newProducts/new_grapeCake.jpg' %}" class="card-img-top img-fluid" alt="Grape Cake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
             <div class="card-body pb-0 text-center">
               <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Grape Cake</p>
             </div>
           </div>
-
-          <div class="card h-100 p-2 product-image">
+          <!-- hot chocolate -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalHotChocolate">
             <img src="{% static 'cafeteria_app/img/newProducts/new_hotChocolate.jpg' %}" class="card-img-top img-fluid" alt="Hot Chocolate" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
             <div class="card-body pb-0 text-center">
               <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Hot Chocolate</p>
             </div>
           </div>
-
-          <div class="card h-100 p-2 product-image">
+          <!-- berry roll -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalBerryRoll">
             <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" class="card-img-top img-fluid" alt="Berry Roll" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
             <div class="card-body pb-0 text-center">
               <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Berry Roll</p>
             </div>
           </div>
-
-          <div class="card h-100 p-2 product-image">  <!--VER QUE LE PASA PORQUE SE VE MAS GRANDE QUE LOS DEMAS SHIBAAAAL--> <!-- es el flexbox-- -->
+          <!-- Strawberry Cake -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalStrawberryCake">
             <img src="{% static 'cafeteria_app/img/newProducts/new_strawberryCake.jpg' %}" class="card-img-top img-fluid" alt="Strawberry Cake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
             <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">StraCake</p>
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Strawberry Cake</p>
             </div>
           </div>
-        </div> 
-      </div> 
+        </div>
+      </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel-NewMenu" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carousel-NewMenu" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel-NewMenu" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- MODAL DE PRODUCTROS -->
+  <!-- MODAL DE matcha roll -->
+<div class="modal fade" id="modalMatchaRoll" tabindex="-1" aria-labelledby="modalMatchaRollLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
+      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
+        <h5 class="modal-title" id="modalMatchaRollLabel">Pastel de Matcha</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
+        <p>Pastel de matcha yt chocolate blanco blablablablabla.</p>
+        <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" alt="Matcha Roll" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+      </div>
+      <div class="modal-footer">
+        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          AGREGAR AL CARRO - $4.500</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE ORANGE CAKE -->
+<div class="modal fade" id="modalOrangeCake" tabindex="-1" aria-labelledby="modalOrangeCakeLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
+      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
+        <h5 class="modal-title" id="modalOrangeCakeLabel">Pastel de Naranja</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
+        <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
+        <img src="{% static 'cafeteria_app/img/newProducts/new_orangeCake.jpg' %}" alt="Orange Cake" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+      </div>
+      <div class="modal-footer">
+        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          AGREGAR AL CARRO - $4.500</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE CARAMEL LATTE -->
+<div class="modal fade" id="modalCaramelLatte" tabindex="-1" aria-labelledby="modalCaramelLatteLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
+      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
+        <h5 class="modal-title" id="modalCaramelLatteLabel">Caramel Latte</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
+        <p>Café con sabor a caramelo y leche caliente.</p>
+        <img src="{% static 'cafeteria_app/img/newProducts/new_coffe.jpg' %}" alt="Caramel Latte" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+      </div>
+      <div class="modal-footer">
+        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          AGREGAR AL CARRO - $4.500</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE CHEESCAKE -->
+<div class="modal fade" id="modalCheesecake" tabindex="-1" aria-labelledby="modalCheesecake" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
+      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
+        <h5 class="modal-title" id="modalCheesecake">Cheesecake</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
+        <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
+        <img src="{% static 'cafeteria_app/img/newProducts/new_cheescake.jpg' %}" alt="Cheesecake" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+      </div>
+      <div class="modal-footer">
+        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          AGREGAR AL CARRO - $4.500</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE grape cake -->
+<div class="modal fade" id="modalGrapeCake" tabindex="-1" aria-labelledby="modalGrapeCakeLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
+      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
+        <h5 class="modal-title" id="modalGrapeCakeLabel">Pastel de Uva</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
+        <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
+        <img src="{% static 'cafeteria_app/img/newProducts/new_grapeCake.jpg' %}" alt="Grape Cake" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+      </div>
+      <div class="modal-footer">
+        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          AGREGAR AL CARRO - $4.500</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE HOT CHOCOLATE -->
+<div class="modal fade" id="modalHotChocolate" tabindex="-1" aria-labelledby="modalHotChocolateLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
+      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
+        <h5 class="modal-title" id="modalHotChocolateLabel">Hot Chocolate</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
+        <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
+        <img src="{% static 'cafeteria_app/img/newProducts/new_hotChocolate.jpg' %}" alt="Hot Chocolate" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+      </div>
+      <div class="modal-footer">
+        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          AGREGAR AL CARRO - $4.500</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE BERRY ROLL -->
+<div class="modal fade" id="modalBerryRoll" tabindex="-1" aria-labelledby="modalBerryRollLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
+      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
+        <h5 class="modal-title" id="modalBerryRollLabel">Berry Roll</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
+        <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
+        <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" alt="Berry Roll" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+      </div>
+      <div class="modal-footer">
+        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          AGREGAR AL CARRO - $4.500</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE STRAWBERRY CAKE -->
+<div class="modal fade" id="modalStrawberryCake" tabindex="-1" aria-labelledby="modalStrawberryCakeLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
+      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
+        <h5 class="modal-title" id="modalStrawberryCakeLabel">Strawberry Cake</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
+        <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
+        <img src="{% static 'cafeteria_app/img/newProducts/new_strawberryCake.jpg' %}" alt="Strawberry Cake" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+      </div>
+      <div class="modal-footer">
+        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          AGREGAR AL CARRO - $4.500</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Carrusel recomendados --> 
+<div class="contenedor-productos p-5 shadow-sm"style="border-radius: 50px !important;">
+  <div><h2 style="text-align: center; margin-top: 20px; color: #7B7171; font-size: 20px; letter-spacing: 0.5px; font-weight: lighter;">Los Más Queridos ♡</h2></div>
+  <div id="carousel-BestMenu" class="carousel slide w-75 mx-auto" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="3000">
+        <div class="d-flex flex-row justify-content-center align-items-center py-5 gap-4 flex-nowrap">
+          <!-- MATCHA ROLL -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalMatchaRoll">
+            <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="card-img-top img-fluid" alt="Matcha Roll" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            <div class="card-body pb-0 text-center">
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Matcha Roll</p>
+            </div>
+          </div>
+          <!-- ORANGE CAKE -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalOrangeCake">
+            <img src="{% static 'cafeteria_app/img/newProducts/new_orangeCake.jpg' %}" class="card-img-top img-fluid" alt="Orange Cake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            <div class="card-body pb-0 text-center">
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Orange Cake</p>
+            </div>
+          </div>
+          <!-- Caramel Latte -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalCaramelLatte">
+            <img src="{% static 'cafeteria_app/img/newProducts/new_coffe.jpg' %}" class="card-img-top img-fluid" alt="Cafe Caramelo" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            <div class="card-body pb-0 text-center">
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Caramel Latte</p>
+            </div>
+          </div>
+          <!-- CHEESECAKE -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalCheesecake">
+            <img src="{% static 'cafeteria_app/img/newProducts/new_cheescake.jpg' %}" class="card-img-top img-fluid" alt="Cheescake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            <div class="card-body pb-0 text-center">
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Cheescake</p>
+            </div>
+          </div>
+        </div>
+      </div> 
+<!-- CARRUSEL NUEVOS PRODUCTOS SEGUNDO-->
+      <div class="carousel-item" data-bs-interval="3000">
+        <div class="d-flex flex-row justify-content-center align-items-center py-5 gap-4 flex-nowrap">
+          <!--grape cake -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalGrapeCake">
+            <img src="{% static 'cafeteria_app/img/newProducts/new_grapeCake.jpg' %}" class="card-img-top img-fluid" alt="Grape Cake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            <div class="card-body pb-0 text-center">
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Grape Cake</p>
+            </div>
+          </div>
+          <!-- hot chocolate -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalHotChocolate">
+            <img src="{% static 'cafeteria_app/img/newProducts/new_hotChocolate.jpg' %}" class="card-img-top img-fluid" alt="Hot Chocolate" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            <div class="card-body pb-0 text-center">
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Hot Chocolate</p>
+            </div>
+          </div>
+          <!-- berry roll -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalBerryRoll">
+            <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" class="card-img-top img-fluid" alt="Berry Roll" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            <div class="card-body pb-0 text-center">
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Berry Roll</p>
+            </div>
+          </div>
+          <!-- Strawberry Cake -->
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalStrawberryCake">
+            <img src="{% static 'cafeteria_app/img/newProducts/new_strawberryCake.jpg' %}" class="card-img-top img-fluid" alt="Strawberry Cake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            <div class="card-body pb-0 text-center">
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Strawberry Cake</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-BestMenu" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel-BestMenu" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+</div>
+
+
+  <!-- eventos -->
+
+<div class="container event-container mt-5 p-4 shadow-sm" style="max-width: 1300px;">
+  <div class="mb-4">
+    <h2 style="text-align: center; color: #7B7171; font-size: 20px; letter-spacing: 0.5px; font-weight: lighter;">EVENTOS</h2>
+  </div>
+  <div id="miCarruselEventos" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active"data-bs-interval="3000">
+        <div class="row g-3">
+          <div class="col-4"> 
+            <img src="{% static 'cafeteria_app/img/banners/Drinks.jpg' %}" class="img-fluid w-100 rounded-4" alt="Event1" style="object-fit: cover; height: 350px;">
+          </div>
+          <div class="col-4"> 
+            <img src="{% static 'cafeteria_app/img/banners/Drinks.jpg' %}" class="img-fluid w-100 rounded-4" alt="Event2" style="object-fit: cover; height: 350px;">
+          </div>
+          <div class="col-4"> 
+            <img src="{% static 'cafeteria_app/img/banners/Drinks.jpg' %}" class="img-fluid w-100 rounded-4" alt="Event3" style="object-fit: cover; height: 350px;">
+          </div>
+        </div>
+      </div>
+<!--SEGUNDO CARRUSEL DE EVENTOS-->
+      <div class="carousel-item"data-bs-interval="3000">
+        <div class="row g-3">
+          <div class="col-4"> 
+            <img src="{% static 'cafeteria_app/img/banners/Drinks.jpg' %}" class="img-fluid w-100 rounded-4" alt="Event1" style="object-fit: cover; height: 350px;">
+          </div>
+          <div class="col-4"> 
+            <img src="{% static 'cafeteria_app/img/banners/Drinks.jpg' %}" class="img-fluid w-100 rounded-4" alt="Event2" style="object-fit: cover; height: 350px;">
+          </div>
+          <div class="col-4"> 
+            <img src="{% static 'cafeteria_app/img/banners/Drinks.jpg' %}" class="img-fluid w-100 rounded-4" alt="Event3" style="object-fit: cover; height: 350px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
