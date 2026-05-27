@@ -15,6 +15,7 @@ body{
 
 /*Barras*/
 .navbar-cafe{
+    position: fixed;
     background-color: #FDFAF7;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.05);
     margin-bottom: 20px
@@ -211,7 +212,7 @@ body{
 /*Eventos*/
 
 .event-container{
-    background-color: #fce3ff !important;
+    background-color: #fef7ff !important;
     border-radius: 50px !important;
 }
 
