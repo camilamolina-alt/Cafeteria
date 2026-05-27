@@ -11,7 +11,7 @@
 
 <body>
   <div class="container-principal">
-    <nav class="navbar navbar-expand-lg navbar-cafe py-3">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-cafe py-3">
       <div class="container-fluid d-flex justify-content-between align-items-center px-5">
         <div class="navbar-brand-container">
           <a class="navbar-brand" href="{% url 'index' %}">SHIBAL</a>
@@ -44,10 +44,10 @@
       <img src="{% static 'cafeteria_app/img/banners/Drinks.jpg' %}" class="d-block w-100" alt="Banner 1">
     </div>
     <div class="carousel-item">
-      <img src="{% static 'cafeteria_app/img/banners/Cookies.jpg' %}" class="d-block w-100" alt="Banner 2">
+      <img src="{% static 'cafeteria_app/img/banners/Matcha.jpg' %}" class="d-block w-100" alt="Banner 2">
     </div>
     <div class="carousel-item">
-      <img src="{% static 'cafeteria_app/img/banners/Macarrons.jpg' %}" class="d-block w-100" alt="Banner 3">
+      <img src="{% static 'cafeteria_app/img/banners/Strawberrycake.jpg' %}" class="d-block w-100" alt="Banner 3">
     </div>
   </div>
 </div>
@@ -63,7 +63,7 @@
           <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalMatchaRoll">
             <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="card-img-top img-fluid" alt="Matcha Roll" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
             <div class="card-body pb-0 text-center">
-              <span class="badge bg-info text-dark mb-1">NEW</span>
+              <!--<span class="badge bg-info text-dark mb-1">NEW</span>  ver si queda o no--> 
               <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Matcha Roll</p>
             </div>
           </div>
