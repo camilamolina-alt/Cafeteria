@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Carro de Compras</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+       <!-- para agregar productos, si es necesario, agregar más-->
+<div class="productos">
+  <div class="producto">
+    <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" alt="Producto 1">
+    <h3>Matcha Roll</h3>
+    <p>$4.500</p>
+    <button onclick="agregarAlCarro('Matcha Roll', 4500)">Agregar al Carro</button>
+  </div>
+</div>
+
+<!-- para el carro -->
+<div class="cart">
+  <h2>Carro de Compras</h2>
+  <div class="cart-items">
+    <ul id="cart-items-list"></ul>
+    <p>El total es: <span id="cart-total"></span></p>
+  </div>
+</div>
+<script src="carro.js"></script>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
