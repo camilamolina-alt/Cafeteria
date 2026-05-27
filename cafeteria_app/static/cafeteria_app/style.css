@@ -214,3 +214,11 @@ body{
     background-color: #fce3ff !important;
     border-radius: 50px !important;
 }
+
+/*margen de productos y carro*/
+.productos, .cart{
+    margin:20px;
+}
+.producto, .cart-item{
+    margin-bottom:10px;
+}
