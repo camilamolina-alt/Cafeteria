@@ -58,9 +58,9 @@ body{
 /*Carusel banner*/
 
 #carousel-Indicators {
+    height: 600px !important;
     max-width: 1300px; 
     margin: 30px auto !important; 
-
 }
 
 
@@ -71,9 +71,9 @@ body{
 }
 
 
-.carousel-item img {
-    height: auto !important;
-    object-fit: cover; 
+#carousel-Indicators .carousel-item img {
+    height: 600px !important;
+    width: 100% !important; 
     object-position: center; 
 }
 
@@ -218,7 +218,6 @@ body{
 
 }
 
-<<<<<<< HEAD
 .event-group{
     display:flex !important;
     gap: 1.5em !important;
@@ -261,6 +260,7 @@ body{
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: #FDFBFF !important; 
+}
 
 .form-signin {
     width: 100%;
@@ -277,17 +277,18 @@ body{
     border-radius: 15px !important;
     border: 1px solid #dcdcdc;
     margin-bottom: 15px; 
+}
 
 
 .form-signin .login-input:focus {
     border-color: #FCB2D3;
     box-shadow: 0 0 0 0.25rem rgba(252, 178, 211, 0.25);
-=======
+}
+
 /*margen de productos y carro*/
 .productos, .cart{
     margin:20px;
 }
 .producto, .cart-item{
     margin-bottom:10px;
->>>>>>> 6686d376c2654af19add751697f8e9a794c73e89
 }
