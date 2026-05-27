@@ -15,7 +15,6 @@ body{
 
 /*Barras*/
 .navbar-cafe{
-    position: fixed;
     background-color: #FDFAF7;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.05);
     margin-bottom: 20px
@@ -73,7 +72,7 @@ body{
 
 
 .carousel-item img {
-    height: 450px !important;
+    height: auto !important;
     object-fit: cover; 
     object-position: center; 
 }
@@ -211,7 +210,75 @@ body{
 
 /*Eventos*/
 
-.event-container{
-    background-color: #fef7ff !important;
-    border-radius: 50px !important;
+.event-carousel-roll{
+    display: flex !important;
+    padding: 10px !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+
+}
+
+.event-group{
+    display:flex !important;
+    gap: 1.5em !important;
+    padding-right: 1.5em !important;
+    animation: spin 30s infinite linear !important;
+}
+
+.event-carousel-roll::-webkit-scrollbar {
+    display: none !important;
+}
+
+.event-card {
+    flex: 0 0 400px !important;
+}
+
+.event-card img {
+    width: 100% !important;
+    height: 355px !important;
+    object-fit: cover !important;
+    
+}
+
+
+/*Animacion eventos*/
+@keyframes spin {
+    from{translate: 0 ;}
+    to{translate: -100%;}
+}
+
+.event-carousel-roll:hover .event-group{
+    animation-play-state:paused !important;
+}
+
+
+
+/*solo por ver*/
+.login-body {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #FDFBFF !important; 
+
+.form-signin {
+    width: 100%;
+    max-width: 400px; 
+    padding: 40px;
+    margin: auto;
+    background-color: white; 
+    border-radius: 40px;
+    box-shadow: 0 8px 25px rgba(123, 113, 113, 0.08); 
+}
+
+
+.form-signin .login-input {
+    border-radius: 15px !important;
+    border: 1px solid #dcdcdc;
+    margin-bottom: 15px; 
+
+
+.form-signin .login-input:focus {
+    border-color: #FCB2D3;
+    box-shadow: 0 0 0 0.25rem rgba(252, 178, 211, 0.25);
 }
