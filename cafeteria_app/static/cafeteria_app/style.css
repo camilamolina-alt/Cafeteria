@@ -218,7 +218,7 @@ body{
 
 }
 
-<<<<<<< HEAD
+/*<<<<<<< HEAD*/
 .event-group{
     display:flex !important;
     gap: 1.5em !important;
@@ -260,7 +260,8 @@ body{
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: #FDFBFF !important; 
+    background-color: #FDFBFF !important;
+}
 
 .form-signin {
     width: 100%;
@@ -277,17 +278,29 @@ body{
     border-radius: 15px !important;
     border: 1px solid #dcdcdc;
     margin-bottom: 15px; 
-
+}
 
 .form-signin .login-input:focus {
     border-color: #FCB2D3;
     box-shadow: 0 0 0 0.25rem rgba(252, 178, 211, 0.25);
-=======
+}
 /*margen de productos y carro*/
 .productos, .cart{
     margin:20px;
 }
 .producto, .cart-item{
     margin-bottom:10px;
->>>>>>> 6686d376c2654af19add751697f8e9a794c73e89
+}
+
+
+
+/*tema del evento*/
+.overlay {
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover .overlay {
+    opacity: 1;
 }
