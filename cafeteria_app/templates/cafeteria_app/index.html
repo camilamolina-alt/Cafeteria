@@ -25,15 +25,11 @@
         </ul>
 
         <ul class="nav-user" style="display: flex; gap: 20px; margin: 0; list-style: none; padding: 0; align-items: center;">
-          <li><a class="nav-identification" href="{% url 'login' %}">Login</a></li>
           {% if request.user.is_authenticated %}
-            <li></li><a href="{% url 'logout' %}" class="nav-identification">Logout</a></li>
+            <li></li><a href="{% url 'exit' %}" class="nav-identification">Logout</a></li>
             {%else%}
-              <li><a class="nav-identification" href="{% url 'login' %}">Login</a></li>
+              <li><a href="{% url 'login' %}"class="nav-identification">Login</a></li>
           {% endif %}
-
-
-
 
 
           <li><a class="nav-identification" href="{% url 'cart' %}">Carro</a></li>
@@ -469,6 +465,7 @@
 
 
   
+  <script src="carro.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
