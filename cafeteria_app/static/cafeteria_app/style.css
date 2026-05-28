@@ -58,9 +58,9 @@ body{
 /*Carusel banner*/
 
 #carousel-Indicators {
+    height: 600px !important;
     max-width: 1300px; 
     margin: 30px auto !important; 
-
 }
 
 
@@ -71,9 +71,9 @@ body{
 }
 
 
-.carousel-item img {
-    height: auto !important;
-    object-fit: cover; 
+#carousel-Indicators .carousel-item img {
+    height: 600px !important;
+    width: 100% !important; 
     object-position: center; 
 }
 
@@ -218,7 +218,10 @@ body{
 
 }
 
+<<<<<<< HEAD
 /*<<<<<<< HEAD*/
+=======
+>>>>>>> 7cd13c9dd3908b9ed04298d020a8077d7ea0e76b
 .event-group{
     display:flex !important;
     gap: 1.5em !important;
@@ -260,7 +263,11 @@ body{
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
+<<<<<<< HEAD
     background-color: #FDFBFF !important;
+=======
+    background-color: #FDFBFF !important; 
+>>>>>>> 7cd13c9dd3908b9ed04298d020a8077d7ea0e76b
 }
 
 .form-signin {
@@ -279,17 +286,26 @@ body{
     border: 1px solid #dcdcdc;
     margin-bottom: 15px; 
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7cd13c9dd3908b9ed04298d020a8077d7ea0e76b
 
 .form-signin .login-input:focus {
     border-color: #FCB2D3;
     box-shadow: 0 0 0 0.25rem rgba(252, 178, 211, 0.25);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7cd13c9dd3908b9ed04298d020a8077d7ea0e76b
 /*margen de productos y carro*/
 .productos, .cart{
     margin:20px;
 }
 .producto, .cart-item{
     margin-bottom:10px;
+<<<<<<< HEAD
 }
 
 
@@ -303,4 +319,6 @@ body{
 
 .image-container:hover .overlay {
     opacity: 1;
+=======
+>>>>>>> 7cd13c9dd3908b9ed04298d020a8077d7ea0e76b
 }

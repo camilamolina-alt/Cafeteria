@@ -18,14 +18,6 @@ def gallery(request):
 def events(request):
     return render(request, 'cafeteria_app/events.html')
 
-def login(request):
-    error = False
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        if not username or not password:
-            error = True
-    return render(request, 'registration/login.html', {'error': error})
 
 @login_required
 def cart(request):
