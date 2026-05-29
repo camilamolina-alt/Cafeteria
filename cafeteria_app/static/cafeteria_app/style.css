@@ -17,7 +17,7 @@ body{
 .navbar-cafe{
     background-color: #FDFAF7;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px
+    
 }
 
 .navbar-brand{
@@ -297,13 +297,12 @@ body{
 .image-card {
     cursor: pointer;
 }
-
 .image-card .overlay {
     opacity: 0;
     background: rgba(0, 0, 0, 0.6);
     transition: opacity 0.3s ease;
 }
 
-.image-card:hover {
-    border: 5px solid red !important;
+.image-card:hover .overlay {
+    opacity: 1;
 }

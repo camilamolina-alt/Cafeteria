@@ -44,27 +44,40 @@
       ANUNCIOS
     </button>
   </div>
-    <!--imagenes del evento en cuestion-->
     <div class="container px-2">
-    <div class="row g-4 mt-3 mb-5 justify-content-center">
-        <div class="col-auto">
-            <div style="width: 550px; height: 650px; overflow: hidden; position: relative;" class="rounded"
-                onmouseenter="this.querySelector('.overlay').style.opacity='1'"
-                onmouseleave="this.querySelector('.overlay').style.opacity='0'">
-                <!--le pedi ayuda a la ia para esta wea ptm-->
-                <!--pero funciona que es lo importante-->
-                <img src="{% static 'cafeteria_app/img/imEvents/cold_outside.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="Cold Outside">
-        
-                <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4 rounded" 
-                    style="opacity: 0; background: rgba(0, 0, 0, 0.6); transition: opacity 0.3s ease;">
-                    <h5 class="fw-bold">Cold Outside</h5>
-                    <p>Tu descripción aquí prueba de que si esta refrescando la pagina</p>
+        <div class="row g-4 mt-3 mb-5 justify-content-center">
+            <div class="col-auto">
+                <div class="rounded image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
+                    <img src="{% static 'cafeteria_app/img/Events/ChocoCoffexd.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="ChocoCoffexd">
+                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
+                        <h5 class="fw-bold">Donuts</h5>
+                        <p>Tu descripción aquí</p>
+                    </div>
                 </div>
             </div>
-        </div>
+
             <div class="col-auto">
-                <div style="width: 550px; height: 650px; overflow: hidden; position: relative;" class="rounded image-card">
-                    <img src="{% static 'cafeteria_app/img/imEvents/Donuts_rositas.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="Donuts">
+                <div class="rounded image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
+                    <img src="{% static 'cafeteria_app/img/Events/TaroLatte.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="TaroLatte">
+                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
+                        <h5 class="fw-bold">Donuts</h5>
+                        <p>Tu descripción aquí</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="rounded image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
+                    <img src="{% static 'cafeteria_app/img/Events/TaroLatte.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="TaroLatte">
+                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
+                        <h5 class="fw-bold">Donuts</h5>
+                        <p>Tu descripción aquí</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <div class="rounded image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
+                    <img src="{% static 'cafeteria_app/img/Events/ChocoCoffexd.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="ChocoCoffexd">
                     <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
                         <h5 class="fw-bold">Donuts</h5>
                         <p>Tu descripción aquí</p>
@@ -72,36 +85,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-auto">
-            <div style="width: 550px; height: 650px; overflow: hidden; position: relative;" class="rounded"
-                onmouseenter="this.querySelector('.overlay').style.opacity='1'"
-                onmouseleave="this.querySelector('.overlay').style.opacity='0'">
-                <img src="{% static 'cafeteria_app/img/imEvents/cold_outside.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="Cold Outside">
-        
-                <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4 rounded" 
-                    style="opacity: 0; background: rgba(0,0,0,0.6); transition: opacity 0.3s ease;">
-                    <h5 class="fw-bold">Cold Outside</h5>
-                    <p>Tu descripción aquí</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-auto">
-            <div style="width: 550px; height: 650px; overflow: hidden; position: relative;" class="rounded"
-                onmouseenter="this.querySelector('.overlay').style.opacity='1'"
-                onmouseleave="this.querySelector('.overlay').style.opacity='0'">
-                <img src="{% static 'cafeteria_app/img/imEvents/cold_outside.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="Cold Outside">
-        
-                <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4 rounded" 
-                    style="opacity: 0; background: rgba(0,0,0,0.6); transition: opacity 0.3s ease;">
-                    <h5 class="fw-bold">Cold Outside</h5>
-                    <p>Tu descripción aquí</p>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
-</div>
-
-
 </body>
 </html>
