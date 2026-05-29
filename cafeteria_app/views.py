@@ -14,7 +14,7 @@ def menu(request):
 def gallery(request):
     return render(request, 'cafeteria_app/gallery.html')
 
-@login_required
+
 def events(request):
     return render(request, 'cafeteria_app/events.html')
 
