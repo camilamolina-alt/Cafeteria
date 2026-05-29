@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'cafeteria_db.sqlite3',
     }
 }
 
@@ -125,7 +125,7 @@ STATIC_URL = 'static/'
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR / 'cafeteria_app' / 'static'),
 ]
 
 #Variable entorno login
@@ -133,3 +133,9 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = 'index'
 
 
+#ADMIN 
+
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
