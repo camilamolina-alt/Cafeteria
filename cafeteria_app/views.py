@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
+def ejemplo(request):
+    return render(request, 'cafeteria_app/ejemplo.html') #Ejemplos para prueas de vistas random
+
 def home(request):
     return render(request, 'cafeteria_app/index.html')
 

@@ -10,4 +10,6 @@ urlpatterns = [
     path('events/', views.events, name='events'),
     path('cart/', views.cart, name='cart'),
     path('exit/', views.exit, name='exit'),
+    path('ejemplo/', views.ejemplo, name='ejemplo'),
 ]
+

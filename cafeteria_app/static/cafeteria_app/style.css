@@ -15,9 +15,10 @@ body{
 
 /*Barras*/
 .navbar-cafe{
+    position: sticky !important;
     background-color: #FDFAF7;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px
+
 }
 
 .navbar-brand{
@@ -55,6 +56,26 @@ body{
     color: #a58181;
 }
 
+/*Contenedor de navegacion*/
+.banner-title-capsule {
+    background-color: #FFFDBA;
+    width: 100%;
+    height: 150px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.05);
+
+}
+
+.banner-title{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: light;
+    font-size: 30px;
+    color: #7B7171;
+    letter-spacing: 1px;
+
+}
+
 /*Carusel banner*/
 
 #carousel-Indicators {
@@ -88,7 +109,7 @@ body{
 
 #carousel-NewMenu {
     max-width: 900px; 
-    margin: 0px auto !important; 
+    margin: 0px auto 80px auto !important;
     border-radius: 50px;
     background-color: transparent !important;
 }
@@ -218,10 +239,6 @@ body{
 
 }
 
-<<<<<<< HEAD
-/*<<<<<<< HEAD*/
-=======
->>>>>>> 7cd13c9dd3908b9ed04298d020a8077d7ea0e76b
 .event-group{
     display:flex !important;
     gap: 1.5em !important;
@@ -263,11 +280,7 @@ body{
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
-<<<<<<< HEAD
     background-color: #FDFBFF !important;
-=======
-    background-color: #FDFBFF !important; 
->>>>>>> 7cd13c9dd3908b9ed04298d020a8077d7ea0e76b
 }
 
 .form-signin {
@@ -286,26 +299,17 @@ body{
     border: 1px solid #dcdcdc;
     margin-bottom: 15px; 
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 7cd13c9dd3908b9ed04298d020a8077d7ea0e76b
 
 .form-signin .login-input:focus {
     border-color: #FCB2D3;
     box-shadow: 0 0 0 0.25rem rgba(252, 178, 211, 0.25);
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 7cd13c9dd3908b9ed04298d020a8077d7ea0e76b
 /*margen de productos y carro*/
 .productos, .cart{
     margin:20px;
 }
 .producto, .cart-item{
     margin-bottom:10px;
-<<<<<<< HEAD
 }
 
 
@@ -319,6 +323,4 @@ body{
 
 .image-container:hover .overlay {
     opacity: 1;
-=======
->>>>>>> 7cd13c9dd3908b9ed04298d020a8077d7ea0e76b
 }
