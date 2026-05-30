@@ -18,7 +18,11 @@ body{
     position: sticky !important;
     background-color: #FDFAF7;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.05);
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> 88b91fe3c380974bb7a192e038f5a4f6dc36d06b
 }
 
 .navbar-brand{
@@ -327,12 +331,15 @@ body{
 
 
 /*tema del evento*/
-.overlay {
-    background: rgba(0, 0, 0, 0.6);
+.image-card {
+    cursor: pointer;
+}
+.image-card .overlay {
     opacity: 0;
+    background: rgba(0, 0, 0, 0.6);
     transition: opacity 0.3s ease;
 }
 
-.image-container:hover .overlay {
+.image-card:hover .overlay {
     opacity: 1;
 }
