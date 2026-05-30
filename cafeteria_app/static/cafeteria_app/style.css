@@ -76,6 +76,18 @@ body{
 
 }
 
+.footer {
+    height: 150px !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-top: 40px !important;
+    background-color: #BAEDFF;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    bottom:auto !important;
+
+}
+
 /*Carusel banner*/
 
 #carousel-Indicators {

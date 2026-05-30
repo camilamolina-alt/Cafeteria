@@ -15,7 +15,8 @@
         <div class="navbar-brand-container">
         <a class="navbar-brand" href="{% url 'index' %}">SHIBAL</a>
         </div>
-        
+    
+        { % block nav_links % }
     <ul class="nav-links" style="display: flex; gap: 40px; margin: 0; list-style: none; padding: 0; align-items: center;">
         <li><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
         <li><a class="nav-link" href="{% url 'menu' %}">Menu</a></li>
@@ -30,9 +31,9 @@
             <li><a href="{% url 'login' %}"class="nav-identification">Login</a></li>
         {% endif %}
 
-
         <li><a class="nav-identification" href="{% url 'cart' %}">Carro</a></li>
         </ul>
+        { % endblock % }
     </div>
 </nav>
 </div>
@@ -40,6 +41,8 @@
     {% block content %}
     {% endblock %}
     
-<footer class="footer">
-    <p>&copy; 2024 Cafeteria. Todos los derechos reservados, estoy quedando pelona por culpa de esto</p>
+<footer class="footer sticky-bottom" >
+    <p style="color: #7B7171;">&copy; 2026 Cafeteria. Todos los derechos reservados, estoy quedando pelona por culpa de esto</p>
 </footer>
+    {% block scripts %}
+    {% endblock %}

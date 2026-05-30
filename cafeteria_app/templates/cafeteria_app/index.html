@@ -1,6 +1,7 @@
 {% extends "./layouts/base.html" %}
 {% load static %} <!DOCTYPE html>
 {% block content %}
+
 <!-- CARRUSEL PRODUCTOS BANNER-->
 <div id="carousel-Indicators" class="carousel slide mt-5" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -23,7 +24,7 @@
 </div>
 
 <!-- CARRUSEL NUEVOS PRODUCTOS -->
-<div class="contenedor-productos mt-5 py-5   shadow-sm"style="border-radius: 50px !important;">
+<div class="contenedor-productos p-5  shadow-sm"style="border-radius: 50px !important;">
   <div><h2 style="text-align: center; margin-top: 20px; color: #7B7171; font-size: 20px; letter-spacing: 0.5px; font-weight: lighter;">Nuevo Menu</h2></div>
   <div id="carousel-NewMenu" class="carousel slide w-75 mx-auto" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -103,6 +104,7 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+</div>
 
 
   <!-- MODAL DE PRODUCTROS -->
@@ -155,7 +157,7 @@
       <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
         <h5 class="modal-title" id="modalCaramelLatteLabel">Caramel Latte</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+    </div>
       
       <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
         <p>Café con sabor a caramelo y leche caliente.</p>
@@ -297,6 +299,7 @@
               <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Orange Cake</p>
             </div>
           </div>
+          
           <!-- Caramel Latte -->
           <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalCaramelLatte">
             <img src="{% static 'cafeteria_app/img/newProducts/new_coffe.jpg' %}" class="card-img-top img-fluid" alt="Cafe Caramelo" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
@@ -356,7 +359,6 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-</div>
 </div>
 
 <div class="container event-container mt-5 p-4 shadow-sm" style="max-width: 1300px;background-color: #FDFAF7; border-radius: 50px !important;">
