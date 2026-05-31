@@ -1,37 +1,19 @@
+{% extends "./layouts/baseTitles.html" %}
 {% load static %}
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'cafeteria_app/style.css' %}">
-    <title>Eventos</title>
-</head>
-<body>
+
+{%block color%}<div class="banner-title-capsule d-flex justify-content-center align-items-center" style="background-color: #EBDDFB;">{%endblock%}
+{% block banner_titulo %}EVENTOS{% endblock %}
     <!-- hace la wea wn pal futuro maracao qliao-->
     <!--parte superior-->
-    <nav class="navbar navbar-expand-lg sticky-top navbar-cafe py-3">
-    <div class="container-fluid d-flex justify-content-between align-items-center px-5">
-        <div class="navbar-brand-container">
-        <a class="navbar-brand" href="{% url 'index' %}">SHIBAL</a> 
-        </div>
-        
-    <ul class="nav-links" style="display: flex; gap: 40px; margin: 0; list-style: none; padding: 0; align-items: center;">
-        <li><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
-        <li><a class="nav-link" href="{% url 'menu' %}">Menu</a></li>
-        <li><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
-        <li><a class="nav-link" href="{% url 'events' %}">Events</a></li>
-    </ul>
 
     <!--parte donde dice que es la parte de eventos-->
-    <div class="py-5 text-center" style="background: #e8e0f5; border-radius: 0 0 2rem 2rem;">
-        <h1 class="fw-semibold text-secondary" style="letter-spacing: 6px;">EVENTS</h1>
-    </div>
+
     <!--aqui deberia ir los botones del evento-->
+{% block main_content %}
     <div class="d-flex justify-content-center gap-3" style="margin-top: -22px;">
     <button class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium"
             onclick="setTab(this)" style="letter-spacing: 2px; font-size: 13px;">
-      EVENTOS
+        EVENTOS
     </button>
     <button class="btn btn-light rounded-pill px-4 py-2 shadow-sm fw-medium"
             onclick="setTab(this)" style="letter-spacing: 2px; font-size: 13px;">
@@ -41,7 +23,7 @@
     <div class="container px-2">
         <div class="row g-4 mt-3 mb-5 justify-content-center">
             <div class="col-auto">
-                <div class="rounded image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
+                <div class="image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
                     <img src="{% static 'cafeteria_app/img/Events/ChocoCoffexd.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="ChocoCoffexd">
                     <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
                         <h5 class="fw-bold">Donuts</h5>
@@ -51,7 +33,7 @@
             </div>
 
             <div class="col-auto">
-                <div class="rounded image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
+                <div class="image-card">
                     <img src="{% static 'cafeteria_app/img/Events/TaroLatte.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="TaroLatte">
                     <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
                         <h5 class="fw-bold">Donuts</h5>
@@ -60,7 +42,7 @@
                 </div>
             </div>
             <div class="col-auto">
-                <div class="rounded image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
+                <div class="image-card">
                     <img src="{% static 'cafeteria_app/img/Events/TaroLatte.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="TaroLatte">
                     <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
                         <h5 class="fw-bold">Donuts</h5>
@@ -70,7 +52,7 @@
             </div>
 
             <div class="col-auto">
-                <div class="rounded image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
+                <div class="image-card" >
                     <img src="{% static 'cafeteria_app/img/Events/ChocoCoffexd.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="ChocoCoffexd">
                     <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
                         <h5 class="fw-bold">Donuts</h5>
@@ -82,3 +64,5 @@
     </div>
 </body>
 </html>
+
+{% endblock %} 

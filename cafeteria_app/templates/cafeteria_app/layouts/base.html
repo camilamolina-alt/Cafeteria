@@ -8,41 +8,47 @@
     <title>Cafeteria</title>
 </head>
 
-
 <body>
+    {% block navbar %}
     <nav class="navbar navbar-expand-lg sticky-top navbar-cafe py-3">
-    <div class="container-fluid d-flex justify-content-between align-items-center px-5">
-        <div class="navbar-brand-container">
-        <a class="navbar-brand" href="{% url 'index' %}">SHIBAL</a>
-        </div>
-    
-        { % block nav_links % }
-    <ul class="nav-links" style="display: flex; gap: 40px; margin: 0; list-style: none; padding: 0; align-items: center;">
-        <li><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
-        <li><a class="nav-link" href="{% url 'menu' %}">Menu</a></li>
-        <li><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
-        <li><a class="nav-link" href="{% url 'events' %}">Events</a></li>
-    </ul>
+        <div class="container-fluid d-flex justify-content-between align-items-center px-5">
+            
+            <div class="navbar-brand-container">
+                <a class="navbar-brand" href="{% url 'index' %}">SHIBAL</a>
+            </div>
 
-        <ul class="nav-user" style="display: flex; gap: 20px; margin: 0; list-style: none; padding: 0; align-items: center;">
-        {% if request.user.is_authenticated %}
-            <li></li><a href="{% url 'exit' %}" class="nav-identification">Logout</a></li>
-            {%else%}
-            <li><a href="{% url 'login' %}"class="nav-identification">Login</a></li>
-        {% endif %}
+            <ul class="nav-links" style="display: flex; gap: 40px; margin: 0; list-style: none; padding: 0; align-items: center;">
+                <li><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
+                <li><a class="nav-link" href="{% url 'menu' %}">Menu</a></li>
+                <li><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a class="nav-link" href="{% url 'events' %}">Events</a></li>
+            </ul>
 
-        <li><a class="nav-identification" href="{% url 'cart' %}">Carro</a></li>
-        </ul>
-        { % endblock % }
-    </div>
-</nav>
-</div>
+            <ul class="nav-user" style="display: flex; gap: 20px; margin: 0; list-style: none; padding: 0; align-items: center;">
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'exit' %}" class="nav-identification">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}" class="nav-identification">Login</a></li>
+                {% endif %}
+                <li><a class="nav-identification" href="{% url 'cart' %}">Carro</a></li>
+            </ul>
 
+        </div> 
+    </nav>
+    {% endblock %}
     {% block content %}
     {% endblock %}
+
+    {% block footer %} 
+    <footer class="footer mt-auto d-flex justify-content-center align-items-center py-3" >
+        <p style="color: #7B7171;">&copy; 2026 Cafeteria. Todos los derechos reservados, estoy quedando pelona por culpa de esto que te ries sebastian weko</p>
+    </footer>
+    {% endblock %}
     
-<footer class="footer sticky-bottom" >
-    <p style="color: #7B7171;">&copy; 2026 Cafeteria. Todos los derechos reservados, estoy quedando pelona por culpa de esto</p>
-</footer>
     {% block scripts %}
     {% endblock %}
+
+    
+    
+</body>
+</html>

@@ -1,1 +1,22 @@
-{% extends "cafeteria_app./layouts/base.html" %}
+{% extends "cafeteria_app/layouts/base.html" %}
+{% load static %}
+
+{% block navbar %}
+    <nav class="navbar sticky-top navbar-cafe py-4">
+        <div class="container-fluid d-flex justify-content-center align-items-center">
+            <a class="navbar-brand" href="{% url 'index' %}" style="font-size: 2.5rem !important;">
+                SHIBAL
+            </a>
+        </div>
+    </nav>
+{% endblock %}
+
+
+{% block content %}
+    {% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

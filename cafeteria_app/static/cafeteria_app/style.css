@@ -18,11 +18,7 @@ body{
     position: sticky !important;
     background-color: #FDFAF7;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.05);
-<<<<<<< HEAD
     
-=======
-
->>>>>>> 88b91fe3c380974bb7a192e038f5a4f6dc36d06b
 }
 
 .navbar-brand{
@@ -62,7 +58,6 @@ body{
 
 /*Contenedor de navegacion*/
 .banner-title-capsule {
-    background-color: #FFFDBA;
     width: 100%;
     height: 150px;
     border-bottom-left-radius: 50px;
@@ -290,7 +285,7 @@ body{
 
 
 
-/*solo por ver*/
+/*login*/
 .login-body {
     display: flex;
     align-items: center;
@@ -320,6 +315,7 @@ body{
     border-color: #FCB2D3;
     box-shadow: 0 0 0 0.25rem rgba(252, 178, 211, 0.25);
 }
+
 /*margen de productos y carro*/
 .productos, .cart{
     margin:20px;
@@ -332,7 +328,12 @@ body{
 
 /*tema del evento*/
 .image-card {
+    width: 550px;
+    height: 650px;
+    overflow: hidden;
+    position: relative;
     cursor: pointer;
+    border-radius: 50px;
 }
 .image-card .overlay {
     opacity: 0;

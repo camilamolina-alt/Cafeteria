@@ -1,15 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Carro de Compras</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
+{% extends "./layouts/baseNav_Check.html" %}
+{% load static %} <!DOCTYPE html>
+{% block content %}
+
       <!-- para agregar productos, si es necesario, agregar más-->      
 <div class="productos">
   <div class="producto">
@@ -32,5 +24,5 @@
 <script src="carro.js"></script>
         
         <script src="" async defer></script>
-    </body>
-</html>
+
+{% endblock %}
