@@ -1,15 +1,101 @@
 {% extends "./layouts/baseTitles.html" %}
 {% load static %}
 
-
-{% block banner_title %}Menu{% endblock %}
+{%block color%}<div class="banner-title-capsule d-flex justify-content-center align-items-center" style="background-color: #fedfd1;">{%endblock%}
+{% block banner_titulo %}MENU{% endblock %}
 
 
 
 
 {% block main_content %}
-    <div class="container mt-5">
-        <h2>AAAAA?</h2>
-        <p>AAAASasaS ASAS</p>
+    <div class="container mt-4">
+        <div class="d-flex justify-content-center gap-3 mb-4">
+            <button class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" onclick="setTab(this)" style="letter-spacing: 2px; font-size: 13px;">DULCES</button>
+            <button class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" onclick="setTab(this)" style="letter-spacing: 2px; font-size: 13px;">SALADOS</button>
+            <button class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" onclick="setTab(this)" style="letter-spacing: 2px; font-size: 13px;">BEBIDAS</button>
+        </div>
+
+        <form class="d-flex mx-auto mb-5" style="justify-content: center; gap: 10px; max-width: 400px;">
+            <input class="form-control me-2" style="border-radius: 50px;" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" style="border-radius: 50px; border-color: #FCB2D3; background-color: #FCB2D3; color: white; font-weight: bold;" type="submit">Search</button>
+        </form>
+
+        <div class="row g-3 mx-2 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4">
+            <div class="shop-card">
+                <h3 style="margin-top: 15px;text-align: center;color: #7B7171; letter-spacing: 2px; font-weight: light ;font-size: 20px;">Matcha Roll</h3>
+                <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="d-block w-100" alt="Banner 1" style="cursor: pointer;">
+                <p style="margin-top: 10px; text-align: center;color: #7B7171;">Pastel de matcha yt chocolate blanco blablablablabla.</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="shop-card">
+                <h3 style="margin-top: 15px;text-align: center;color: #7B7171; letter-spacing: 2px; font-weight: light ;font-size: 20px;">Berry Roll</h3>
+                <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" class="d-block w-100" alt="Banner 2" style="cursor: pointer;">
+                <p style="margin-top: 10px; text-align: center;color: #7B7171;">Pastel de matcha yt chocolate blanco blablablablabla.</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="shop-card">
+                <h3 style="margin-top: 15px;text-align: center;color: #7B7171; letter-spacing: 2px; font-weight: light ;font-size: 20px;">Matcha Roll</h3>
+                <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="d-block w-100" alt="Banner 1" style="cursor: pointer;">
+                <p style="margin-top: 10px; text-align: center;color: #7B7171;">Pastel de matcha yt chocolate blanco blablablablabla.</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="shop-card">
+                <h3 style="margin-top: 15px;text-align: center;color: #7B7171; letter-spacing: 2px; font-weight: light ;font-size: 20px;">Matcha Roll</h3>
+                <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="d-block w-100" alt="Banner 1" style="cursor: pointer;">
+                <p style="margin-top: 10px; text-align: center;color: #7B7171;">Pastel de matcha yt chocolate blanco blablablablabla.</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="shop-card">
+                <h3 style="margin-top: 15px;text-align: center;color: #7B7171; letter-spacing: 2px; font-weight: light ;font-size: 20px;">Berry Roll</h3>
+                <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" class="d-block w-100" alt="Banner 2" style="cursor: pointer;">
+                <p style="margin-top: 10px; text-align: center;color: #7B7171;">Pastel de matcha yt chocolate blanco blablablablabla.</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="shop-card">
+                <h3 style="margin-top: 15px;text-align: center;color: #7B7171; letter-spacing: 2px; font-weight: light ;font-size: 20px;">Matcha Roll</h3>
+                <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="d-block w-100" alt="Banner 3" style="cursor: pointer;">
+                <p style="margin-top: 10px; text-align: center;color: #7B7171;">Pastel de matcha yt chocolate blanco blablablablabla.</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="shop-card">
+                <h3 style="margin-top: 15px;text-align: center;color: #7B7171; letter-spacing: 2px; font-weight: light ;font-size: 20px;">Berry Roll</h3>
+                <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" class="d-block w-100" alt="Banner 2" style="cursor: pointer;">
+                <p style="margin-top: 10px; text-align: center;color: #7B7171;">Pastel de matcha yt chocolate blanco blablablablabla.</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="shop-card">
+                <h3 style="margin-top: 15px;text-align: center;color: #7B7171; letter-spacing: 2px; font-weight: light ;font-size: 20px;">Berry Roll</h3>
+                <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" class="d-block w-100" alt="Banner 2" style="cursor: pointer;">
+                <p style="margin-top: 10px; text-align: center;color: #7B7171;">Pastel de matcha yt chocolate blanco blablablablabla.</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="shop-card">
+                <h3 style="margin-top: 15px;text-align: center;color: #7B7171; letter-spacing: 2px; font-weight: light ;font-size: 20px;">Matcha Roll</h3>
+                <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="d-block w-100" alt="Banner 3" style="cursor: pointer;">
+                <p style="margin-top: 10px; text-align: center;color: #7B7171;">Pastel de matcha yt chocolate blanco blablablablabla.</p>
+            </div>
+        </div>
+
+        
     </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 {% endblock %}

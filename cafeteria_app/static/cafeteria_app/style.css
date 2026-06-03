@@ -10,6 +10,8 @@ body{
     font-family: 'Montserrat', sans-serif;
     background-color: #FDFBFF;
     border-bottom: none;
+
+
 }
 
 
@@ -76,199 +78,198 @@ body{
 }
 
 .footer {
-    height: 150px !important;
-    width: 100% !important;
-    text-align: center !important;
-    margin-top: 40px !important;
+    height: 150px ;
+    width: 100% ;
+    text-align: center ;
     background-color: #BAEDFF;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
-    bottom:auto !important;
+
 
 }
 
 /*Carusel banner*/
 
 #carousel-Indicators {
-    height: 600px !important;
+    height: 600px ;
     max-width: 1300px; 
-    margin: 30px auto !important; 
+    margin: 30px auto ; 
 }
 
 
 .carousel-inner {
     border-radius: 50px; 
     overflow: hidden;
-    box-shadow: 4px 4px 20px #FDFBFF !important;
+    box-shadow: 4px 4px 20px #FDFBFF ;
 }
 
 
 #carousel-Indicators .carousel-item img {
-    height: 600px !important;
-    width: 100% !important; 
+    height: 600px;
+    width: 100% ; 
     object-position: center; 
 }
 
 /*Carusel nuevo menu*/
 
 .contenedor-productos{
-    width: 1300px !important;
-    height: auto !important;
+    width: 1300px ;
+    height: auto ;
     margin: 40px auto; 
-    padding: 0px 40px !important;
+    padding: 0px 40px ;
 }
 
 #carousel-NewMenu {
     max-width: 900px; 
-    margin: 0px auto 80px auto !important;
+    margin: 0px auto 80px auto ;
     border-radius: 50px;
-    background-color: transparent !important;
+    background-color: transparent;
 }
 
 #carousel-NewMenu .carousel-inner {
     border-radius: 50px; 
     overflow: hidden;
-    padding-top: 15px !important;
-    padding-bottom: 24px !important;
+    padding-top: 15px;
+    padding-bottom: 24px ;
 }
 #carousel-NewMenu .carousel-item img {
-    width: 100% !important;
-    height: auto !important;
+    width: 100%;
+    height: auto;
     object-fit: cover; 
     object-position: center; 
-    aspect-ratio: 1 / 1 !important
+    aspect-ratio: 1 / 1
 }
 
 /*Imagenes de productos ajustes*/
 .product-image {
-    height: 250px !important;
-    width: 200px !important;
-    border-radius: 30px !important; 
-    border: none !important;
-    background-color: #FDFBFF !important;
-    overflow: hidden !important;
-    box-shadow: 0 8px 15px rgba(123, 113, 113, 0.08) !important;
+    height: 250px;
+    width: 200px;
+    border-radius: 30px; 
+    border: none;
+    background-color: #FDFBFF;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(123, 113, 113, 0.08);
 }
 .product-image img {
-    border-radius: 30px !important; 
-    object-fit: cover !important; 
-    object-position: center !important;
-    height: 180px !important;
+    border-radius: 30px; 
+    object-fit: cover; 
+    object-position: center;
+    height: 180px;
 }
 
 /*Botones carrusel Menu nuevo*/
 #carousel-NewMenu .carousel-control-prev,
 #carousel-NewMenu .carousel-control-next {
-	box-shadow:0px 1px 0px 0px #b4a2a2 !important;
-	background-color:#FFFEFB !important;
-    opacity: 1 !important;
-	border-radius: 50% !important;
-	border:1px solid #dcdcdc !important;
-	cursor:pointer !important;
+    box-shadow:0px 1px 0px 0px #b4a2a2;
+    background-color:#FFFEFB;
+    opacity: 1;
+    border-radius: 50%;
+    border:1px solid #dcdcdc;
+    cursor:pointer;
     /*Tamano circulo*/
-    height: 50px !important;
-    width: 50px !important;
+    height: 50px;
+    width: 50px;
     /*Posicionamiento*/
-    top: 50% !important;
-    transform:translateY(-50%) !important;
+    top: 50%;
+    transform:translateY(-50%);
 
 }
 
 #carousel-NewMenu .carousel-control-prev { 
-    left: -35px !important; 
-    transform: translateX(5px) rotate(-45deg) !important;
-    margin-left: 4px !important;
+    left: -35px; 
+    transform: translateX(5px) rotate(-45deg);
+    margin-left: 4px;
 
 }
 #carousel-NewMenu .carousel-control-next {
-    right: -35px !important; 
-    TRANSFORM: translateX(-5px) rotate(135deg) !important;
-    margin-right: 4px !important;
+    right: -35px; 
+    TRANSFORM: translateX(-5px) rotate(135deg);
+    margin-right: 4px;
     
     }
 
 /*Colrores flechas*/
 #carousel-NewMenu .carousel-control-prev-icon,
 #carousel-NewMenu .carousel-control-next-icon {
-    height: 15px !important;
-    width: 15px !important;
-    margin:0 !important;
-    padding:0 !important;
-    border-top: 2px solid #ada2a2 !important; 
-    border-left: 2px solid #ada2a2 !important;
+    height: 15px;
+    width: 15px;
+    margin:0;
+    padding:0;
+    border-top: 2px solid #ada2a2; 
+    border-left: 2px solid #ada2a2;
 }
 
 /*Botones carrusel recomendados*/
 #carousel-BestMenu .carousel-control-prev,
 #carousel-BestMenu .carousel-control-next {
-	box-shadow:0px 1px 0px 0px #b4a2a2 !important;
-	background-color:#FFFEFB !important;
-    opacity: 1 !important;
-	border-radius: 50% !important;
-	border:1px solid #dcdcdc !important;
-	cursor:pointer !important;
+    box-shadow:0px 1px 0px 0px #b4a2a2;
+    background-color:#FFFEFB;
+    opacity: 1;
+    border-radius: 50%;
+    border:1px solid #dcdcdc;
+    cursor:pointer;
     /*Tamano circulo*/
-    height: 50px !important;
-    width: 50px !important;
+    height: 50px;
+    width: 50px;
     /*Posicionamiento*/
-    top: 50% !important;
-    transform:translateY(-50%) !important;
+    top: 50%;
+    transform:translateY(-50%);
 
 }
 
 #carousel-BestMenu .carousel-control-prev { 
-    left: -35px !important; 
-    transform: translateX(5px) rotate(-45deg) !important;
-    margin-left: 4px !important;
+    left: -35px; 
+    transform: translateX(5px) rotate(-45deg);
+    margin-left: 4px;
 
 }
 #carousel-BestMenu .carousel-control-next {
-    right: -35px !important; 
-    TRANSFORM: translateX(-5px) rotate(135deg) !important;
-    margin-right: 4px !important;
+    right: -35px; 
+    TRANSFORM: translateX(-5px) rotate(135deg);
+    margin-right: 4px;
     
     }
 
 /*Colrores flechas*/
 #carousel-BestMenu .carousel-control-prev-icon,
 #carousel-BestMenu .carousel-control-next-icon {
-    height: 15px !important;
-    width: 15px !important;
-    margin:0 !important;
-    padding:0 !important;
-    border-top: 2px solid #ada2a2 !important; 
-    border-left: 2px solid #ada2a2 !important;
+    height: 15px;
+    width: 15px;
+    margin:0;
+    padding:0;
+    border-top: 2px solid #ada2a2; 
+    border-left: 2px solid #ada2a2;
 }
 
 /*Eventos*/
 
 .event-carousel-roll{
-    display: flex !important;
-    padding: 10px !important;
-    overflow-x: hidden !important;
-    width: 100% !important;
+    display: flex;
+    padding: 10px;
+    overflow-x: hidden;
+    width: 100%;
 
 }
 
 .event-group{
-    display:flex !important;
-    gap: 1.5em !important;
-    padding-right: 1.5em !important;
-    animation: spin 30s infinite linear !important;
+    display:flex;
+    gap: 1.5em;
+    padding-right: 1.5em;
+    animation: spin 30s infinite linear;
 }
 
 .event-carousel-roll::-webkit-scrollbar {
-    display: none !important;
+    display: none;
 }
 
 .event-card {
-    flex: 0 0 400px !important;
+    flex: 0 0 400px;
 }
 
 .event-card img {
-    width: 100% !important;
-    height: 355px !important;
-    object-fit: cover !important;
+    width: 100%;
+    height: 355px;
+    object-fit: cover;
     
 }
 
@@ -280,7 +281,7 @@ body{
 }
 
 .event-carousel-roll:hover .event-group{
-    animation-play-state:paused !important;
+    animation-play-state:paused;
 }
 
 
@@ -291,7 +292,7 @@ body{
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: #FDFBFF !important;
+    background-color: #FDFBFF;
 }
 
 .form-signin {
@@ -306,7 +307,7 @@ body{
 
 
 .form-signin .login-input {
-    border-radius: 15px !important;
+    border-radius: 15px;
     border: 1px solid #dcdcdc;
     margin-bottom: 15px; 
 }
@@ -344,3 +345,27 @@ body{
 .image-card:hover .overlay {
     opacity: 1;
 }
+
+/*CARDS COMPRAS*/
+.shop-card {
+    width: 100%;
+    max-width: 280px;
+    height: 100%;
+    padding-bottom: 25px;
+    border-radius: 30px;
+    background-color: #FFFEFB;
+    box-shadow: 0 8px 15px rgba(123, 113, 113, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.shop-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 25px;
+
+}
+

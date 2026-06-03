@@ -1,10 +1,82 @@
 {% extends "./layouts/baseTitles.html" %}
 {% load static %}
 
-{% block banner_titulo %}Compra{% endblock %}
+{% block banner_titulo %}ONLINE SHOP{% endblock %}
 
 {% block main_content %}
-    <div class="container mt-5">
-        <h2>AAAAAAAAA</h2>
+    <div class="container mt-4">
+        <div class="d-flex justify-content-center gap-3 mb-4">
+            <button class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" onclick="setTab(this)" style="letter-spacing: 2px; font-size: 13px;">EVENTOS</button>
+            <button class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" onclick="setTab(this)" style="letter-spacing: 2px; font-size: 13px;">ANUNCIOS</button>
+        </div>
+
+        <div class="row g-3 mx-2 justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="shop-card">
+                    <h3 style="margin-top: 15px; text-align: center; color: #7B7171;">Matcha Roll</h3>
+                    <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="d-block w-100" alt="Banner 1" style="cursor: pointer;">
+                    <p style="margin-top: 10px; text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco blablablablabla.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="shop-card">
+                    <h3 style="margin-top: 15px; text-align: center; color: #7B7171;">Berry Roll</h3>
+                    <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" class="d-block w-100" alt="Banner 2" style="cursor: pointer;">
+                    <p style="margin-top: 10px; text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco blablablablabla.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="shop-card">
+                    <h3 style="margin-top: 15px; text-align: center; color: #7B7171;">Berry Roll</h3>
+                    <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" class="d-block w-100" alt="Banner 3" style="cursor: pointer;">
+                    <p style="margin-top: 10px; text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco blablablablabla.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="shop-card">
+                    <h3 style="margin-top: 15px; text-align: center; color: #7B7171;">Matcha Roll</h3>
+                    <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="d-block w-100" alt="Banner 4" style="cursor: pointer;">
+                    <p style="margin-top: 10px; text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco blablablablabla.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="shop-card">
+                    <h3 style="margin-top: 15px; text-align: center; color: #7B7171;">Berry Roll</h3>
+                    <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" class="d-block w-100" alt="Banner 5" style="cursor: pointer;">
+                    <p style="margin-top: 10px; text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco blablablablabla.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="shop-card">
+                    <h3 style="margin-top: 15px; text-align: center; color: #7B7171;">Matcha Roll</h3>
+                    <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="d-block w-100" alt="Banner 6" style="cursor: pointer;">
+                    <p style="margin-top: 10px; text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco blablablablabla.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="shop-card">
+                    <h3 style="margin-top: 15px; text-align: center; color: #7B7171;">Berry Roll</h3>
+                    <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" class="d-block w-100" alt="Banner 7" style="cursor: pointer;">
+                    <p style="margin-top: 10px; text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco blablablablabla.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="shop-card">
+                    <h3 style="margin-top: 15px; text-align: center; color: #7B7171;">Matcha Roll</h3>
+                    <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="d-block w-100" alt="Banner 8" style="cursor: pointer;">
+                    <p style="margin-top: 10px; text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco blablablablabla.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="shop-card">
+                    <h3 style="margin-top: 15px; text-align: center; color: #7B7171;">Matcha Roll</h3>
+                    <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="d-block w-100" alt="Banner 8" style="cursor: pointer;">
+                    <p style="margin-top: 10px; text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco blablablablabla.</p>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
+
+
+
