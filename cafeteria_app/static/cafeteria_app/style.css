@@ -144,8 +144,8 @@ body{
 .product-image {
     height: 250px;
     width: 200px;
-    border-radius: 30px; 
-    border: none;
+    border-radius: 30px !important; 
+    border: none !important;
     background-color: #FDFBFF;
     overflow: hidden;
     box-shadow: 0 8px 15px rgba(123, 113, 113, 0.08);
