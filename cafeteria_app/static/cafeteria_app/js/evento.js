@@ -8,8 +8,6 @@ function setTab(btn) {
 
     const tab = btn.dataset.tab;
     document.querySelectorAll('[data-group]').forEach(card => {
-        // Usamos un enfoque compatible con Bootstrap (d-block y d-none) 
-        // o style.display directo para ocultar/mostrar las columnas de la grilla
         if (card.dataset.group === tab) {
             card.style.setProperty('display', 'block', 'important');
         } else {

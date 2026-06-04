@@ -1,28 +1,24 @@
 {% extends "./layouts/baseNav_Check.html" %}
-{% load static %} <!DOCTYPE html>
+{% load static %}
 {% block content %}
 
-      <!-- para agregar productos, si es necesario, agregar más-->      
 <div class="productos">
   <div class="producto">
-    <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" alt="Producto 1">
+    <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" alt="Matcha Roll">
     <h3>Matcha Roll</h3>
     <p>$4.500</p>
     <button onclick="agregarAlCarro('Matcha Roll', 4500)">Agregar al Carro</button>
   </div>
 </div>
 
-
-<!-- para el carro -->
 <div class="cart">
   <h2>Carro de Compras</h2>
   <div class="cart-items">
-    <ul id="cart-items-list"></ul>
+    <ul id="cart-items"></ul>
     <p>El total es: <span id="cart-total"></span></p>
   </div>
 </div>
-<script src="carro.js"></script>
-        
-        <script src="" async defer></script>
+
+<script src="{% static 'cafeteria_app/js/carro.js' %}"></script>
 
 {% endblock %}
