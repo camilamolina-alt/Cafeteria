@@ -116,15 +116,16 @@
         <h5 class="modal-title" id="modalMatchaRollLabel">Pastel de Matcha</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      
       <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
         <p>Pastel de matcha yt chocolate blanco blablablablabla.</p>
         <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" alt="Matcha Roll" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
       </div>
-      <div class="modal-footer">
-        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          AGREGAR AL CARRO - $4.500</button>
-      </div>
+      <div class="modal-footer justify-content-center border-0">
+        <button onclick="agregarAlCarro('Matcha Roll', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
+        style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+        Agregar al Carro
+      </button>
+</div>
     </div>
   </div>
 </div>
@@ -142,9 +143,11 @@
         <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
         <img src="{% static 'cafeteria_app/img/newProducts/new_orangeCake.jpg' %}" alt="Orange Cake" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
       </div>
-      <div class="modal-footer">
-        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          AGREGAR AL CARRO - $4.500</button>
+      <div class="modal-footer justify-content-center border-0">
+        <button onclick="agregarAlCarro('Orange Cake', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
+          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          Agregar al Carro
+        </button>
       </div>
     </div>
   </div>
@@ -163,9 +166,11 @@
         <p>Café con sabor a caramelo y leche caliente.</p>
         <img src="{% static 'cafeteria_app/img/newProducts/new_coffe.jpg' %}" alt="Caramel Latte" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
       </div>
-      <div class="modal-footer">
-        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          AGREGAR AL CARRO - $4.500</button>
+      <div class="modal-footer justify-content-center border-0">
+        <button onclick="agregarAlCarro('Caramel Latte', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
+          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          Agregar al Carro
+        </button>
       </div>
     </div>
   </div>
@@ -184,9 +189,11 @@
         <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
         <img src="{% static 'cafeteria_app/img/newProducts/new_cheescake.jpg' %}" alt="Cheesecake" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
       </div>
-      <div class="modal-footer">
-        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          AGREGAR AL CARRO - $4.500</button>
+      <div class="modal-footer justify-content-center border-0">
+        <button onclick="agregarAlCarro('Cheesecake', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
+          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          Agregar al Carro
+        </button>
       </div>
     </div>
   </div>
@@ -205,9 +212,11 @@
         <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
         <img src="{% static 'cafeteria_app/img/newProducts/new_grapeCake.jpg' %}" alt="Grape Cake" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
       </div>
-      <div class="modal-footer">
-        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          AGREGAR AL CARRO - $4.500</button>
+      <div class="modal-footer justify-content-center border-0">
+        <button onclick="agregarAlCarro('Grape Cake', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
+          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          Agregar al Carro
+        </button>
       </div>
     </div>
   </div>
@@ -226,9 +235,11 @@
         <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
         <img src="{% static 'cafeteria_app/img/newProducts/new_hotChocolate.jpg' %}" alt="Hot Chocolate" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
       </div>
-      <div class="modal-footer">
-        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          AGREGAR AL CARRO - $4.500</button>
+      <div class="modal-footer justify-content-center border-0">
+        <button onclick="agregarAlCarro('Hot Chocolate', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
+          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          Agregar al Carro
+        </button>
       </div>
     </div>
   </div>
@@ -247,9 +258,11 @@
         <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
         <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" alt="Berry Roll" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
       </div>
-      <div class="modal-footer">
-        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          AGREGAR AL CARRO - $4.500</button>
+      <div class="modal-footer justify-content-center border-0">
+        <button onclick="agregarAlCarro('Berry Roll', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
+          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          Agregar al Carro
+        </button>
       </div>
     </div>
   </div>
@@ -268,9 +281,11 @@
         <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
         <img src="{% static 'cafeteria_app/img/newProducts/new_strawberryCake.jpg' %}" alt="Strawberry Cake" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
       </div>
-      <div class="modal-footer">
-        <button class="btn w-100 py-2 mt-3 mb-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          AGREGAR AL CARRO - $4.500</button>
+      <div class="modal-footer justify-content-center border-0">
+        <button onclick="agregarAlCarro('Strawberry Cake', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
+          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          Agregar al Carro
+        </button>
       </div>
     </div>
   </div>
