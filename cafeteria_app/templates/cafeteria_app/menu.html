@@ -8,98 +8,40 @@
 
 
 {% block main_content %}
-        <div class="d-flex justify-content-center gap-3 mb-4 " style="margin-top: -22px;">
-            <button class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" onclick="setTab(this)" style="letter-spacing: 2px; font-size: 13px;">DULCES</button>
-            <button class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" onclick="setTab(this)" style="letter-spacing: 2px; font-size: 13px;">SALADOS</button>
-            <button class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" onclick="setTab(this)" style="letter-spacing: 2px; font-size: 13px;">BEBIDAS</button>
-        </div>
 
-        <form class="d-flex mx-auto mb-5" style="justify-content: center; gap: 10px; max-width: 400px;">
-            <input class="form-control me-2" style="border-radius: 50px;" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" style="border-radius: 50px; border-color: #FCB2D3; background-color: #FCB2D3; color: white; font-weight: bold;" type="submit">Search</button>
-        </form>
-
-        <div class="container my-4">
-    <div class="row g-3 justify-content-center">
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-            <div class="shop-card">
-                <h3>Matcha Roll</h3>
-                <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" alt="Matcha Roll" style="cursor: pointer;"">
-                <p style="text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco.</p>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-            <div class="shop-card">
-                <h3>Berry Roll</h3>
-                <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" alt="Berry Roll" style="cursor: pointer;"">
-                <p style="text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco.</p>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-            <div class="shop-card">
-                <h3>Berry Roll</h3>
-                <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" alt="Berry Roll" style="cursor: pointer;"">
-                <p style="text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco.</p>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-            <div class="shop-card">
-                <h3>Matcha Roll</h3>
-                <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" alt="Matcha Roll" style="cursor: pointer;"">
-                <p style="text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco.</p>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-            <div class="shop-card">
-                <h3>Berry Roll</h3>
-                <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" alt="Berry Roll" style="cursor: pointer;"">
-                <p style="text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco.</p>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-            <div class="shop-card">
-                <h3>Matcha Roll</h3>
-                <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" alt="Matcha Roll" style="cursor: pointer;"">
-                <p style="text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco.</p>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-            <div class="shop-card">
-                <h3>Berry Roll</h3>
-                <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" alt="Berry Roll" style="cursor: pointer;"">
-                <p style="text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco.</p>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-            <div class="shop-card">
-                <h3>Matcha Roll</h3>
-                <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" alt="Matcha Roll" style="cursor: pointer;"">
-                <p style="text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco.</p>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-            <div class="shop-card">
-                <h3>Matcha Roll</h3>
-                <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" alt="Matcha Roll" style="cursor: pointer;"">
-                <p style="text-align: center; color: #7B7171;">Pastel de matcha y chocolate blanco.</p>
-            </div>
-        </div>
-    </div>
+<div class="d-flex justify-content-center gap-3 mb-4" style="margin-top: -22px;">
+    <a href="?" class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" 
+        style="letter-spacing: 2px; font-size: 13px;">TODOS</a>
+    {% for category in categories %}
+    <a href="?categoria={{ category.name }}" class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" 
+        style="letter-spacing: 2px; font-size: 13px;">{{ category.name|upper }}</a>
+    {% endfor %}
 </div>
+<!-- BUSCADOR -->
+<form class="d-flex mx-auto mb-5" method="GET" style="justify-content: center; gap: 10px; max-width: 400px;">
+    <input class="form-control me-2" style="border-radius: 50px;" type="search" name="busqueda" placeholder="Search" aria-label="Search">
+    <button class="btn" style="border-radius: 50px; background-color: #FCB2D3; color: white; font-weight: bold;" type="submit">Search</button>
+</form>
 
-
-        
-        
-    </div>
+    <div class="container my-4">
+        <div class="row g-3 justify-content-center">
+            {% for product in products %}
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="shop-card">
+                    <h3>{{ product.name }}</h3>
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="cursor: pointer;">
+                {% endif %}
+        <p style="text-align: center; color: #7B7171;">{{ product.details }}</p>
+        <a href="{% url 'add_to_cart' product.id %}" class="btn px-3 py-3"style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold;">
+            Agregar al Carro
+        </a>
+            </div>
+                </div>
+        {% endfor %}
 </div>
-
-
-
-
-
-
-
-
-
-
 {% endblock %}
+
+
+        
+    

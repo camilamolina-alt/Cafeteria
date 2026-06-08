@@ -8,9 +8,14 @@ urlpatterns = [
     path('menu/', views.menu, name='menu'),
     path('gallery/', views.gallery, name='gallery'),
     path('events/', views.events, name='events'),
-    path('cart/', views.cart, name='cart'),
     path('exit/', views.exit, name='exit'),
     path('ejemplo/', views.ejemplo, name='ejemplo'),
+    path('login/', views.signin, name='login'),
     path('signup/', views.registro, name='signup'),
-]
+    path('cart/', views.cart_detail, name='cart'),
+    path('cart/add/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
+    path('cart/remove/<int:product_id>/', views.remove_from_cart, name='remove_from_cart'),
+    
 
+    
+]

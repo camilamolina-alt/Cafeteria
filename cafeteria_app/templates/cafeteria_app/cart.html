@@ -7,10 +7,9 @@
     <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" alt="Matcha Roll">
     <h3>Matcha Roll</h3>
     <p>$4.500</p>
-    <button onclick="agregarAlCarro('Matcha Roll', 4500)">Agregar al Carro</button>
+    <a href="{% url 'add_to_cart' 1 %}">Add to Cart</a>
   </div>
 </div>
-
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
@@ -22,13 +21,18 @@
 </div>
 
 <div class="cart">
-  <h2>Carro de Compras</h2>
-  <div class="cart-items">
-    <ul id="cart-items"></ul>
-    <p>El total es: <span id="cart-total"></span></p>
-  </div>
+  <h2>Cart</h2>
+  <ul>
+    {% for item in cart %}
+      <li>
+        {{ item.product.name }} - ${{ item.price }} x {{ item.quantity }} = ${{ item.total_price }}
+        <a href="{% url 'remove_from_cart' item.product.id %}">Remove</a>
+      </li>
+    {% empty %}
+      <li>Your cart is empty</li>
+    {% endfor %}
+  </ul>
+  <p>Total: ${{ cart.get_total }}</p>
 </div>
-
-<script src="{% static 'cafeteria_app/js/carro.js' %}"></script>
 
 {% endblock %}

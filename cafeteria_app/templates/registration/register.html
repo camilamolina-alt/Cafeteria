@@ -1,10 +1,18 @@
-<h1>Registrar Usuario</h1>
-    {{error}}
-<form action="/signup/" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
+{% extends "cafeteria_app/layouts/base.html" %}
+{% load static %}
 
-    <button>
-        Registrar
-    </button>
-</form>
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="p-5 shadow-sm position:center:" style="width: 100%; max-width: 1300px; background-color: #FDFAF7; border-radius: 30px;">
+        <h1>Registrar Usuario</h1>
+        {{error}}
+    
+        <form action="/signup/" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button>Registrar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

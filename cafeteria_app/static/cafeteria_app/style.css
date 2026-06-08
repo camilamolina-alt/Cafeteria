@@ -255,7 +255,7 @@ body{
     display:flex;
     gap: 1.5em;
     padding-right: 1.5em;
-    animation: spin 30s infinite linear;
+    animation: scrollLineal 30s infinite linear;
 }
 
 .event-carousel-roll::-webkit-scrollbar {
@@ -268,14 +268,49 @@ body{
 
 .event-card img {
     width: 100%;
+    height: auto;
+    object-fit: cover;
+    
+}
+
+
+/*Galeria*/
+
+.galery-carousel-roll{
+    display: flex;
+    padding: 10px;
+    overflow-x: hidden;
+    width: 100%;
+
+}
+
+.galery-group{
+    display:flex;
+    gap: 1.5em;
+    padding-right: 1.5em;
+    animation: scrollLineal 50s infinite linear;
+}
+
+.galery-carousel-roll::-webkit-scrollbar {
+    display: none;
+}
+
+.galery-card {
+    flex: 0 0 400px;
+}
+
+.galery-card img {
+    width: 100%;
     height: 355px;
     object-fit: cover;
     
 }
 
 
+
+
 /*Animacion eventos*/
-@keyframes spin {
+@keyframes scrollLineal {
     from{translate: 0 ;}
     to{translate: -100%;}
 }

@@ -1,56 +1,94 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
+from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from .cart import Cart
+from .models import Product, Category
+
 
 def ejemplo(request):
-    return render(request, 'cafeteria_app/ejemplo.html') #Ejemplos para prueas de vistas random
+    return render(request, 'cafeteria_app/ejemplo.html')
 
 def home(request):
-    return render(request, 'cafeteria_app/index.html')
+    products = Product.objects.all()
+    return render(request, 'cafeteria_app/index.html', {'products': products})
 
 def shop(request):
-    return render(request, 'cafeteria_app/shop.html')
+    products = Product.objects.all()
+    return render(request, 'cafeteria_app/shop.html', {'products': products})
 
 def menu(request):
-    return render(request, 'cafeteria_app/menu.html')
+    categories = request.GET.get('categoria')
+    busqueda = request.GET.get('busqueda')
+    productos = Product.objects.all()
+    if categories:
+        productos = productos.filter(category__name=categories)
+    if busqueda:
+        productos = productos.filter(name__icontains=busqueda)
+    return render(request, 'cafeteria_app/menu.html', {'products': productos, 'categories': Category.objects.all()})
 
 def gallery(request):
     return render(request, 'cafeteria_app/gallery.html')
 
-
 def events(request):
     return render(request, 'cafeteria_app/events.html')
 
-@login_required
-def cart(request):
-    return render(request, 'cafeteria_app/cart.html')
-
 def registro(request):
     if request.method == 'GET':
-        return render(request, 'registration/register.html',{
+        return render(request, 'registration/register.html', {
             'form': UserCreationForm()
         })
     else:
-        if request.POST['password1']==request.POST['password2']:
-            #registrar usuario
+        if request.POST['password1'] == request.POST['password2']:
             try:
-                user =User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
+                user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
                 user.save()
                 return HttpResponse('Usuario registrado exitosamente')
             except:
-                return render(request, 'registration/register.html',{
+                return render(request, 'registration/register.html', {
                     'form': UserCreationForm(),
-                    "error": 'El nombre de usuario ya existe'
+                    'error': 'El nombre de usuario ya existe'
                 })
-        return render(request, 'registration/register.html',{
-                    'form': UserCreationForm(),
-                    "error": 'contraseñas no coinciden'
-                })
-        
+        return render(request, 'registration/register.html', {
+            'form': UserCreationForm(),
+            'error': 'Contraseñas no coinciden'
+        })
+
+def signin(request):
+    if request.method == 'GET':
+        return render(request, 'registration/login.html')
+    else:
+        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+        if user is None:
+            return render(request, 'registration/login.html', {
+                'error': 'Usuario o contraseña incorrectos.'
+            })
+        auth_login(request, user)
+        return redirect('index')
 
 def exit(request):
     logout(request)
     return redirect('index')
+
+# carro de compras
+@login_required
+def cart_detail(request):
+    cart = Cart(request)
+    return render(request, 'cafeteria_app/cart.html', {'cart': cart})
+
+@login_required
+def add_to_cart(request, product_id):
+    cart = Cart(request)
+    product = Product.objects.get(id=product_id)
+    cart.add(product=product)
+    return redirect(request.META.get('HTTP_REFERER', '/'))
+
+@login_required
+def remove_from_cart(request, product_id):
+    cart = Cart(request)
+    product = Product.objects.get(id=product_id)
+    cart.remove(product)
+    return redirect('cart')
+

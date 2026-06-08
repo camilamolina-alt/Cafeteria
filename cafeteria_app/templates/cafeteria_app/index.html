@@ -167,33 +167,32 @@
         <img src="{% static 'cafeteria_app/img/newProducts/new_coffe.jpg' %}" alt="Caramel Latte" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
       </div>
       <div class="modal-footer justify-content-center border-0">
-        <button onclick="agregarAlCarro('Caramel Latte', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
-          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          Agregar al Carro
-        </button>
+      <a href="{% url 'add_to_cart' 2 %}" class="btn px-4 py-2"
+        style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold;">
+        Agregar al Carro
+      </a>
       </div>
     </div>
   </div>
 </div>
 
 <!-- MODAL DE CHEESCAKE -->
-<div class="modal fade" id="modalCheesecake" tabindex="-1" aria-labelledby="modalCheesecake" aria-hidden="true">
+<div class="modal fade" id="modalCheesecake" tabindex="-1" aria-labelledby="modalCheesecakeLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
+    <div class="modal-content" style="border-radius: 30px; padding: 20px;">
       <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
-        <h5 class="modal-title" id="modalCheesecake">Cheesecake</h5>
+        <h5 class="modal-title" id="modalCheesecakeLabel">Cheesecake</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      
-      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
+      <div class="modal-body text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171">
         <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
         <img src="{% static 'cafeteria_app/img/newProducts/new_cheescake.jpg' %}" alt="Cheesecake" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
       </div>
       <div class="modal-footer justify-content-center border-0">
-        <button onclick="agregarAlCarro('Cheesecake', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
-          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          Agregar al Carro
-        </button>
+      <a href="{% url 'add_to_cart' 1 %}" class="btn px-4 py-2"
+      style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold;">
+      Agregar al Carro
+      </a>
       </div>
     </div>
   </div>
@@ -376,26 +375,26 @@
   </div>
 </div>
 
+<!-- CARRUSEL DE EVENTOS -->
+
 <div class="container event-container mt-5 p-4 shadow-sm" style="max-width: 1300px;background-color: #FDFAF7; border-radius: 50px !important;">
   <div><h2 style="text-align: center; margin-top: 20px; color: #7B7171; font-size: 20px; letter-spacing: 0.5px; font-weight: lighter;">Eventos</h2></div>
-
-
 <div class="event-carousel-roll"> 
   <div class="event-group">
     <div class="event-card">
       <a href="{% url 'events' %}">
-        <img src="{% static 'cafeteria_app/img/banners/Drinks.jpg' %}" alt="Evento 1" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
+        <img src="{% static 'cafeteria_app/img/Events/Event1.png' %}" alt="Evento 1" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
       </a>
     </div>
     
     <div class="event-card">
       <a href="{% url 'events' %}">
-        <img src="{% static 'cafeteria_app/img/banners//Drinks.jpg' %}" alt="Evento 2" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
+        <img src="{% static 'cafeteria_app/img/Events/Event2.png' %}" alt="Evento 2" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
       </a>
     </div>
     <div class="event-card">
       <a href="{% url 'events' %}">
-        <img src="{% static 'cafeteria_app/img/banners//Drinks.jpg' %}" alt="Evento 3" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
+        <img src="{% static 'cafeteria_app/img/Events/Event3.png' %}" alt="Evento 3" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
       </a>
     </div>
   </div>
@@ -403,17 +402,61 @@
   <div class="event-group" aria-hidden="true">
     <div class="event-card">
       <a href="{% url 'events' %}">
-        <img src="{% static 'cafeteria_app/img/banners/Drinks.jpg' %}" alt="Evento 1" class="event-image rounded-4 shadow-sm" style="cursor: pointer">
+        <img src="{% static 'cafeteria_app/img/Events/Event1.png' %}" alt="Evento 1" class="event-image rounded-4 shadow-sm" style="cursor: pointer">
       </a>
     </div>
     <div class="event-card">
       <a href="{% url 'events' %}">
-        <img src="{% static 'cafeteria_app/img/banners//Drinks.jpg' %}" alt="Evento 2" class="event-image rounded-4 shadow-sm" style="cursor: pointer;">
+        <img src="{% static 'cafeteria_app/img/Events/Event2.png' %}" alt="Evento 2" class="event-image rounded-4 shadow-sm" style="cursor: pointer;">
       </a>
     </div>
     <div class="event-card">
       <a href="{% url 'events' %}">
-        <img src="{% static 'cafeteria_app/img/banners//Drinks.jpg' %}" alt="Evento 3" class="event-image rounded-4 shadow-sm" style="cursor: pointer">
+        <img src="{% static 'cafeteria_app/img/Events/Event3.png' %}" alt="Evento 3" class="event-image rounded-4 shadow-sm" style="cursor: pointer">
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+<!-- CARRUSEL GALERIA -->
+<div class="container galery-container mt-5 p-4 shadow-sm" style="max-width: 1300px;background-color: #FDFAF7; border-radius: 50px !important;">
+  <div><h2 style="text-align: center; margin-top: 20px; color: #7B7171; font-size: 20px; letter-spacing: 0.5px; font-weight: lighter;">Instagram</h2></div>
+<div class="galery-carousel-roll"> 
+  <div class="galery-group">
+    <div class="galery-card">
+      <a href="https://instagram.com"target="_blank">
+        <img src="{% static 'cafeteria_app/img/gallery/gallery1.jpg' %}" alt="Evento 1" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
+      </a>
+    </div>
+    
+    <div class="galery-card">
+      <a href="https://instagram.com" target="_blank">
+        <img src="{% static 'cafeteria_app/img/gallery/gallery2.jpg' %}" alt="Evento 2" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
+      </a>
+    </div>
+    <div class="galery-card">
+      <a href="https://instagram.com" target="_blank">
+        <img src="{% static 'cafeteria_app/img/gallery/gallery3.jpg' %}" alt="Evento 3" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
+      </a>
+    </div>
+  </div>
+
+  <div class="galery-group" aria-hidden="true">
+    <div class="galery-card">
+      <a href="https://instagram.com"target="_blank">
+        <img src="{% static 'cafeteria_app/img/gallery/gallery4.jpg' %}" alt="Evento 1" class="event-image rounded-4 shadow-sm" style="cursor: pointer">
+      </a>
+    </div>
+    <div class="galery-card">
+      <a href="https://instagram.com" target="_blank">
+        <img src="{% static 'cafeteria_app/img/gallery/gallery5.jpg' %}" alt="Evento 2" class="event-image rounded-4 shadow-sm" style="cursor: pointer;">
+      </a>
+    </div>
+    <div class="galery-card">
+      <a href="https://instagram.com" target="_blank">
+        <img src="{% static 'cafeteria_app/img/gallery/gallery6.jpg' %}" alt="Evento 3" class="event-image rounded-4 shadow-sm" style="cursor: pointer">
       </a>
     </div>
   </div>
@@ -446,8 +489,5 @@
 
 
   
-  <script src="carro.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
 {% endblock %}
 

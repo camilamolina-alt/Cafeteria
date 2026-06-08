@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'cafeteria_app/style.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Cafeteria</title>
 </head>
@@ -28,7 +29,10 @@
                 {% endif %}
                 <li>
                     <button class="nav-identification" data-bs-toggle="offcanvas" data-bs-target="#carritoOffcanvas"
-                        style="background: none; border: none; cursor: pointer;">Carro</button>
+                        style="background: none; border: none; cursor: pointer;">
+                        <i class="bx bx-cart-alt" style="font-size: 24px;"></i>
+                        <span id="cart-count">{{ cart|length }}</span>
+                    </button>
                 </li>
             </ul>
         </div> 
@@ -37,16 +41,31 @@
 
     {% block content %}{% endblock %}
 
-    <!-- OFFCANVAS BARRA QUE APARECE AL LADO DE LA COMPRA-->
+    <!-- OFFCANVAS -->
     <div class="offcanvas offcanvas-end" id="carritoOffcanvas">
         <div class="offcanvas-header">
             <h5>Carro de Compras</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body d-flex flex-column">
-            <ul id="cart-items" class="flex-grow-1"></ul>
-            <p style="font-weight: bold;">Total: <span id="cart-total">$0</span></p>
-            <a href="{% url 'cart' %}" class="btn w-100 rounded-pill" style="background: #FCB2D3; border: none;font-weight: bold; color: white;">Ir al carro </a>
+            {% for item in cart %}
+            <div class="d-flex align-items-center mb-3">
+                {% if item.product.image %}
+                <img src="{{ item.product.image.url }}" width="50" height="50"
+                    style="border-radius: 10px; object-fit: cover; margin-right: 10px;">
+                {% endif %}
+                <div>
+                    <p class="mb-0" style="font-family: 'Montserrat', sans-serif;">{{ item.product.name }}</p>
+                    <small style="color: #7B7171;">${{ item.price }} x {{ item.quantity }}</small>
+                </div>
+            </div>
+            {% empty %}
+                <p style="color: #7B7171; font-family: 'Montserrat', sans-serif;">El carrito está vacío</p>
+            {% endfor %}
+            <hr>
+            <p style="font-weight: bold; font-family: 'Montserrat', sans-serif;">Total: ${{ cart.get_total }}</p>
+            <a href="{% url 'cart' %}" class="btn w-100 rounded-pill" 
+            style="background: #FCB2D3; border: none; font-weight: bold; color: white;">Ir al carro</a>
         </div>
     </div>
 
@@ -56,8 +75,21 @@
     </footer>
     {% endblock %}
 
-    <script src="{% static 'cafeteria_app/js/carro.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmLCBW2FNTe9MFP/B/VhtIDLhFJ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script>
+function addToCart(product_id) {
+    fetch(`/cart/add/${product_id}/`, {
+        headers: {'x-requested-with': 'XMLHttpRequest'}
+    }).then(() => {
+        const modal = bootstrap.Modal.getInstance(document.querySelector('.modal.show'));
+        if (modal) modal.hide();
+        setTimeout(() => {
+            location.reload();
+        }, 300);
+    });
+}
+    </script>
+
     {% block scripts %}{% endblock %}
 </body>
 </html>
