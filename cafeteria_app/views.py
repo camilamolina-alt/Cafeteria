@@ -6,6 +6,15 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from .cart import Cart
 from .models import Product, Category
+#-----------------------------------
+#solo para evento en reservar
+import qrcode
+import io
+import base64
+from django.core.mail import EmailMessage
+from django.shortcuts import render, redirect
+from .models import Reserva
+#-----------------------------------
 
 
 def ejemplo(request):
@@ -32,9 +41,44 @@ def menu(request):
 def gallery(request):
     return render(request, 'cafeteria_app/gallery.html')
 
+
+
+#Solo ando probando
 def events(request):
+    if request.method == 'POST':
+        reserva = Reserva.objects.create(
+            evento_nombre=request.POST.get('evento_nombre'),
+            nombre_completo=request.POST.get('nombre_completo'),
+            num_asistentes=request.POST.get('num_asistentes'),
+            zona=request.POST.get('zona'),
+            correo=request.POST.get('gmail'),  # corregido
+        )
+
+        # Generar QR
+        qr = qrcode.make(str(reserva.codigo))
+        buffer = io.BytesIO()
+        qr.save(buffer, format='PNG')
+        buffer.seek(0)
+        qr_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
+
+        # Enviar por correo
+        email = EmailMessage(
+            subject=f'Reserva confirmada - {reserva.evento_nombre}',
+            body=f'Hola {reserva.nombre_completo},\n\nTu reserva para "{reserva.evento_nombre}" está confirmada.\nPresenta el QR adjunto al llegar al local.\n\nNos vemos pronto!',
+            to=[reserva.correo],
+        )
+        email.attach('qr_reserva.png', buffer.getvalue(), 'image/png')
+        email.send()
+
+        return render(request, 'cafeteria_app/events.html', {
+            'reserva_exitosa': True,
+            'qr_imagen': qr_base64,
+            'reserva': reserva,
+        })
+
     return render(request, 'cafeteria_app/events.html')
 
+#-------------------------------------------------------------
 def registro(request):
     if request.method == 'GET':
         return render(request, 'registration/register.html', {
@@ -91,4 +135,5 @@ def remove_from_cart(request, product_id):
     product = Product.objects.get(id=product_id)
     cart.remove(product)
     return redirect('cart')
+
 

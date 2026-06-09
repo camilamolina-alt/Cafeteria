@@ -141,3 +141,7 @@ import os
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CART_SESSION_ID = 'cart'
+
+
+#configuracion para el uso del gmail en el apartado de reserva, solo para el entorno virtual
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

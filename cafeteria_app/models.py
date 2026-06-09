@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+import uuid
+# el uuid es para poder crear identificadores unicos universales para la reserva, por si acaso
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=15)
@@ -26,3 +28,15 @@ class CarritoItem(models.Model):
     def __str__(self):
         return f"{self.usuario} - {self.producto.name}"
     
+class Reserva(models.Model):
+    codigo = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    evento_nombre = models.CharField(max_length=200)
+    nombre_completo = models.CharField(max_length=200)
+    num_asistentes = models.IntegerField()
+    zona = models.CharField(max_length=50)
+    correo = models.EmailField()
+    asistio = models.BooleanField(default=False)
+    fecha_reserva = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.nombre_completo} - {self.evento_nombre}"

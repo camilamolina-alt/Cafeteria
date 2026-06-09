@@ -1,22 +1,34 @@
 function setTab(btn) {
-    document.querySelectorAll('.btn-tab').forEach(b => {
-        b.classList.remove('btn-dark');
-        b.classList.add('btn-light');
-    });
-    btn.classList.remove('btn-light');
-    btn.classList.add('btn-dark');
+    document.querySelectorAll('.btn-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
 
     const tab = btn.dataset.tab;
     document.querySelectorAll('[data-group]').forEach(card => {
-        if (card.dataset.group === tab) {
-            card.style.setProperty('display', 'block', 'important');
+        if (tab === 'Todos') {
+            card.classList.remove('d-none');
+        } else if (card.dataset.group === tab) {
+            card.classList.remove('d-none');
         } else {
-            card.style.setProperty('display', 'none', 'important');
+            card.classList.add('d-none');
         }
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const primero = document.querySelector('[data-tab]');
-    if (primero) setTab(primero);
-});
+function abrirReserva(nombreEvento) {
+    const seccionReserva = document.getElementById('seccion-reserva');
+    const textoEvento = document.getElementById('evento-seleccionado');
+    const inputOculto = document.getElementById('input-evento-nombre');
+
+    seccionReserva.classList.remove('d-none');
+    textoEvento.textContent = nombreEvento.toUpperCase();
+    inputOculto.value = nombreEvento;
+
+    seccionReserva.scrollIntoView({ behavior: 'smooth' });
+}
+
+function cancelarReserva() {
+    const seccionReserva = document.getElementById('seccion-reserva');
+    seccionReserva.classList.add('d-none');
+    document.getElementById('form-reserva').reset();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
