@@ -25,6 +25,7 @@
                 {% if request.user.is_authenticated %}
                     <li><a href="{% url 'exit' %}" class="nav-identification">Logout</a></li>
                 {% else %}
+                    <li><a href="{% url 'signup' %}" class="nav-identification">Registrarse</a></li>
                     <li><a href="{% url 'login' %}" class="nav-identification">Login</a></li>
                 {% endif %}
                 <li>
