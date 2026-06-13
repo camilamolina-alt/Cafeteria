@@ -141,3 +141,9 @@ def remove_from_cart(request, product_id):
     return redirect('cart')
 
 
+@login_required
+def remove_from_cart_base(request, product_id):
+    cart = Cart(request)
+    product = Product.objects.get(id=product_id)
+    cart.remove(product)
+    return redirect(request.META.get('HTTP_REFERER', 'shop'))

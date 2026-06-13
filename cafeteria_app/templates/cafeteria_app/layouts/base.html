@@ -58,6 +58,7 @@
                 <div>
                     <p class="mb-0" style="font-family: 'Montserrat', sans-serif;">{{ item.product.name }}</p>
                     <small style="color: #7B7171;">${{ item.price }} x {{ item.quantity }}</small>
+                    <a href="{% url 'remove_from_cart_base' item.product.id %}" class="btn btn-sm">X</a>
                 </div>
             </div>
             {% empty %}
