@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from django.contrib import messages
 from .cart import Cart
 from .models import Product, Category, CategoryEvents, Events, Reserva
 import qrcode
@@ -115,7 +116,10 @@ def registro(request):
             try:
                 user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
                 user.save()
-                return HttpResponse('Usuario registrado exitosamente')
+                messages.success(request, 'Usuario registrado exitosamente')
+                auth_login(request, user)
+                return redirect('index')
+                
             except:
                 return render(request, 'registration/register.html', {
                     'form': UserCreationForm(),
@@ -163,3 +167,9 @@ def remove_from_cart(request, product_id):
     return redirect('cart')
 
 
+@login_required
+def remove_from_cart_base(request, product_id):
+    cart = Cart(request)
+    product = Product.objects.get(id=product_id)
+    cart.remove(product)
+    return redirect(request.META.get('HTTP_REFERER', 'shop'))

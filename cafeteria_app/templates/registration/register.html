@@ -1,18 +1,27 @@
 {% extends "cafeteria_app/layouts/base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
-<div class="container d-flex justify-content-center align-items-center mt-5">
-    <div class="p-5 shadow-sm position:center:" style="width: 100%; max-width: 1300px; background-color: #FDFAF7; border-radius: 30px;">
-        <h1>Registrar Usuario</h1>
-        {{error}}
-    
-        <form action="/signup/" method="post">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button>Registrar</button>
-        </form>
+<div class="container p-5">
+
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 shadow rounded p-5">
+            <div>
+                <h1>Registro de Usuario</h1>
+            </div>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                {{form | crispy}}
+
+                <input type="submit" style="background-color: #FCB2D3;" class="btn" value="Registrar Usuario">
+            </form>
+            
+        </div>
+        <div class="col-sm-3"></div>
     </div>
 </div>
 {% endblock %}
