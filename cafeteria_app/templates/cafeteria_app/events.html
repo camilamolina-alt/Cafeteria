@@ -1,106 +1,45 @@
 {% extends "./layouts/baseTitles.html" %}
 {% load static %}
 
-{%block color%}<div class="banner-title-capsule d-flex justify-content-center align-items-center" style="background-color: #EBDDFB;">{%endblock%}
+{% block color %}
+<div class="banner-title-capsule d-flex justify-content-center align-items-center" style="background-color: #EBDDFB;">
+{% endblock %}
+
 {% block banner_titulo %}EVENTOS{% endblock %}
-    <!-- hace la wea wn pal futuro maracao qliao-->
-    <!--parte superior-->
 
-    <!--parte donde dice que es la parte de eventos-->
 
-    <!--aqui deberia ir los botones del evento-->
 {% block main_content %}
-    <div class="d-flex justify-content-center gap-3" style="margin-top: -22px;">
-    <button class="btn btn-light btn-tab rounded-pill px-4 py-2 shadow-sm fw-medium"
-            onclick="setTab(this)"data-tab="Temporada" style="letter-spacing: 2px; font-size: 13px;">
-        TEMPORADA
-    </button>
-    <button class="btn btn-light btn-tab rounded-pill px-4 py-2 shadow-sm fw-medium"
-            onclick="setTab(this)" data-tab="Promocion" style="letter-spacing: 2px; font-size: 13px;">
-        PROMOCION
-    </button>
+<div class="d-flex justify-content-center gap-3 mb-4" style="margin-top: -22px;">
+    <a href="?" class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" 
+        style="letter-spacing: 2px; font-size: 13px;">TODOS</a>
+    {% for categoryEvents in categoriesevents %}
+    <a href="?categoriaevento={{ categoryEvents.name }}" class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" 
+        style="letter-spacing: 2px; font-size: 13px;">{{ categoryEvents.name|upper }}</a>
+    {% endfor %}
 </div>
-    <div class="container px-2">
-        <div class="row g-4 mt-3 mb-5 justify-content-center">
-            <!--imagenes de temporada-->
-            <div class="col-auto" data-group="Temporada">
-                <div class="image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
-                    <img src="{% static 'cafeteria_app/img/Events/ChocoCoffexd.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="ChocoCoffexd">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p>Tu descripción aquí</p>
-                    </div>
-                </div>
-            </div>
+<!-- BUSCADOR -->
+<form class="d-flex mx-auto mb-5" method="GET" style="justify-content: center; gap: 10px; max-width: 400px;">
+    <input class="form-control me-2" style="border-radius: 50px;" type="search" name="busqueda" placeholder="Search" aria-label="Search">
+    <button class="btn" style="border-radius: 50px; background-color: #FCB2D3; color: white; font-weight: bold;" type="submit">Search</button>
+</form>
 
-            <div class="col-auto" data-group="Temporada">
-                <div class="image-card">
-                    <img src="{% static 'cafeteria_app/img/Events/TaroLatte.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="TaroLatte">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p>Tu descripción aquí</p>
-                    </div>
+    <div class="container my-4">
+        <div class="row g-3 justify-content-center">
+            {% for events in eventsir %}
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <a href="{% url 'event_detail' events.id %}" style="text-decoration: none; color: inherit; display: contents;">
+                <div class="events-card">
+                        <h3>{{ events.name }}</h3>
+                    {% if events.image %}
+                        <img src="{{ events.image.url }}" alt="{{ events.name }}" style="cursor: pointer;">
+                    {% endif %}
+                    <p style="text-align: center; color: #7B7171;">{{ event.details }}</p>
                 </div>
+                </a>
             </div>
-            <div class="col-auto" data-group="Temporada">
-                <div class="image-card">
-                    <img src="{% static 'cafeteria_app/img/Events/TaroLatte.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="TaroLatte">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p>Tu descripción aquí</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-auto">
-                <div class="image-card"data-group="Temporada" >
-                    <img src="{% static 'cafeteria_app/img/Events/ChocoCoffexd.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="ChocoCoffexd">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p>Tu descripción aquí</p>
-                    </div>
-                </div>
-            </div>
-            <!--Promocion-->
-            <div class="col-auto" data-group="Promocion">
-                <div class="image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
-                    <img src="{% static 'cafeteria_app/img/Events/Strawberry.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="Strawberry">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p>Tu descripción aquí</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-auto" data-group="Promocion">
-                <div class="image-card">
-                    <img src="{% static 'cafeteria_app/img/Events/TIRAMISU CAKE.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="TIRAMISU">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p>Tu descripción aquí</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-auto" data-group="Promocion">
-                <div class="image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
-                    <img src="{% static 'cafeteria_app/img/Events/Strawberry.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="Strawberry">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p>Tu descripción aquí</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-auto" data-group="Promocion">
-                <div class="image-card">
-                    <img src="{% static 'cafeteria_app/img/Events/TIRAMISU CAKE.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="TIRAMISU">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p>Tu descripción aquí</p>
-                    </div>
-                </div>
-            </div>
+        {% endfor %}
         </div>
-    </div>
-<script src="{% static 'cafeteria_app/js/evento.js' %}"></script>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'cafeteria_app/js/evento.js' %}"></script>
 {% endblock %}

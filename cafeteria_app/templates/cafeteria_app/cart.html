@@ -1,28 +1,39 @@
 {% extends "./layouts/baseNav_Check.html" %}
+
 {% load static %}
+
 {% block content %}
 
-<div class="product">
-  <h2>Cart</h2>
-
-  {% for item in cart %}
-  <div class="d-flex align-items-center mb-3">
-    {% if item.product.image %}
-    <img src="{{ item.product.image.url }}" width="50" height="50"
-        style="border-radius: 10px; object-fit: cover; margin-right: 10px;">
-    {% endif %}
-    <div>
-      <p class="mb-0" style="font-family: 'Montserrat', sans-serif;">{{ item.product.name }}</p>
-      <small style="color: #7B7171;">${{ item.price }} x {{ item.quantity }} = ${{ item.total_price }}</small>
-      <br>
-      <a href="{% url 'remove_from_cart' item.product.id %}">Remove</a>
-    </div>
+<div class="productos">
+  <div class="producto">
+    <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" alt="Matcha Roll">
+    <h3>Matcha Roll</h3>
+    <p>$4.500</p>
+    <a href="{% url 'add_to_cart' 1 %}">Add to Cart</a>
   </div>
-  {% empty %}
-    <p>Your cart is empty</p>
-  {% endfor %}
-
-  <p><strong>Total: ${{ cart.get_total }}</strong></p>
 </div>
 
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    ...
+  </div>
+</div>
+
+<div class="cart">
+  <h2>Cart</h2>
+  <ul>
+    {% for item in cart %}
+      <li>
+        {{ item.product.name }} - ${{ item.price }} x {{ item.quantity }} = ${{ item.total_price }}
+        <a href="{% url 'remove_from_cart' item.product.id %}">Remove</a>
+      </li>
+    {% empty %}
+      <li>Your cart is empty</li>
+    {% endfor %}
+  </ul>
+  <p>Total: ${{ cart.get_total }}</p>
+</div>
 {% endblock %}

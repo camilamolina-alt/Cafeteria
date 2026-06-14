@@ -1,0 +1,145 @@
+{% extends "cafeteria_app/layouts/baseTitles.html" %}
+{% load static %}
+
+{% block color %}
+<div class="banner-title-capsule d-flex justify-content-center align-items-center" style="background-color: #EBDDFB;">
+{% endblock %}
+
+{% block banner_titulo %}{{ event.name }}{% endblock %}
+
+
+{% block main_content %}
+
+{% if confirmado %}
+<div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5); z-index: 9999;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 shadow p-4" style="background-color: #fdfbf7;">
+            <div class="modal-body text-center py-3">
+                <h4 class="fw-bold mt-2" style="color: #4a3e3d; font-size: 22px;">¡Reserva lista!</h4>
+                <p class="text-muted mt-2" style="font-size: 14px;">
+                    Hola <strong>{{ reserva.nombre_completo }}</strong>, te esperamos en 
+                    <strong>{{ reserva.evento_nombre }}</strong>.
+                </p>
+                <p class="text-muted" style="font-size: 13px;">
+                    Zona: <strong>{{ reserva.zona }}</strong> · 
+                    Personas: <strong>{{ reserva.num_asistentes }}</strong>
+                </p>
+                <p class="text-muted" style="font-size: 13px;">Muestra este código al llegar:</p>
+                <img src="data:image/png;base64,{{ qr_imagen }}" alt="QR" 
+                    style="width: 160px; height: 160px; border-radius: 12px;" class="mt-1 mb-3">
+                <p class="text-muted" style="font-size: 12px;">
+                    Te enviamos una copia a <strong>{{ reserva.correo }}</strong>
+                </p>
+            </div>
+            <div class="modal-footer border-0 justify-content-center pb-3">
+                <a href="{% url 'events' %}" class="btn btn-dark rounded-pill px-5 py-2" style="letter-spacing: 1px;">
+                    Volver
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="container my-5">
+    <div class="row justify-content-center align-items-start g-5">
+        <div class="col-md-5">
+            <div class="col-md-5 d-flex flex-column justify-content-center">
+                <div class="event_detail-card">
+                    {% if event.image %}
+                        <img src="{{ event.image.url }}" alt="{{ event.name }}" style="cursor: pointer;">
+                    {% endif %}
+                </div>
+                <h3>{{ event.details }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    <button class="btn btn-dark rounded-pill px-5 py-3 mt-2" 
+            data-bs-toggle="modal" data-bs-target="#modalReserva"
+            style="letter-spacing: 2px; font-size: 18px; min-width: 300px;">
+        Reservar
+    </button>
+</div>
+
+<div class="container my-5">
+    <div class="p-4 shadow-sm" style="background-color: #FDFAF7; border-radius: 30px;">
+        <h4 class="mb-4 text-center">Alimentos del evento</h4>
+        <div class="row g-3 justify-content-center">
+            {% for alimento in alimentos %}
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm rounded-4" style="width:300px; height: 400px;">
+                    {% if alimento.image %}
+                        <img src="{{ alimento.image.url }}" class="card-img-top rounded-4" style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h6 class="fw-bold">{{ alimento.nombre }}</h6>
+                        <p class="text-muted small">{{ alimento.descripcion }}</p>
+                        {% if alimento.es_promocion %}
+                            <span class="badge rounded-pill" style="background-color: #FCB2D3;">Promoción</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalReserva" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 shadow p-3" style="background-color: #fdfbf7;">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body py-2">
+                <h4 class="fw-bold text-center mb-1" style="color: #4a3e3d;">Reservar cupo</h4>
+                <p class="text-center text-muted small mb-4">Reservando para: <strong>{{ event.name }}</strong></p>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="evento_nombre" value="{{ event.name }}">
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-medium text-secondary">Nombre Completo</label>
+                        <input type="text" name="nombre_completo" class="form-control rounded-pill shadow-sm" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-medium text-secondary">Gmail</label>
+                        <input type="email" name="gmail" class="form-control rounded-pill shadow-sm" placeholder="ejemplo@gmail.com" required>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-6">
+                            <label class="form-label small fw-medium text-secondary">N° de personas</label>
+                            <select name="num_asistentes" class="form-select rounded-pill shadow-sm">
+                                <option value="1">1 Persona</option>
+                                <option value="2">2 Personas</option>
+                                <option value="3">3 Personas</option>
+                                <option value="4">4 Personas</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-medium text-secondary">Zona</label>
+                            <select name="zona" class="form-select rounded-pill shadow-sm">
+                                <option value="interior">Salon Interior</option>
+                                <option value="exterior">Terraza</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-dark rounded-pill w-100 py-2 fw-medium" style="letter-spacing: 1px;">
+                            Confirmar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
