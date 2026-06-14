@@ -5,17 +5,79 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from .cart import Cart
-from .models import Product, Category
-#-----------------------------------
-#solo para evento en reservar
+from .models import Product, Category, CategoryEvents, Events, Reserva
 import qrcode
 import io
 import base64
 from django.core.mail import EmailMessage
-from django.shortcuts import render, redirect
-from .models import Reserva
-#-----------------------------------
 
+def events_view(request):
+    categoriaevento=request.GET.get('categoriaevento')
+    busqueda=request.GET.get('busqueda')
+    eventsir=Events.objects.all()
+    if categoriaevento:
+        eventsir= eventsir.filter(CategoryEvents__name=categoriaevento)
+    if busqueda:
+        eventsir= eventsir.filter(name__icontains=busqueda)
+    
+    return render(request, 'cafeteria_app/events.html',{
+        'eventsir': eventsir,
+        'categoriesevents': CategoryEvents.objects.all()
+    })
+def event_detail(request, id):
+    event = Events.objects.get(id=id)
+    alimentos = list(event.alimentos.all())
+    grupos = [alimentos[i:i+4] for i in range(0, len(alimentos), 4)]
+
+    if request.method == 'POST':
+        nombre_completo = request.POST.get('nombre_completo')
+        correo = request.POST.get('gmail')
+        num_asistentes = request.POST.get('num_asistentes')
+        zona = request.POST.get('zona')
+        evento_nombre = request.POST.get('evento_nombre')
+
+        reserva = Reserva.objects.create(
+            evento_nombre=evento_nombre,
+            nombre_completo=nombre_completo,
+            correo=correo,
+            num_asistentes=num_asistentes,
+            zona=zona,
+        )
+
+        # Generar QR
+        qr_data = f"Reserva: {reserva.codigo} | Evento: {evento_nombre} | Nombre: {nombre_completo}"
+        qr = qrcode.make(qr_data)
+        buffer = io.BytesIO()
+        qr.save(buffer, format='PNG')
+        buffer.seek(0)
+        qr_base64 = base64.b64encode(buffer.getvalue()).decode()
+
+        # Enviar correo en segundo plano
+        email = EmailMessage(
+            subject=f'Reserva confirmada - {evento_nombre}',
+            body=f'Hola {nombre_completo}, tu reserva está confirmada.\nPersonas: {num_asistentes}\nZona: {zona}',
+            to=[correo],
+        )
+        buffer.seek(0)
+        email.attach(f'qr_reserva.png', buffer.read(), 'image/png')
+        import threading
+        thread = threading.Thread(target=email.send)
+        thread.start()
+
+        return render(request, 'cafeteria_app/event_detail.html', {
+            'event': event,
+            'alimentos': alimentos,
+            'grupos': grupos,
+            'reserva': reserva,
+            'qr_imagen': qr_base64,
+            'confirmado': True,
+        })
+
+    return render(request, 'cafeteria_app/event_detail.html', {
+        'event': event,
+        'alimentos': alimentos,
+        'grupos': grupos,
+    })
 
 def ejemplo(request):
     return render(request, 'cafeteria_app/ejemplo.html')
@@ -43,42 +105,6 @@ def gallery(request):
 
 
 
-#Solo ando probando
-def events(request):
-    if request.method == 'POST':
-        reserva = Reserva.objects.create(
-            evento_nombre=request.POST.get('evento_nombre'),
-            nombre_completo=request.POST.get('nombre_completo'),
-            num_asistentes=request.POST.get('num_asistentes'),
-            zona=request.POST.get('zona'),
-            correo=request.POST.get('gmail'),  # corregido
-        )
-
-        # Generar QR
-        qr = qrcode.make(str(reserva.codigo))
-        buffer = io.BytesIO()
-        qr.save(buffer, format='PNG')
-        buffer.seek(0)
-        qr_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
-
-        # Enviar por correo
-        email = EmailMessage(
-            subject=f'Reserva confirmada - {reserva.evento_nombre}',
-            body=f'Hola {reserva.nombre_completo},\n\nTu reserva para "{reserva.evento_nombre}" está confirmada.\nPresenta el QR adjunto al llegar al local.\n\nNos vemos pronto!',
-            to=[reserva.correo],
-        )
-        email.attach('qr_reserva.png', buffer.getvalue(), 'image/png')
-        email.send()
-
-        return render(request, 'cafeteria_app/events.html', {
-            'reserva_exitosa': True,
-            'qr_imagen': qr_base64,
-            'reserva': reserva,
-        })
-
-    return render(request, 'cafeteria_app/events.html')
-
-#-------------------------------------------------------------
 def registro(request):
     if request.method == 'GET':
         return render(request, 'registration/register.html', {

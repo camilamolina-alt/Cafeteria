@@ -9,188 +9,36 @@
 
 
 {% block main_content %}
-{% if reserva_exitosa %}
-<div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5); z-index: 9999;">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0 rounded-4 shadow p-3" style="background-color: #fdfbf7;">
-            <div class="modal-body text-center py-4">
-                <div style="font-size: 50px;">👌</div>
-                <h4 class="fw-bold mt-3" style="color: #4a3e3d;">Su Reserva fue confirmada!!</h4>
-                <p class="text-muted small mt-2">Hola! <strong>{{ reserva.nombre_completo }}</strong>, su reserva para <strong>{{ reserva.evento_nombre }}</strong> está confirmada.</p>
-                <p class="text-muted small">Presenta este QR al llegar al local:</p>
-                <img src="data:image/png;base64,{{ qr_imagen }}" alt="QR Reserva" style="width: 180px; height: 180px;" class="mt-2">
-            </div>
-            <div class="modal-footer border-0 justify-content-center pb-3">
-                <a href="{% url 'events' %}" class="btn btn-dark rounded-pill px-5 py-2 fw-medium" style="letter-spacing: 1px;">
-                    Confirmar
+<div class="d-flex justify-content-center gap-3 mb-4" style="margin-top: -22px;">
+    <a href="?" class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" 
+        style="letter-spacing: 2px; font-size: 13px;">TODOS</a>
+    {% for categoryEvents in categoriesevents %}
+    <a href="?categoriaevento={{ categoryEvents.name }}" class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" 
+        style="letter-spacing: 2px; font-size: 13px;">{{ categoryEvents.name|upper }}</a>
+    {% endfor %}
+</div>
+<!-- BUSCADOR -->
+<form class="d-flex mx-auto mb-5" method="GET" style="justify-content: center; gap: 10px; max-width: 400px;">
+    <input class="form-control me-2" style="border-radius: 50px;" type="search" name="busqueda" placeholder="Search" aria-label="Search">
+    <button class="btn" style="border-radius: 50px; background-color: #FCB2D3; color: white; font-weight: bold;" type="submit">Search</button>
+</form>
+
+    <div class="container my-4">
+        <div class="row g-3 justify-content-center">
+            {% for events in eventsir %}
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <a href="{% url 'event_detail' events.id %}" style="text-decoration: none; color: inherit; display: contents;">
+                <div class="events-card">
+                        <h3>{{ events.name }}</h3>
+                    {% if events.image %}
+                        <img src="{{ events.image.url }}" alt="{{ events.name }}" style="cursor: pointer;">
+                    {% endif %}
+                    <p style="text-align: center; color: #7B7171;">{{ event.details }}</p>
+                </div>
                 </a>
             </div>
+        {% endfor %}
         </div>
-    </div>
-</div>
-{% endif %}
-    <div class="d-flex justify-content-center gap-3" style="margin-top: -22px;">
-        <button class="btn btn-light btn-tab rounded-pill px-4 py-2 shadow-sm fw-medium"
-            onclick="setTab(this)" data-tab="Temporada" style="letter-spacing: 2px; font-size: 13px;">
-            TEMPORADA
-        </button>
-        <button class="btn btn-light btn-tab rounded-pill px-4 py-2 shadow-sm fw-medium"
-            onclick="setTab(this)" data-tab="Todos" style="letter-spacing: 2px; font-size: 13px;">
-            TODOS
-        </button>
-        <button class="btn btn-light btn-tab rounded-pill px-4 py-2 shadow-sm fw-medium"
-                onclick="setTab(this)" data-tab="Promocion" style="letter-spacing: 2px; font-size: 13px;">
-            PROMOCION
-        </button>
-    </div>
-
-    <div class="container px-2">
-        <div class="row g-4 mt-3 mb-5 justify-content-center">
-            
-            <div class="col-auto" data-group="Temporada">
-                <div class="image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
-                    <img src="{% static 'cafeteria_app/img/Events/ChocoCoffexd.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="ChocoCoffexd">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p class="small">Tu descripción aquí</p>
-                        <button class="btn btn-sm btn-outline-light rounded-pill px-3 mt-2" onclick="abrirReserva('Especial Donuts')">Reservar Mesa</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-auto" data-group="Temporada">
-                <div class="image-card">
-                    <img src="{% static 'cafeteria_app/img/Events/TaroLatte.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="TaroLatte">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p class="small">Tu descripción aquí</p>
-                        <button class="btn btn-sm btn-outline-light rounded-pill px-3 mt-2" onclick="abrirReserva('Taro Latte')">Reservar Mesa</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-auto" data-group="Temporada">
-                <div class="image-card">
-                    <img src="{% static 'cafeteria_app/img/Events/TaroLatte.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="TaroLatte">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p class="small">Tu descripción aquí</p>
-                        <button class="btn btn-sm btn-outline-light rounded-pill px-3 mt-2" onclick="abrirReserva('Taro Latte Especial')">Reservar Mesa</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-auto" data-group="Temporada">
-                <div class="image-card">
-                    <img src="{% static 'cafeteria_app/img/Events/ChocoCoffexd.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="ChocoCoffexd">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p class="small">Tu descripción aquí</p>
-                        <button class="btn btn-sm btn-outline-light rounded-pill px-3 mt-2" onclick="abrirReserva('Choco Coffee')">Reservar Mesa</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-auto" data-group="Promocion">
-                <div class="image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
-                    <img src="{% static 'cafeteria_app/img/Events/Strawberry.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="Strawberry">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p class="small">Tu descripción aquí</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-auto" data-group="Promocion">
-                <div class="image-card">
-                    <img src="{% static 'cafeteria_app/img/Events/TIRAMISU CAKE.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="TIRAMISU">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p class="small">Tu descripción aquí</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-auto" data-group="Promocion">
-                <div class="image-card" style="width: 550px; height: 650px; overflow: hidden; position: relative;">
-                    <img src="{% static 'cafeteria_app/img/Events/Strawberry.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="Strawberry">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p class="small">Tu descripción aquí</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-auto" data-group="Promocion">
-                <div class="image-card">
-                    <img src="{% static 'cafeteria_app/img/Events/TIRAMISU CAKE.jpg' %}" class="w-100 h-100 rounded" style="object-fit: cover;" alt="TIRAMISU">
-                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                        <h5 class="fw-bold">Donuts</h5>
-                        <p class="small">Tu descripción aquí</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="seccion-reserva" class="container px-4 mb-5 d-none"> 
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow border-0 rounded-4 p-4" style="background-color: #fdfbf7;">
-                    <h4 class="text-center fw-bold mb-2" style="color: #4a3e3d;">Reservar cupo</h4>
-                    <p class="text-center text-muted small mb-4">Estas reservando cupo para: <span id="evento-seleccionado" class="fw-bold text-dark"></span></p>
-                 
-                    <form id="form-reserva" method="post" action="{% url 'events' %}">
-                        {% csrf_token %}
-                        <input type="hidden" id="input-evento-nombre" name="evento_nombre"> 
-                     
-                        <div class="mb-3">
-                            <label class="form-label small fw-medium text-secondary">Nombre Completo</label>
-                            <input type="text" name="nombre_completo" class="form-control rounded-pill shadow-sm" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label small fw-medium text-secondary">Gmail</label>
-                            <input type="email" name="gmail" class="form-control rounded-pill shadow-sm" 
-                                placeholder="ejemplo@gmail.com" required>
-                        </div>
-                     
-                        <div class="row g-3 mb-4">
-                            <div class="col-6">
-                                <label class="form-label small fw-medium text-secondary">N° de asistentes</label>
-                                <select name="num_asistentes" class="form-select rounded-pill shadow-sm">
-                                    <option value="1">1 Persona</option>
-                                    <option value="2">2 Personas</option>
-                                    <option value="3">3 Personas</option> 
-                                </select>
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label small fw-medium text-secondary">Zona Preferida</label>
-                                <select name="zona" class="form-select rounded-pill shadow-sm">
-                                    <option value="interior">Salon Interior</option>
-                                    <option value="exterior">Terraza</option>
-                                </select>
-                            </div>
-                        </div>
-                     
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-dark rounded-pill w-100 py-2 fw-medium" style="letter-spacing: 1px;">
-                                Confirmar Asistencia
-                            </button>
-                        </div>
-
-                        <div class="text-center mt-2">
-                            <button type="button" class="btn btn-outline-secondary rounded-pill w-100 py-2 fw-medium"
-                                style="letter-spacing: 1px;" onclick="cancelarReserva()">
-                                Cancelar
-                            </button>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 {% endblock %}
 {% block scripts %}
     <script src="{% static 'cafeteria_app/js/evento.js' %}"></script>
