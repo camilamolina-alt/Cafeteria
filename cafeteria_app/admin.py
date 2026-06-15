@@ -3,9 +3,11 @@
 from django.contrib import admin
 from .models import Category, Product, CategoryEvents, Events, AlimentoEvento
 
+
 admin.site.register(Category)
-admin.site.register(Product)
-#eventos
-admin.site.register(CategoryEvents)
-admin.site.register(Events)
-admin.site.register(AlimentoEvento)
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'details', 'category', 'price', 'is_new', 'is_best')
+    list_filter = ('is_new', 'is_best', 'category')
+    search_fields = ('name',)
+    list_editable = ('is_new', 'is_best')

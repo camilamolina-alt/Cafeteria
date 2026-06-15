@@ -1,21 +1,26 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+
 # el uuid es para poder crear identificadores unicos universales para la reserva, por si acaso
 # Create your models here.
 
-#ARCHIVOS DEL PANEL DE ADMIN 
 class Category(models.Model):
     name = models.CharField(max_length=15)
+    
     def __str__(self):
         return self.name
     
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
-    price = models.PositiveSmallIntegerField() #por ahora solo por ver que ondis
-    details = models.TextField(blank = True)
+    price = models.PositiveIntegerField() 
+    details = models.TextField(blank=True)
     image = models.ImageField(upload_to='products/', blank=True, null=True)
+
+    is_new = models.BooleanField(default=False, verbose_name="menu nuevo")
+    is_best = models.BooleanField(default=False, verbose_name="mas queridos")
+
     def __str__(self):
         return self.name
 
