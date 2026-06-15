@@ -1,0 +1,25 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F8F9FB;
+    border-bottom: none;
+}
+
+.navbar-admin{
+    position: sticky !important;
+    background-color: #EDEEF0 !important;
+}
+
+.nav-links a {
+    color: #7B7171; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;           
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-decoration: none !important;
+}
+.nav-links a:hover {
+    color: #e4228d;
+} 
+
+
+
