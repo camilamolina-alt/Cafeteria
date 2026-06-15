@@ -8,22 +8,26 @@ from django.contrib import messages
 from .cart import Cart
 from .models import Product, Category
 #-----------------------------------
-#solo para evento en reservar
-import qrcode
-import io
-import base64
-from django.core.mail import EmailMessage
-from django.shortcuts import render, redirect
-from .models import Reserva
-#-----------------------------------
 
 
 def ejemplo(request):
     return render(request, 'cafeteria_app/ejemplo.html')
 
 def home(request):
-    products = Product.objects.all()
-    return render(request, 'cafeteria_app/index.html', {'products': products})
+    Product_all = Product.objects.all()
+    #para los carruseles con ids dinamicas
+    ##filtro de nuevos
+    new = Product.objects.filter(is_new=True)
+    group_new = [new[i: i + 4 ]for i in range (0, len(new), 4)]
+    ##filtro de queridos
+    best = Product.objects.filter(is_best=True)
+    group_best = [best[i: i+ 4 ]for i in range (0, len(best),4)]
+    context ={
+        "products" : Product_all,
+        "group_new" : group_new,
+        "group_best" : group_best,
+    }
+    return render(request, 'cafeteria_app/index.html', context)
 
 def shop(request):
     products = Product.objects.all()
@@ -41,7 +45,6 @@ def menu(request):
 
 def gallery(request):
     return render(request, 'cafeteria_app/gallery.html')
-
 
 
 #Solo ando probando

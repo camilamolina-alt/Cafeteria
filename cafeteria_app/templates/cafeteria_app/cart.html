@@ -1,39 +1,54 @@
 {% extends "./layouts/baseNav_Check.html" %}
-
 {% load static %}
 
 {% block content %}
-<div class="banner-title-capsule d-flex justify-content-center align-items-center" style="background-color: #f6eca6;">
-<h1 class="banner-title">CARRITO DE COMPRAS</h1>
+<div class="banner-title-capsule d-flex justify-content-center align-items-center" style="background-color: #f6eca6; font-family: 'Montserrat', sans-serif; padding: 30px; margin-bottom: 100px;">
+    <h1 class="banner-title mb-0"style="font-weight: light;color: #7B7171;letter-spacing: 1px;">CARRITO DE COMPRAS</h1>
 </div>
 
-<div class="container justify-content-center align-items-center pt-4" >
-  <div class="container justify-content-center align-items-center pt-4" >
-  {% for item in cart %}
-  
-  <div class="d-flex justify-content-center align-items-center mb-3">
-  
-    {% if item.product.image %}
-    <img src="{{ item.product.image.url }}" width="50" height="50"
-        style="border-radius: 10px; object-fit: cover; margin-right: 10px;">
-    {% endif %}
-    <div>
-      <p class="mb-0" style="font-family: 'Montserrat', sans-serif;">{{ item.product.name }}</p>
-      <small style="color: #7B7171;">${{ item.price }} x {{ item.quantity }} = ${{ item.total_price }}</small>
-      <br>
-      <a href="{% url 'remove_from_cart' item.product.id %}">Remove</a>
+<style>
+  .link-remove{
+
+    color: #FCB2D3;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .link-remove:hover{
+    color: #ef79ae;
+    font-weight: bolder;
+  }
+</style>
+
+<div class="container" style="max-width: 900px;">
+    
+    {% for item in cart %}
+    <div class="d-flex justify-content-start align-items-center" style="margin-bottom: 60px;">
+        {% if item.product.image %}
+        <img src="{{ item.product.image.url }}" width="150" height="150" style="border-radius: 10px; object-fit: cover; margin-right: 30px;">
+        {% endif %}
+        <div>
+            <p class="mb-2" style="font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 1.1rem;letter-spacing: 1px">{{ item.product.name }}</p>
+            <small style="color: #7B7171; font-size: 0.95rem;">${{ item.price }} x {{ item.quantity }} = <strong>${{ item.total_price }}</strong></small>
+            <br>
+            <a class="mt-3 d-inline-block link-remove" href="{% url 'remove_from_cart' item.product.id %}">Remove</a>
+        </div>
     </div>
-  </div>
-  {% empty %}
-  <div class="d-flex flex-column align-items-center justify-content-center pt-4">
-    <img src="{% static 'cafeteria_app/img/carro/carro_vacio.png' %}" alt="carro vacio" width="100" height="100">
-    <p class="mt-3">Your cart is empty</p>
-</div>
-  {% endfor %}
-  
-  <p class="d-flex justify-content-center "><strong>Total: ${{ cart.get_total }}</strong></p>
-  </div>
-  <div class="d-flex justify-content-end">
-    <a href="#" class="btn" style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold;">Checkout</a>
+    {% empty %}
+    <div class="d-flex flex-column align-items-center justify-content-center" style="padding: 100px 0;">
+        <img src="{% static 'cafeteria_app/img/carro/carro_vacio.png' %}" alt="carro vacio" width="100" height="100">
+        <p class="mt-4" style="font-family: 'Montserrat', sans-serif;letter-spacing: 0.5px;">Tu carrito de compras está vacío.</p>
+    </div>
+    {% endfor %}
+
+    {% if cart %}
+    <hr class="border-secondary opacity-25" style="margin-top: 80px; margin-bottom: 60px;">
+    
+    <div class="d-flex flex-column align-items-end" style="margin-bottom: 120px;">
+        <p class="mb-4" style="font-family: 'Montserrat', sans-serif; font-size: 1.3rem;letter-spacing: 1px"><strong>Total: ${{ cart.get_total }}</strong></p>
+        <a href="#" class="btn px-5 py-3" style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold; font-size: 1.1rem;">Checkout</a>
+    </div>
+    {% endif %}
+
 </div>
 {% endblock %}

@@ -1,8 +1,10 @@
 {% extends "./layouts/base.html" %}
-{% load static %} <!DOCTYPE html>
+{% load static %} 
+
 {% block content %}
 
-<!-- CARRUSEL PRODUCTOS BANNER-->
+
+<!-- Banner Carousel -->
 <div id="carousel-Indicators" class="carousel slide mt-5" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carousel-Indicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -10,7 +12,6 @@
     <button type="button" data-bs-target="#carousel-Indicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
   <div class="carousel-inner">
-    <!-- Banner -->
     <div class="carousel-item active">
       <img src="{% static 'cafeteria_app/img/banners/Cookies.jpg' %}" class="d-block w-100" alt="Banner 1">
     </div>
@@ -23,78 +24,30 @@
   </div>
 </div>
 
-<!-- CARRUSEL NUEVOS PRODUCTOS -->
-<div class="contenedor-productos p-5  shadow-sm"style="border-radius: 50px !important;">
+
+<!-- Product Carousels  NUEVO MENU-->
+<div class="contenedor-productos p-5 shadow-sm" style="border-radius: 50px !important;">
   <div><h2 style="text-align: center; margin-top: 20px; color: #7B7171; font-size: 20px; letter-spacing: 0.5px; font-weight: lighter;">Nuevo Menu</h2></div>
   <div id="carousel-NewMenu" class="carousel slide w-75 mx-auto" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="3500">
+      {% for grupo in group_new %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="3500">
         <div class="d-flex flex-row justify-content-center align-items-center py-5 gap-4 flex-nowrap">
-          <!-- MATCHA ROLL -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalMatchaRoll">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="card-img-top img-fluid" alt="Matcha Roll" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+          {% for product in grupo %}
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalProducto{{ product.id }}">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            {% endif %}
             <div class="card-body pb-0 text-center">
-              <!--<span class="badge bg-info text-dark mb-1">NEW</span>  ver si queda o no--> 
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Matcha Roll</p>
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">{{ product.name }}</p>
             </div>
           </div>
-          <!-- ORANGE CAKE -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalOrangeCake">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_orangeCake.jpg' %}" class="card-img-top img-fluid" alt="Orange Cake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Orange Cake</p>
-            </div>
-          </div>
-          <!-- Caramel Latte -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalCaramelLatte">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_coffe.jpg' %}" class="card-img-top img-fluid" alt="Cafe Caramelo" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Caramel Latte</p>
-            </div>
-          </div>
-          <!-- CHEESECAKE -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalCheesecake">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_cheescake.jpg' %}" class="card-img-top img-fluid" alt="Cheescake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Cheescake</p>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
-      <!-- CARRUSEL NUEVOS PRODUCTOS SEGUNDO-->
-      <div class="carousel-item" data-bs-interval="3500">
-        <div class="d-flex flex-row justify-content-center align-items-center py-5 gap-4 flex-nowrap">
-          <!--grape cake -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalGrapeCake">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_grapeCake.jpg' %}" class="card-img-top img-fluid" alt="Grape Cake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Grape Cake</p>
-            </div>
-          </div>
-          <!-- hot chocolate -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalHotChocolate">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_hotChocolate.jpg' %}" class="card-img-top img-fluid" alt="Hot Chocolate" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Hot Chocolate</p>
-            </div>
-          </div>
-          <!-- berry roll -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalBerryRoll">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" class="card-img-top img-fluid" alt="Berry Roll" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Berry Roll</p>
-            </div>
-          </div>
-          <!-- Strawberry Cake -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalStrawberryCake">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_strawberryCake.jpg' %}" class="card-img-top img-fluid" alt="Strawberry Cake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Strawberry Cake</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
+    <!--BOTONES CARRUSEL NUEVO MENU-->
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel-NewMenu" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -106,264 +59,29 @@
   </div>
 </div>
 
-
-  <!-- MODAL DE PRODUCTROS -->
-  <!-- MODAL DE matcha roll -->
-<div class="modal fade" id="modalMatchaRoll" tabindex="-1" aria-labelledby="modalMatchaRollLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
-      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
-        <h5 class="modal-title" id="modalMatchaRollLabel">Pastel de Matcha</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
-        <p>Pastel de matcha yt chocolate blanco blablablablabla.</p>
-        <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" alt="Matcha Roll" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
-      </div>
-      <div class="modal-footer justify-content-center border-0">
-        <button onclick="agregarAlCarro('Matcha Roll', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
-        style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-        Agregar al Carro
-      </button>
-</div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL DE ORANGE CAKE -->
-<div class="modal fade" id="modalOrangeCake" tabindex="-1" aria-labelledby="modalOrangeCakeLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
-      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
-        <h5 class="modal-title" id="modalOrangeCakeLabel">Pastel de Naranja</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
-        <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
-        <img src="{% static 'cafeteria_app/img/newProducts/new_orangeCake.jpg' %}" alt="Orange Cake" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
-      </div>
-      <div class="modal-footer justify-content-center border-0">
-        <button onclick="agregarAlCarro('Orange Cake', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
-          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          Agregar al Carro
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL DE CARAMEL LATTE -->
-<div class="modal fade" id="modalCaramelLatte" tabindex="-1" aria-labelledby="modalCaramelLatteLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
-      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
-        <h5 class="modal-title" id="modalCaramelLatteLabel">Caramel Latte</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-      
-      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
-        <p>Café con sabor a caramelo y leche caliente.</p>
-        <img src="{% static 'cafeteria_app/img/newProducts/new_coffe.jpg' %}" alt="Caramel Latte" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
-      </div>
-      <div class="modal-footer justify-content-center border-0">
-      <a href="{% url 'add_to_cart' 2 %}" class="btn px-4 py-2"
-        style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold;">
-        Agregar al Carro
-      </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL DE CHEESCAKE -->
-<div class="modal fade" id="modalCheesecake" tabindex="-1" aria-labelledby="modalCheesecakeLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content" style="border-radius: 30px; padding: 20px;">
-      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
-        <h5 class="modal-title" id="modalCheesecakeLabel">Cheesecake</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171">
-        <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
-        <img src="{% static 'cafeteria_app/img/newProducts/new_cheescake.jpg' %}" alt="Cheesecake" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
-      </div>
-      <div class="modal-footer justify-content-center border-0">
-      <a href="{% url 'add_to_cart' 1 %}" class="btn px-4 py-2"
-      style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold;">
-      Agregar al Carro
-      </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL DE grape cake -->
-<div class="modal fade" id="modalGrapeCake" tabindex="-1" aria-labelledby="modalGrapeCakeLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
-      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
-        <h5 class="modal-title" id="modalGrapeCakeLabel">Pastel de Uva</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
-        <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
-        <img src="{% static 'cafeteria_app/img/newProducts/new_grapeCake.jpg' %}" alt="Grape Cake" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
-      </div>
-      <div class="modal-footer justify-content-center border-0">
-        <button onclick="agregarAlCarro('Grape Cake', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
-          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          Agregar al Carro
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL DE HOT CHOCOLATE -->
-<div class="modal fade" id="modalHotChocolate" tabindex="-1" aria-labelledby="modalHotChocolateLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
-      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
-        <h5 class="modal-title" id="modalHotChocolateLabel">Hot Chocolate</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
-        <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
-        <img src="{% static 'cafeteria_app/img/newProducts/new_hotChocolate.jpg' %}" alt="Hot Chocolate" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
-      </div>
-      <div class="modal-footer justify-content-center border-0">
-        <button onclick="agregarAlCarro('Hot Chocolate', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
-          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          Agregar al Carro
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL DE BERRY ROLL -->
-<div class="modal fade" id="modalBerryRoll" tabindex="-1" aria-labelledby="modalBerryRollLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
-      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
-        <h5 class="modal-title" id="modalBerryRollLabel">Berry Roll</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
-        <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
-        <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" alt="Berry Roll" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
-      </div>
-      <div class="modal-footer justify-content-center border-0">
-        <button onclick="agregarAlCarro('Berry Roll', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
-          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          Agregar al Carro
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL DE STRAWBERRY CAKE -->
-<div class="modal fade" id="modalStrawberryCake" tabindex="-1" aria-labelledby="modalStrawberryCakeLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content" style="border-radius: 30px;padding: 20px;">
-      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
-        <h5 class="modal-title" id="modalStrawberryCakeLabel">Strawberry Cake</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
-        <p>Pastel de naranja yt chocolate blanco blablablablabla.</p>
-        <img src="{% static 'cafeteria_app/img/newProducts/new_strawberryCake.jpg' %}" alt="Strawberry Cake" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
-      </div>
-      <div class="modal-footer justify-content-center border-0">
-        <button onclick="agregarAlCarro('Strawberry Cake', 4500)" data-bs-dismiss="modal" class="btn px-4 py-2"
-          style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          Agregar al Carro
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- Carrusel recomendados --> 
-<div class="contenedor-productos mt-5 py-5 shadow-sm"style="border-radius: 50px !important;">
+<!-- Product Carousels  LOS MAS QUERIDOS-->
+<div class="contenedor-productos mt-5 py-5 shadow-sm" style="border-radius: 50px !important;">
   <div><h2 style="text-align: center; margin-top: 20px; color: #7B7171; font-size: 20px; letter-spacing: 0.5px; font-weight: lighter;">Los Más Queridos ♡</h2></div>
   <div id="carousel-BestMenu" class="carousel slide w-75 mx-auto" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="3500">
+      {% for grupo in group_best %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="3500">
         <div class="d-flex flex-row justify-content-center align-items-center py-5 gap-4 flex-nowrap">
-          <!-- MATCHA ROLL -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalMatchaRoll">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_matchaRoll.jpg' %}" class="card-img-top img-fluid" alt="Matcha Roll" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+          {% for product in grupo %}
+          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalProducto{{ product.id }}">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
+            {% endif %}
             <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Matcha Roll</p>
+              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">{{ product.name }}</p>
             </div>
           </div>
-          <!-- ORANGE CAKE -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalOrangeCake">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_orangeCake.jpg' %}" class="card-img-top img-fluid" alt="Orange Cake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Orange Cake</p>
-            </div>
-          </div>
-          
-          <!-- Caramel Latte -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalCaramelLatte">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_coffe.jpg' %}" class="card-img-top img-fluid" alt="Cafe Caramelo" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Caramel Latte</p>
-            </div>
-          </div>
-          <!-- CHEESECAKE -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalCheesecake">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_cheescake.jpg' %}" class="card-img-top img-fluid" alt="Cheescake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Cheescake</p>
-            </div>
-          </div>
-        </div>
-      </div> 
-<!-- CARRUSEL NUEVOS PRODUCTOS SEGUNDO-->
-      <div class="carousel-item" data-bs-interval="3500">
-        <div class="d-flex flex-row justify-content-center align-items-center py-5 gap-4 flex-nowrap">
-          <!--grape cake -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalGrapeCake">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_grapeCake.jpg' %}" class="card-img-top img-fluid" alt="Grape Cake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Grape Cake</p>
-            </div>
-          </div>
-          <!-- hot chocolate -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalHotChocolate">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_hotChocolate.jpg' %}" class="card-img-top img-fluid" alt="Hot Chocolate" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Hot Chocolate</p>
-            </div>
-          </div>
-          <!-- berry roll -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalBerryRoll">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_berryRoll.jpg' %}" class="card-img-top img-fluid" alt="Berry Roll" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Berry Roll</p>
-            </div>
-          </div>
-          <!-- Strawberry Cake -->
-          <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalStrawberryCake">
-            <img src="{% static 'cafeteria_app/img/newProducts/new_strawberryCake.jpg' %}" class="card-img-top img-fluid" alt="Strawberry Cake" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">Strawberry Cake</p>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
+      {% endfor %}
     </div>
+    <!--BOTONES CARRUSEL LOS MAS QUERIDOS-->
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel-BestMenu" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -375,119 +93,65 @@
   </div>
 </div>
 
-<!-- CARRUSEL DE EVENTOS -->
+
+<!--MODALS DE PRODUCTOS CON LA DB DE ADMIN, FALTA AGREGAR EL CHECK PARA OTRA CATEGORIA-->
+{% for product in products %}
+<div class="modal fade" id="modalProducto{{ product.id }}" tabindex="-1" aria-labelledby="modalLabel{{ product.id }}" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 30px; padding: 20px;">
+      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
+        <h5 class="modal-title" id="modalLabel{{ product.id }}">{{ product.name }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center pt-0 px-4" style="top: 10px; font-family: 'Montserrat', sans-serif; color: #7B7171">
+        <p>{{ product.details }}</p>
+        {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+        {% endif %}
+      </div>
+      <div class="modal-footer justify-content-center border-0">
+        <a href="{% url 'add_to_cart' product.id %}" class="btn px-4 py-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          Agregar al Carro
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<!-- Carousels de Eventos e Instagram -->
 
 <div class="container event-container mt-5 p-4 shadow-sm" style="max-width: 1300px;background-color: #FDFAF7; border-radius: 50px !important;">
   <div><h2 style="text-align: center; margin-top: 20px; color: #7B7171; font-size: 20px; letter-spacing: 0.5px; font-weight: lighter;">Eventos</h2></div>
-<div class="event-carousel-roll"> 
-  <div class="event-group">
-    <div class="event-card">
-      <a href="{% url 'events' %}">
-        <img src="{% static 'cafeteria_app/img/Events/Event1.png' %}" alt="Evento 1" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
-      </a>
+  <div class="event-carousel-roll"> 
+    <div class="event-group">
+      <div class="event-card"><a href="{% url 'events' %}"><img src="{% static 'cafeteria_app/img/Events/Event1.png' %}" alt="Evento 1" class="event-image rounded-4 shadow-sm" style="cursor: pointer"></a></div>
+      <div class="event-card"><a href="{% url 'events' %}"><img src="{% static 'cafeteria_app/img/Events/Event2.png' %}" alt="Evento 2" class="event-image rounded-4 shadow-sm" style="cursor: pointer"></a></div>
+      <div class="event-card"><a href="{% url 'events' %}"><img src="{% static 'cafeteria_app/img/Events/Event3.png' %}" alt="Evento 3" class="event-image rounded-4 shadow-sm" style="cursor: pointer"></a></div>
     </div>
-    
-    <div class="event-card">
-      <a href="{% url 'events' %}">
-        <img src="{% static 'cafeteria_app/img/Events/Event2.png' %}" alt="Evento 2" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
-      </a>
+    <div class="event-group" aria-hidden="true">
+      <div class="event-card"><a href="{% url 'events' %}"><img src="{% static 'cafeteria_app/img/Events/Event1.png' %}" alt="Evento 1" class="event-image rounded-4 shadow-sm" style="cursor: pointer"></a></div>
+      <div class="event-card"><a href="{% url 'events' %}"><img src="{% static 'cafeteria_app/img/Events/Event2.png' %}" alt="Evento 2" class="event-image rounded-4 shadow-sm" style="cursor: pointer"></a></div>
+      <div class="event-card"><a href="{% url 'events' %}"><img src="{% static 'cafeteria_app/img/Events/Event3.png' %}" alt="Evento 3" class="event-image rounded-4 shadow-sm" style="cursor: pointer"></a></div>
     </div>
-    <div class="event-card">
-      <a href="{% url 'events' %}">
-        <img src="{% static 'cafeteria_app/img/Events/Event3.png' %}" alt="Evento 3" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
-      </a>
-    </div>
-  </div>
-
-  <div class="event-group" aria-hidden="true">
-    <div class="event-card">
-      <a href="{% url 'events' %}">
-        <img src="{% static 'cafeteria_app/img/Events/Event1.png' %}" alt="Evento 1" class="event-image rounded-4 shadow-sm" style="cursor: pointer">
-      </a>
-    </div>
-    <div class="event-card">
-      <a href="{% url 'events' %}">
-        <img src="{% static 'cafeteria_app/img/Events/Event2.png' %}" alt="Evento 2" class="event-image rounded-4 shadow-sm" style="cursor: pointer;">
-      </a>
-    </div>
-    <div class="event-card">
-      <a href="{% url 'events' %}">
-        <img src="{% static 'cafeteria_app/img/Events/Event3.png' %}" alt="Evento 3" class="event-image rounded-4 shadow-sm" style="cursor: pointer">
-      </a>
-    </div>
-  </div>
   </div>
 </div>
 
-
-<!-- CARRUSEL GALERIA -->
+<!-- Carousels Instagram -->
 <div class="container galery-container mt-5 p-4 shadow-sm" style="max-width: 1300px;background-color: #FDFAF7; border-radius: 50px !important;">
   <div><h2 style="text-align: center; margin-top: 20px; color: #7B7171; font-size: 20px; letter-spacing: 0.5px; font-weight: lighter;">Instagram</h2></div>
-<div class="galery-carousel-roll"> 
-  <div class="galery-group">
-    <div class="galery-card">
-      <a href="https://instagram.com"target="_blank">
-        <img src="{% static 'cafeteria_app/img/gallery/gallery1.jpg' %}" alt="Evento 1" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
-      </a>
+  <div class="galery-carousel-roll"> 
+    <div class="galery-group">
+      <div class="galery-card"><a href="https://instagram.com" target="_blank"><img src="{% static 'cafeteria_app/img/gallery/gallery1.jpg' %}" alt="Gallery 1" class="event-image rounded-4 shadow-sm" style="cursor: pointer"></a></div>
+      <div class="galery-card"><a href="https://instagram.com" target="_blank"><img src="{% static 'cafeteria_app/img/gallery/gallery2.jpg' %}" alt="Gallery 2" class="event-image rounded-4 shadow-sm" style="cursor: pointer"></a></div>
+      <div class="galery-card"><a href="https://instagram.com" target="_blank"><img src="{% static 'cafeteria_app/img/gallery/gallery3.jpg' %}" alt="Gallery 3" class="event-image rounded-4 shadow-sm" style="cursor: pointer"></a></div>
     </div>
-    
-    <div class="galery-card">
-      <a href="https://instagram.com" target="_blank">
-        <img src="{% static 'cafeteria_app/img/gallery/gallery2.jpg' %}" alt="Evento 2" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
-      </a>
+    <div class="galery-group" aria-hidden="true">
+      <div class="galery-card"><a href="https://instagram.com" target="_blank"><img src="{% static 'cafeteria_app/img/gallery/gallery4.jpg' %}" alt="Gallery 4" class="event-image rounded-4 shadow-sm" style="cursor: pointer"></a></div>
+      <div class="galery-card"><a href="https://instagram.com" target="_blank"><img src="{% static 'cafeteria_app/img/gallery/gallery5.jpg' %}" alt="Gallery 5" class="event-image rounded-4 shadow-sm" style="cursor: pointer"></a></div>
+      <div class="galery-card"><a href="https://instagram.com" target="_blank"><img src="{% static 'cafeteria_app/img/gallery/gallery6.jpg' %}" alt="Gallery 6" class="event-image rounded-4 shadow-sm" style="cursor: pointer"></a></div>
     </div>
-    <div class="galery-card">
-      <a href="https://instagram.com" target="_blank">
-        <img src="{% static 'cafeteria_app/img/gallery/gallery3.jpg' %}" alt="Evento 3" class="event-image rounded-4 shadow-sm " style="cursor: pointer">
-      </a>
-    </div>
-  </div>
-
-  <div class="galery-group" aria-hidden="true">
-    <div class="galery-card">
-      <a href="https://instagram.com"target="_blank">
-        <img src="{% static 'cafeteria_app/img/gallery/gallery4.jpg' %}" alt="Evento 1" class="event-image rounded-4 shadow-sm" style="cursor: pointer">
-      </a>
-    </div>
-    <div class="galery-card">
-      <a href="https://instagram.com" target="_blank">
-        <img src="{% static 'cafeteria_app/img/gallery/gallery5.jpg' %}" alt="Evento 2" class="event-image rounded-4 shadow-sm" style="cursor: pointer;">
-      </a>
-    </div>
-    <div class="galery-card">
-      <a href="https://instagram.com" target="_blank">
-        <img src="{% static 'cafeteria_app/img/gallery/gallery6.jpg' %}" alt="Evento 3" class="event-image rounded-4 shadow-sm" style="cursor: pointer">
-      </a>
-    </div>
-  </div>
   </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 {% endblock %}
-
