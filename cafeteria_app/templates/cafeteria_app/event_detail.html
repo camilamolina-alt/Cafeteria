@@ -43,17 +43,22 @@
 
 <div class="container my-5">
     <div class="row justify-content-center align-items-start g-5">
-        <div class="col-md-5">
-            <div class="col-md-5 d-flex flex-column justify-content-center">
-                <div class="event_detail-card">
+        <div class="col-md-7">
+            <div class="d-flex flex-column justify-content-center">
+                <div class="event_detail-card rounded-4 overflow-hidden shadow-sm">
                     {% if event.image %}
-                        <img src="{{ event.image.url }}" alt="{{ event.name }}" style="cursor: pointer;">
+                        <img src="{{ event.image.url }}" alt="{{ event.name }}" class="w-100 h-100" style="object-fit: cover;">
                     {% endif %}
                 </div>
-                <h3>{{ event.details }}</h3>
             </div>
         </div>
     </div>
+</div>
+
+<div class="container mt-4 mb-5">
+    <p class="text-center text-muted mx-auto" style="max-width: 700px; font-size: 15px; line-height: 1.8;">
+        {{ event.details }}
+    </p>
 </div>
 
 <div class="text-center mt-3">
@@ -63,30 +68,70 @@
         Reservar
     </button>
 </div>
-
 <div class="container my-5">
-    <div class="p-4 shadow-sm" style="background-color: #FDFAF7; border-radius: 30px;">
-        <h4 class="mb-4 text-center">Alimentos del evento</h4>
-        <div class="row g-3 justify-content-center">
-            {% for alimento in alimentos %}
-            <div class="col-md-3">
-                <div class="card border-0 shadow-sm rounded-4" style="width:300px; height: 400px;">
-                    {% if alimento.image %}
-                        <img src="{{ alimento.image.url }}" class="card-img-top rounded-4" style="height: 200px; object-fit: cover;">
-                    {% endif %}
-                    <div class="card-body">
-                        <h6 class="fw-bold">{{ alimento.nombre }}</h6>
-                        <p class="text-muted small">{{ alimento.descripcion }}</p>
-                        {% if alimento.es_promocion %}
-                            <span class="badge rounded-pill" style="background-color: #FCB2D3;">Promoción</span>
-                        {% endif %}
+    <div class="p-5" style="background-color: #FDFAF7; border-radius: 30px;">
+        <h4 class="mb-5 text-center" style="letter-spacing: 2px; font-weight: 300;">ALIMENTOS RELACIONADOS</h4>
+        
+        <div id="carruselAlimentosIndividual" class="carousel slide carrusel-alimentos-premium" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for alimento in alimentos %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="d-flex justify-content-center align-items-center" style="min-height: 480px;">
+                        
+                        <!-- CONTENEDOR MÍNIMO: SÓLO IMAGEN Y TEXTO -->
+                        <div class="alimento-bloque-unico backface-fix">
+                            
+                            <div class="alimento-marco-foto">
+                                {% if alimento.image %}
+                                    <img src="{{ alimento.image.url }}" class="alimento-foto-sola">
+                                {% endif %}
+                            </div>
+
+                            <!-- Información que reacciona al hover -->
+                            <div class="alimento-datos-flotantes">
+                                <h5 class="alimento-titulo-txt">{{ alimento.nombre }}</h5>
+                                <p class="alimento-desc-reveal">{{ alimento.descripcion }}</p>
+                                {% if alimento.es_promocion %}
+                                    <span class="badge rounded-pill" style="background-color: #FCB2D3; color: white;">Promoción</span>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                        
                     </div>
                 </div>
+                {% endfor %}
+            </div>
+
+            <!-- Flechas de navegación -->
+            <button class="carousel-control-prev" type="button" data-bs-target=".carrusel-alimentos-premium" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon custom-carousel-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target=".carrusel-alimentos-premium" data-bs-slide="next">
+                <span class="carousel-control-next-icon custom-carousel-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+{% if imagenes %}
+<div class="container my-5">
+    <div class="p-4 shadow-sm" style="background-color: #FDFAF7; border-radius: 30px;">
+        <h4 class="mb-4 text-center">Galería del evento</h4>
+        <div class="row g-3 justify-content-center">
+            {% for img in imagenes %}
+            <div class="col-md-4">
+                <img src="{{ img.imagen.url }}" alt="{{ img.descripcion }}"
+                     style="width: 100%; height: 450px; object-fit: cover; border-radius: 20px;">
+                {% if img.descripcion %}
+                    <p class="text-muted text-center mt-2 small">{{ img.descripcion }}</p>
+                {% endif %}
             </div>
             {% endfor %}
         </div>
     </div>
 </div>
+{% endif %}
 
 <div class="modal fade" id="modalReserva" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">

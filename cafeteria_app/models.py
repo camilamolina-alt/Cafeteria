@@ -34,6 +34,7 @@ class CategoryEvents(models.Model):
 class Events(models.Model):
     CategoryEvents = models.ForeignKey(CategoryEvents, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
+    details_min = models.TextField(blank=True)
     details = models.TextField(blank=True)
     image = models.ImageField(upload_to='events/', blank= True, null=True)
     def __str__(self):
@@ -49,19 +50,13 @@ class AlimentoEvento(models.Model):
     def __str__(self):
         return self.nombre
 
-class Reserva(models.Model):
-    codigo = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
-    evento_nombre = models.CharField(max_length=200)
-    nombre_completo = models.CharField(max_length=200)
-    correo = models.EmailField()
-    num_asistentes = models.IntegerField()
-    zona = models.CharField(max_length=50)
-    asistio = models.BooleanField(default=False)
-    fecha_reserva = models.DateTimeField(auto_now_add=True)
+class ImagenEvento(models.Model):
+    event = models.ForeignKey(Events, on_delete=models.CASCADE, related_name='imagenes')
+    imagen = models.ImageField(upload_to='eventos_galeria/')
+    descripcion = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
-        return f"{self.nombre_completo} - {self.evento_nombre}"
-
+        return f"Imagen de {self.event.name}"
 #evento
 #---------------------------------------------------------------------------------
 class CarritoItem(models.Model):

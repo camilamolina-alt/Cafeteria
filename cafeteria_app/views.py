@@ -6,11 +6,9 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib import messages
 from .cart import Cart
-from .models import Product, Category, CategoryEvents, Events, Reserva
-import io
-import base64
-from django.core.mail import EmailMessage
+from .models import Product, Category, CategoryEvents, Events
 
+#events
 def events_view(request):
     categoriaevento=request.GET.get('categoriaevento')
     busqueda=request.GET.get('busqueda')
@@ -24,58 +22,16 @@ def events_view(request):
         'eventsir': eventsir,
         'categoriesevents': CategoryEvents.objects.all()
     })
+#events_detail
 def event_detail(request, id):
     event = Events.objects.get(id=id)
     alimentos = list(event.alimentos.all())
+    imagenes = event.imagenes.all()
     grupos = [alimentos[i:i+4] for i in range(0, len(alimentos), 4)]
-
-    if request.method == 'POST':
-        nombre_completo = request.POST.get('nombre_completo')
-        correo = request.POST.get('gmail')
-        num_asistentes = request.POST.get('num_asistentes')
-        zona = request.POST.get('zona')
-        evento_nombre = request.POST.get('evento_nombre')
-
-        reserva = Reserva.objects.create(
-            evento_nombre=evento_nombre,
-            nombre_completo=nombre_completo,
-            correo=correo,
-            num_asistentes=num_asistentes,
-            zona=zona,
-        )
-
-        # Generar QR
-        qr_data = f"Reserva: {reserva.codigo} | Evento: {evento_nombre} | Nombre: {nombre_completo}"
-        qr = qrcode.make(qr_data)
-        buffer = io.BytesIO()
-        qr.save(buffer, format='PNG')
-        buffer.seek(0)
-        qr_base64 = base64.b64encode(buffer.getvalue()).decode()
-
-        # Enviar correo en segundo plano
-        email = EmailMessage(
-            subject=f'Reserva confirmada - {evento_nombre}',
-            body=f'Hola {nombre_completo}, tu reserva está confirmada.\nPersonas: {num_asistentes}\nZona: {zona}',
-            to=[correo],
-        )
-        buffer.seek(0)
-        email.attach(f'qr_reserva.png', buffer.read(), 'image/png')
-        import threading
-        thread = threading.Thread(target=email.send)
-        thread.start()
-
-        return render(request, 'cafeteria_app/event_detail.html', {
-            'event': event,
-            'alimentos': alimentos,
-            'grupos': grupos,
-            'reserva': reserva,
-            'qr_imagen': qr_base64,
-            'confirmado': True,
-        })
-
     return render(request, 'cafeteria_app/event_detail.html', {
         'event': event,
         'alimentos': alimentos,
+        'imagenes': imagenes,
         'grupos': grupos,
     })
 
