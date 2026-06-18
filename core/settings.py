@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cafeteria_app',
+    'panel_admin',
     "crispy_forms",
     "crispy_bootstrap5",
 ]
@@ -133,6 +134,7 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR / 'cafeteria_app' / 'static'),
+    os.path.join(BASE_DIR / 'panel_admin' / 'static'),
 ]
 
 #Variable entorno login

@@ -6,8 +6,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib import messages
 from .cart import Cart
-from .models import Product, Category, CategoryEvents, Events
-
+from .models import Product, Category, CategoryEvents, Events,Pedido, PedidoItem
 #events
 def events_view(request):
     categoriaevento=request.GET.get('categoriaevento')
@@ -140,3 +139,28 @@ def remove_from_cart_base(request, product_id):
     product = Product.objects.get(id=product_id)
     cart.remove(product)
     return redirect(request.META.get('HTTP_REFERER', 'shop'))
+
+# Al final del archivo agrega:
+@login_required
+def checkout(request):
+    cart = Cart(request)
+    if len(cart) == 0:
+        return redirect('cart')
+    if request.method == 'POST':
+        retiro = request.POST.get('retiro', 'local')
+        pedido = Pedido.objects.create(
+            usuario=request.user,
+            total=cart.get_total(),
+            retiro=retiro
+        )
+        for item in cart:
+            PedidoItem.objects.create(
+                pedido=pedido,
+                producto=item['product'],
+                cantidad=item['quantity'],
+                precio=item['price']
+            )
+        cart.clear()
+        return render(request, 'cafeteria_app/finish.html', {'pedido': pedido})
+    return render(request, 'cafeteria_app/checkout.html', {'cart': cart})
+

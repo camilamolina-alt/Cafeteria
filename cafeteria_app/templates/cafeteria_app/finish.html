@@ -1,0 +1,13 @@
+{% extends "./layouts/baseNav_Check.html" %}
+
+{% block content %}
+<div class="d-flex flex-column align-items-center justify-content-center" 
+     style="padding: 100px 0; font-family:'Montserrat',sans-serif;">
+    <h2 style="color:#e4228d;">¡Pedido confirmado! 🎉</h2>
+    <p style="color:#7B7171;">Tu pedido <strong>#{{ pedido.id }}</strong> fue registrado exitosamente.</p>
+    <a href="{% url 'index' %}" class="btn mt-4 px-5 py-3" 
+       style="background-color:#FCB2D3; color:white; border-radius:50px; font-weight:bold;">
+        Volver al inicio
+    </a>
+</div>
+{% endblock %}

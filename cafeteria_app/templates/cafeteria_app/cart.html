@@ -46,7 +46,7 @@
     
     <div class="d-flex flex-column align-items-end" style="margin-bottom: 120px;">
         <p class="mb-4" style="font-family: 'Montserrat', sans-serif; font-size: 1.3rem;letter-spacing: 1px"><strong>Total: ${{ cart.get_total }}</strong></p>
-        <a href="#" class="btn px-5 py-3" style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold; font-size: 1.1rem;">Checkout</a>
+        <a href="{% url 'checkout' %}" class="btn px-5 py-3" style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold; font-size: 1.1rem;">Checkout</a>
     </div>
     {% endif %}
 

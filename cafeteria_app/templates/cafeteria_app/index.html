@@ -31,15 +31,19 @@
   <div id="carousel-NewMenu" class="carousel slide w-75 mx-auto" data-bs-ride="carousel">
     <div class="carousel-inner">
       {% for grupo in group_new %}
-      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="3500">
+      <div class="carousel-item 
+      {% if forloop.counter0 %}
+      active
+      {% endif %}
+      " data-bs-interval="3500">
         <div class="d-flex flex-row justify-content-center align-items-center py-5 gap-4 flex-nowrap">
           {% for product in grupo %}
           <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalProducto{{ product.id }}">
             {% if product.image %}
             <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
             {% endif %}
-            <div class="card-body pb-0 text-center">
-              <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">{{ product.name }}</p>
+            <div class="card-body text-center">
+              <p style="color: #7B7171; letter-spacing: 1px; font-weight:light;font-size:20px">{{ product.name }}</p>
             </div>
           </div>
           {% endfor %}
@@ -48,14 +52,8 @@
       {% endfor %}
     </div>
     <!--BOTONES CARRUSEL NUEVO MENU-->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-NewMenu" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carousel-NewMenu" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carousel-NewMenu" data-bs-slide="prev"></button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carousel-NewMenu" data-bs-slide="next"></button>
   </div>
 </div>
 
@@ -65,7 +63,11 @@
   <div id="carousel-BestMenu" class="carousel slide w-75 mx-auto" data-bs-ride="carousel">
     <div class="carousel-inner">
       {% for grupo in group_best %}
-      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="3500">
+      <div class="carousel-item 
+      {% if forloop.counter0 %}
+      active
+      {% endif %}
+      " data-bs-interval="3500">
         <div class="d-flex flex-row justify-content-center align-items-center py-5 gap-4 flex-nowrap">
           {% for product in grupo %}
           <div class="card h-100 p-1 product-image" data-bs-toggle="modal" data-bs-target="#modalProducto{{ product.id }}">
@@ -82,14 +84,8 @@
       {% endfor %}
     </div>
     <!--BOTONES CARRUSEL LOS MAS QUERIDOS-->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-BestMenu" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carousel-BestMenu" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carousel-NewMenu" data-bs-slide="prev"></button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carousel-NewMenu" data-bs-slide="next"></button>
   </div>
 </div>
 

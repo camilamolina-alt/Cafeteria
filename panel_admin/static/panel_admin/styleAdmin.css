@@ -1,3 +1,9 @@
+/* fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap'); /*Montserrat*/
+
+@import url('https://fonts.googleapis.com/css2?family=Bubbler+One&display=swap'); /*Bubbler One*/
+
+
 body{
     font-family: 'Montserrat', sans-serif;
     background-color: #F8F9FB;
@@ -7,6 +13,13 @@ body{
 .navbar-admin{
     position: sticky !important;
     background-color: #EDEEF0 !important;
+}
+.nav-links {
+    font-size: 2rem !important;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
 }
 
 .nav-links a {
@@ -20,6 +33,4 @@ body{
 .nav-links a:hover {
     color: #e4228d;
 } 
-
-
 

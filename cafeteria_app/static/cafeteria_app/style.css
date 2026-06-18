@@ -160,86 +160,90 @@ body{
 /*Botones carrusel Menu nuevo*/
 #carousel-NewMenu .carousel-control-prev,
 #carousel-NewMenu .carousel-control-next {
-    box-shadow:0px 1px 0px 0px #b4a2a2;
-    background-color:#FFFEFB;
+    width: 48px;
+    height: 48px;
     opacity: 1;
+    top : 50%;
+    background-color: #f7f7f7;
+    padding: 12px 24px;
     border-radius: 50%;
-    border:1px solid #dcdcdc;
-    cursor:pointer;
-    /*Tamano circulo*/
-    height: 50px;
-    width: 50px;
-    /*Posicionamiento*/
-    top: 50%;
-    transform:translateY(-50%);
-
+    font-size: 32px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 24px;
+    color: #ee0f86; 
+    font-family: Arial, sans-serif;
 }
 
-#carousel-NewMenu .carousel-control-prev { 
-    left: -35px; 
-    transform: translateX(5px) rotate(-45deg);
-    margin-left: 4px;
-
+#carousel-NewMenu .carousel-control-prev::before {
+    content: "◀"; 
 }
-#carousel-NewMenu .carousel-control-next {
-    right: -35px; 
-    TRANSFORM: translateX(-5px) rotate(135deg);
-    margin-right: 4px;
-    
-    }
+#carousel-NewMenu .carousel-control-next::before {
+    content: "▶";
+}
 
-/*Colrores flechas*/
 #carousel-NewMenu .carousel-control-prev-icon,
 #carousel-NewMenu .carousel-control-next-icon {
-    height: 15px;
-    width: 15px;
-    margin:0;
-    padding:0;
-    border-top: 2px solid #ada2a2; 
-    border-left: 2px solid #ada2a2;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(0%) contrast(100%);
+    width: 25px;
+    height: 25px;
 }
+
+#carousel-NewMenu .carousel-control-prev { left: -20px; }
+#carousel-NewMenu .carousel-control-next { right: -20px; }
+
+#carousel-NewMenu .carousel-control-prev:hover,
+#carousel-NewMenu .carousel-control-next:hover {
+    transform: scale(1.08);
+}
+
 
 /*Botones carrusel recomendados*/
-#carousel-BestMenu .carousel-control-prev,
+#carousel-BestMenu .carousel-control-prev ,
 #carousel-BestMenu .carousel-control-next {
-    box-shadow:0px 1px 0px 0px #b4a2a2;
-    background-color:#FFFEFB;
+    width: 48px;
+    height: 48px;
     opacity: 1;
+    top : 50%;
+    background-color: #f7f7f7;
+    padding: 12px 24px;
     border-radius: 50%;
-    border:1px solid #dcdcdc;
-    cursor:pointer;
-    /*Tamano circulo*/
-    height: 50px;
-    width: 50px;
-    /*Posicionamiento*/
-    top: 50%;
-    transform:translateY(-50%);
-
+    font-size: 32px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 24px;
+    color: #ee0f86; 
+    font-family: Arial, sans-serif;
 }
 
-#carousel-BestMenu .carousel-control-prev { 
-    left: -35px; 
-    transform: translateX(5px) rotate(-45deg);
-    margin-left: 4px;
 
+
+#carousel-BestMenu .carousel-control-prev::before {
+    content: "◀"; 
 }
-#carousel-BestMenu .carousel-control-next {
-    right: -35px; 
-    TRANSFORM: translateX(-5px) rotate(135deg);
-    margin-right: 4px;
-    
-    }
+#carousel-BestMenu .carousel-control-next::before {
+    content: "▶";
+}
 
-/*Colrores flechas*/
 #carousel-BestMenu .carousel-control-prev-icon,
 #carousel-BestMenu .carousel-control-next-icon {
-    height: 15px;
-    width: 15px;
-    margin:0;
-    padding:0;
-    border-top: 2px solid #ada2a2; 
-    border-left: 2px solid #ada2a2;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(0%) contrast(100%);
+    width: 25px;
+    height: 25px;
 }
+
+#carousel-BestMenu .carousel-control-prev { left: -20px; }
+#carousel-BestMenu .carousel-control-next { right: -20px; }
+
+#carousel-BestMenu .carousel-control-prev:hover,
+#carousel-BestMenu .carousel-control-next:hover {
+    transform: scale(1.08);
+}
+
 
 /*Eventos*/
 
