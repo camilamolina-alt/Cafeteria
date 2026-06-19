@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, CategoryEvents, Events, AlimentoEvento, ImagenEvento
+from .models import Category, Product, CategoryEvents, Events, ExclusiveFood, ImagenEvento
 
 admin.site.register(Category)
 
@@ -9,6 +9,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('is_new', 'is_best', 'category')
     search_fields = ('name',)
     list_editable = ('is_new', 'is_best')
+
 
 @admin.register(CategoryEvents)
 class CategoryEventsAdmin(admin.ModelAdmin):
@@ -21,14 +22,15 @@ class EventsAdmin(admin.ModelAdmin):
     list_filter = ('CategoryEvents',)
     search_fields = ('name',)
 
-@admin.register(AlimentoEvento)
-class AlimentoEventoAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'event', 'es_promocion')
-    list_filter = ('es_promocion', 'event')
+@admin.register(ExclusiveFood)
+class ExclusiveFoodAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'event', 'precio')
+    list_filter = ('event',)
     search_fields = ('nombre',)
-    list_editable = ('es_promocion',)
 
 @admin.register(ImagenEvento)
 class ImagenEventoAdmin(admin.ModelAdmin):
     list_display = ('event', 'descripcion')
     list_filter = ('event',)
+
+

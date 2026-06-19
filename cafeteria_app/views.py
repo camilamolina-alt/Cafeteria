@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.forms import UserCreationForm
@@ -7,31 +7,32 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .cart import Cart
 from .models import Product, Category, CategoryEvents, Events,Pedido, PedidoItem
-#events
+#---------------------------------------------------------------------------------
+#Eventos gemnerales 
+#---------------------------------------------------------------------------------
 def events_view(request):
-    categoriaevento=request.GET.get('categoriaevento')
-    busqueda=request.GET.get('busqueda')
-    eventsir=Events.objects.all()
-    if categoriaevento:
-        eventsir= eventsir.filter(CategoryEvents__name=categoriaevento)
+    categoria_nombre = request.GET.get('categoriaevento')
+    busqueda = request.GET.get('busqueda')
+    events = Events.objects.all()
+    if categoria_nombre:
+        events = events.filter(CategoryEvents__name=categoria_nombre)
     if busqueda:
-        eventsir= eventsir.filter(name__icontains=busqueda)
+        events = events.filter(name__icontains=busqueda)
+    context = {
+        'eventototal' : events,
+        'cateventostotal' : CategoryEvents.objects.all(),
+    }
+    return render(request, 'cafeteria_app/events.html', context)
+
+
     
-    return render(request, 'cafeteria_app/events.html',{
-        'eventsir': eventsir,
-        'categoriesevents': CategoryEvents.objects.all()
-    })
-#events_detail
+#Detalles de eventos, onda el template pss 
 def event_detail(request, id):
-    event = Events.objects.get(id=id)
-    alimentos = list(event.alimentos.all())
-    imagenes = event.imagenes.all()
-    grupos = [alimentos[i:i+4] for i in range(0, len(alimentos), 4)]
+    evento = get_object_or_404(Events, id=id)
     return render(request, 'cafeteria_app/event_detail.html', {
-        'event': event,
-        'alimentos': alimentos,
-        'imagenes': imagenes,
-        'grupos': grupos,
+        'event': evento,
+        'alimentos': evento.exclusive.all(),
+        'imagenes': evento.imagenes.all()
     })
 
 def ejemplo(request):
@@ -121,9 +122,10 @@ def cart_detail(request):
 @login_required
 def add_to_cart(request, product_id):
     cart = Cart(request)
-    product = Product.objects.get(id=product_id)
-    cart.add(product=product)
-    return redirect(request.META.get('HTTP_REFERER', '/'))
+    product = get_object_or_404(Product, id=product_id) 
+    quantity = int(request.POST.get('quantity', 1))
+    cart.add(product=product, quantity=quantity)
+    return redirect('cart') 
 
 @login_required
 def remove_from_cart(request, product_id):
@@ -140,7 +142,6 @@ def remove_from_cart_base(request, product_id):
     cart.remove(product)
     return redirect(request.META.get('HTTP_REFERER', 'shop'))
 
-# Al final del archivo agrega:
 @login_required
 def checkout(request):
     cart = Cart(request)
@@ -163,4 +164,13 @@ def checkout(request):
         cart.clear()
         return render(request, 'cafeteria_app/finish.html', {'pedido': pedido})
     return render(request, 'cafeteria_app/checkout.html', {'cart': cart})
+
+from django.shortcuts import render, get_object_or_404
+from .models import Product
+
+def product_detail(request, id):
+    producto = get_object_or_404(Product, id=id)
+    return render(request, 'cafeteria_app/product_detail.html', {
+        'product': producto
+    })
 

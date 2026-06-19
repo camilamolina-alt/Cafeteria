@@ -8,16 +8,19 @@
 
     <div class="row">
         <div class="col-sm-3"></div>
-        <div class="col-sm-6 shadow rounded p-5">
+        <div class="col-sm-6 shadow rounded p-5 text-center">
             <div>
-                <h1>Registro de Usuario</h1>
+                <h1 style="font-family: 'Bubbler One', sans-serif !important;color: #1FBBE7; !important; font-weight: bold; tex-align:center">
+                    Registrarse</h1>
             </div>
 
             <form action="" method="post">
                 {% csrf_token %}
                 {{form | crispy}}
-
-                <input type="submit" style="background-color: #FCB2D3;font-family:montserrat" class="btn" value="Registrar Usuario">
+                <input type="submit" 
+                style="background-color: #FCB2D3 !important; font-family: 'Montserrat', sans-serif !important; color: #ffffff !important; font-weight: bold" 
+                class="btn" 
+                value="Registrar Usuario">
             </form>
             
         </div>

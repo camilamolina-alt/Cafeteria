@@ -7,39 +7,38 @@
 
 {% block banner_titulo %}EVENTOS{% endblock %}
 
-
 {% block main_content %}
 <div class="d-flex justify-content-center gap-3 mb-4" style="margin-top: -22px;">
-    <a href="?" class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" 
-        style="letter-spacing: 2px; font-size: 13px;">TODOS</a>
-    {% for categoryEvents in categoriesevents %}
-    <a href="?categoriaevento={{ categoryEvents.name }}" class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium" 
-        style="letter-spacing: 2px; font-size: 13px;">{{ categoryEvents.name|upper }}</a>
+    <a href="?" class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium"
+        style="letter-spacing: 2px; font-size: 13px;">Todo</a>
+    {% for catEvent in cateventostotal %}
+    <a href="?categoriaevento={{ catEvent.name }}" class="btn btn-light rounded-pill px-4 py-2 shadow fw-medium"
+        style="letter-spacing: 2px; font-size: 13px;">{{ catEvent.name|title }}</a>
     {% endfor %}
 </div>
+
 <!-- BUSCADOR -->
 <form class="d-flex mx-auto mb-5" method="GET" style="justify-content: center; gap: 10px; max-width: 400px;">
     <input class="form-control me-2" style="border-radius: 50px;" type="search" name="busqueda" placeholder="Search" aria-label="Search">
     <button class="btn" style="border-radius: 50px; background-color: #FCB2D3; color: white; font-weight: bold;" type="submit">Search</button>
 </form>
 
-    <div class="container my-4">
-        <div class="row g-3 justify-content-center">
-            {% for events in eventsir %}
-            <div class="col-12 col-md-6 col-lg-4 d-flex">
-                <a href="{% url 'event_detail' events.id %}" style="text-decoration: none; color: inherit; display: contents;">
-                <div class="events-card">
-                        <h3>{{ events.name }}</h3>
-                    {% if events.image %}
-                        <img src="{{ events.image.url }}" alt="{{ events.name }}" style="cursor: pointer;">
+<div class="container my-4">
+    <div class="row g-3 justify-content-center">
+        {% for evento in eventototal %}
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+            <a href="{% url 'event_detail' evento.id %}" class="text-decoration-none text-reset" 
+            style="display: contents;">
+                <div class="events-card position-relative overflow-hidden rounded-4">
+                    {% if evento.image %}
+                        <img src="{{ evento.image.url }}" alt="{{ evento.name }}" 
+                        class="w-100 h-100 " style="cursor:pointer";>
                     {% endif %}
-                    <p style="text-align: center; color: #7B7171;">{{ events.details_min }}</p>
+                    <p class=" text-center">{{ evento.details_min }}</p>
                 </div>
-                </a>
-            </div>
-        {% endfor %}
+            </a>
         </div>
-{% endblock %}
-{% block scripts %}
-    <script src="{% static 'cafeteria_app/js/evento.js' %}"></script>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

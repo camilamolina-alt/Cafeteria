@@ -310,9 +310,6 @@ body{
     
 }
 
-
-
-
 /*Animacion eventos*/
 @keyframes scrollLineal {
     from{translate: 0 ;}
@@ -417,149 +414,123 @@ body{
     margin: 0;
 }
 
-/*evento card*/
+/*EVENTOS EN PESTANA PROPIO*/
+/* evento card */
 .events-card {
-    position: relative !important;
-    overflow: hidden !important;
-    border-radius: 30px !important;
-    width: 700px !important;
-    height: 600px !important;
-}
-.events-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+    overflow: hidden;
+    /*border: 30px solid red !important;*/ 
+    max-width: 420px;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.45);
-    border-radius: 30px;
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+    height: 350px;
 
-.events-card:hover::before {
-    opacity: 1;
+    margin: 0 auto;
+    cursor: pointer;
+    background-color: #EBDDFB;
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .events-card img {
-    position: relative !important;
-    width: 100% !important;
-    height: 600px !important;
+    width: 100%;
+    height: 100%;
     object-fit: cover !important;
-    border-radius: 30px 30px 0 0 !important;
+    display: block;
+    transition: transform 0.4s ease;
+    z-index: 0;
 }
+
+
+
+
+.events-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 16px 30px rgba(40, 28, 28, 0.18);
+}
+
 
 .events-card:hover img {
     transform: scale(1.05);
 }
 
-.events-card h3 {
-    position: absolute !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -60px) !important;
-    color: white !important;
-    z-index: 2 !important;
-    text-align: center !important;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+
+/*Efecto hover, onda oscurece*/
+.events-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(52, 32, 32, 0.45);
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+}
+
+.events-card:hover::after {
+    opacity: 1;
 }
 
 .events-card p {
-    position: absolute !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, 20px) !important;
-    width: 80% !important;
-    color: white !important;
-    text-align: center !important;
-    z-index: 2 !important;
+    color: #dcdcdc;
+    position: absolute;
+    font-size: 25px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    font-size: 0.9rem;
     text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-}
-
-.events-card h3, .events-card p{
+    z-index: 2;
+    margin: 0;
     opacity: 0;
     transition: opacity 0.3s ease;
-    z-index: 2 !important;
 }
 
-.events-card:hover h3, .events-card:hover p{
+.events-card:hover p {
     opacity: 1;
 }
+
+@keyframes cardZoomIn {
+    0%   { transform: scale(0.85); opacity: 0; }
+    100% { transform: scale(1);    opacity: 1; }
+}
+
 
 /*event_detail(detalles del apartado para la reserva)*/
 
 /*----------------------------------------------------------------------------------------------------*/
-
-
-.event_detail-card img {
-    width: 100%;
-    height: 900px;
-    object-fit: cover;
-    border-radius: 30px 30px 0 0;
-}
-
-.carrusel-alimentos-premium .alimento-bloque-unico {
-    width: 380px;
-    background: transparent;
-    text-align: center;
-}
-
-.carrusel-alimentos-premium .alimento-marco-foto {
-    width: 100%;
-    height: 380px;
+.food-card {
+    position: relative;
+    border-radius: 40px !important;
     overflow: hidden;
-    border-radius: 24px;
+    height: 450px;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    transition: transform 0.4s ease;
 }
 
-.carrusel-alimentos-premium .alimento-foto-sola {
+.food-card:hover {
+    transform: translateY(-10px) rotate(-2deg); 
+}
+
+.food-img {
     width: 100%;
-    height: 100%;
+    height: 350px;
     object-fit: cover;
-    transition: filter 0.4s ease, transform 0.5s ease;
+    border-radius: 40px 40px 0 0;
 }
 
-.carrusel-alimentos-premium .alimento-datos-flotantes {
-    padding-top: 15px;
-}
-
-.carrusel-alimentos-premium .alimento-titulo-txt {
-    font-weight: 600;
+.food-overlay {
+    padding: 20px;
     color: #4a3e3d;
-    letter-spacing: 0.5px;
 }
 
-.carrusel-alimentos-premium .alimento-desc-reveal {
-    opacity: 0;
-    max-height: 0;
-    transform: translateY(-8px);
-    transition: opacity 0.4s ease, max-height 0.4s ease, transform 0.4s ease;
-    font-size: 0.9rem;
-    color: #7b7171;
+.productdetail-img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 12px;
     overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
 }
 
-.carrusel-alimentos-premium .alimento-bloque-unico:hover .alimento-foto-sola {
-    filter: brightness(1.12);
-    transform: scale(1.015);
-}
 
-.carrusel-alimentos-premium .alimento-bloque-unico:hover .alimento-desc-reveal {
-    opacity: 1;
-    max-height: 70px;
-    transform: translateY(0);
-    margin-top: 8px;
-    margin-bottom: 10px;
-}
-
-.carrusel-alimentos-premium .carousel-item {
-    transition: transform 0.6s ease;
-}
-
-.carrusel-alimentos-premium .custom-carousel-icon {
-    filter: invert(0.2) sepia(0.2);
-    transform: scale(1.3);
-}

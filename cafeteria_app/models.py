@@ -5,6 +5,9 @@ import uuid
 # el uuid es para poder crear identificadores unicos universales para la reserva, por si acaso
 # Create your models here.
 
+#---------------------------------------------------------------------------------
+#cOMIDA
+#---------------------------------------------------------------------------------
 class Category(models.Model):
     name = models.CharField(max_length=15)
     
@@ -23,32 +26,41 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+class ImagenProducto(models.Model):
+    event = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='imagenes')
+    imageProduct = models.ImageField(upload_to='galeria_producto/')
+    descripcion = models.CharField(max_length=200, blank=True)
+
+    def __str__(self):
+        return f"Galeria: {self.event.name}"
 
 #---------------------------------------------------------------------------------
-#evento
+#EVENTOS
+
+#---------------------------------------------------------------------------------
 class CategoryEvents(models.Model):
     name=models.CharField(max_length=15)
     def __str__(self):
         return self.name
     
 class Events(models.Model):
-    CategoryEvents = models.ForeignKey(CategoryEvents, on_delete=models.CASCADE)
+    CategoryEvents = models.ForeignKey(CategoryEvents, on_delete=models.CASCADE, related_name='events')
     name = models.CharField(max_length=30)
-    details_min = models.TextField(blank=True)
-    details = models.TextField(blank=True)
+    description = models.TextField(blank=True)
     image = models.ImageField(upload_to='events/', blank= True, null=True)
+
     def __str__(self):
         return self.name
 
-class AlimentoEvento(models.Model):
-    event = models.ForeignKey(Events, on_delete=models.CASCADE, related_name='alimentos')
+class ExclusiveFood(models.Model):
+    event = models.ForeignKey(Events, on_delete=models.CASCADE, related_name='exclusive')
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True)
+    precio = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     image = models.ImageField(upload_to='alimentos/', blank=True, null=True)
-    es_promocion = models.BooleanField(default=False)
-
     def __str__(self):
-        return self.nombre
+        return f"{self.nombre} ($ {self.precio})"
 
 class ImagenEvento(models.Model):
     event = models.ForeignKey(Events, on_delete=models.CASCADE, related_name='imagenes')
@@ -56,8 +68,18 @@ class ImagenEvento(models.Model):
     descripcion = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
-        return f"Imagen de {self.event.name}"
-#evento
+        return f"Galeria: {self.event.name}"
+
+#---------------------------------------------------------------------------------
+
+class Promotion(models.Model):
+    name = models.CharField(max_length=100)
+    discount = models.DecimalField(max_digits=5, decimal_places=2)
+    target_food = models.OneToOneField(ExclusiveFood, on_delete=models.CASCADE)
+#---------------------------------------------------------------------------------
+
+#Carro
+
 #---------------------------------------------------------------------------------
 class CarritoItem(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -93,3 +115,5 @@ class PedidoItem(models.Model):
 
     def __str__(self):
         return f"{self.producto.name} x{self.cantidad}"
+    
+#---------------------------------------------------------------------------------

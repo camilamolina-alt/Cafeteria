@@ -74,7 +74,7 @@
             {% if product.image %}
             <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}" style="cursor: pointer; border-radius: 20px; object-fit: cover; height: 180px;">
             {% endif %}
-            <div class="card-body pb-0 text-center">
+            <div class="card-body text-center">
               <p class="text-uppercase font-weight-bold" style="color: #7B7171; letter-spacing: 1px;">{{ product.name }}</p>
             </div>
           </div>
@@ -84,8 +84,8 @@
       {% endfor %}
     </div>
     <!--BOTONES CARRUSEL LOS MAS QUERIDOS-->
-  <button class="carousel-control-prev" type="button" data-bs-target="#carousel-NewMenu" data-bs-slide="prev"></button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carousel-NewMenu" data-bs-slide="next"></button>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carousel-BestMenu" data-bs-slide="prev"></button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carousel-BestMenu" data-bs-slide="next"></button>
   </div>
 </div>
 
