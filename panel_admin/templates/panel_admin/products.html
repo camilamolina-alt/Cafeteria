@@ -2,41 +2,41 @@
 
 {% block main %}
 
-<h1> aaaaaaaaaaa </h1>
+<h1 class="mb-4">Productos</h1>
 
-
-<div class="row g-5">
-    <div class ="col-md-4">
-    <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr class="table-active">
+                    <th>#</th>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in products %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                        {% if producto.image %}
+                        <img src="{{ producto.image.url }}" width="50" alt="{{ producto.name }}">
+                        {% endif %}
+                    </td>
+                    <td>{{ producto.name }}</td>
+                    <td>{{ producto.category }}</td>
+                    <td>${{ producto.price }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No hay productos registrados</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {% endblock %}

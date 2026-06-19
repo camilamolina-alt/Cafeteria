@@ -25,7 +25,7 @@ def panel_admin(request):
 
 def products(request):
     products = Product.objects.all()
-    return render(request, 'panel_admin/products.html')
+    return render(request, 'panel_admin/products.html', {'products': products})
 
 
 
