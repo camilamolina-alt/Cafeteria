@@ -7,6 +7,10 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .cart import Cart
 from .models import Product, Category, CategoryEvents, Events,Pedido, PedidoItem
+#from django.views import View
+#from django.template.loader import get_template
+#from django.core.mail import EmailMultiAlternatives
+#from core import settings
 #---------------------------------------------------------------------------------
 #Eventos gemnerales 
 #---------------------------------------------------------------------------------
@@ -174,3 +178,24 @@ def product_detail(request, id):
         'product': producto
     })
 
+#class Send(View):
+    def get(self, request):
+        return render(request, 'cafeteria_app/event_detail.html')
+
+    def post(self, request):
+        email = request.POST.get('email')
+        print(email)
+
+        template = get_template('cafeteria_app/email_template.html')
+        
+        content =template.render({'email': email})
+        msg = EmailMultiAlternatives(
+            'correo de prueba',
+            'Este es un correo de prueba',
+            settings.EMAIL_HOST_USER,
+            [email])
+        
+        msg.attach_alternative(content, 'text/html')
+        msg.send()
+        
+        return render(request, 'cafeteria_app/event_detail.html', {'message': 'Correo enviado correctamente'})

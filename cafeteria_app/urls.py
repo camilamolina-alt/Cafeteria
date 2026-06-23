@@ -20,5 +20,5 @@ urlpatterns = [
     path('cart/remove/base/<int:product_id>/', views.remove_from_cart_base, name='remove_from_cart_base'),
     path('checkout/', views.checkout, name='checkout'),
     path('product/<int:id>/', views.product_detail, name='products_detail'),
-    
+    #path('send/', views.Send.as_view(), name='send'),
 ]

@@ -152,3 +152,9 @@ CART_SESSION_ID = 'cart'
 
 
 #configuracion para el uso del gmail en el apartado de reserva, solo para el entorno virtual
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 's3607473@gmail.com'
+EMAIL_HOST_PASSWORD = 'rzswrjshvgntvcfn'

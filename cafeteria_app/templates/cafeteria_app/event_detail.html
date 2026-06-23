@@ -15,6 +15,9 @@
             <hr class="border-secondary opacity-25">
             <img src="{{ event.image.url }}" class="img-fluid rounded-5 shadow-sm" alt="...">
             <hr class="border-secondary opacity-25" style="margin-top: 80px; margin-bottom: 60px;">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Reservar Evento
+            </button>
             <hr class="border-secondary opacity-25">
             <h2 class="fw-light mb-4" style="color: #4a3e3d;">Sobre el evento</h2>
             <p class="text-muted" style="line-height: 1.8; font-size: 1.1rem;">{{ event.description }}</p> 
@@ -71,4 +74,30 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Reservar Evento</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="col-12">
+                        <label class="form-label">Correo</label>
+                        <input type="email" class="form-control" name="email" id="email"  required="required">
+                    </div>
+            <hr class="my-4">
+                <button class="w-100 btn btn-lg" type="submit"
+                        style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold;">
+                    Reservar 
+                </button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
 {% endblock %}
