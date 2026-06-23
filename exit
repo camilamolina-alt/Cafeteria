@@ -1,0 +1,53 @@
+[33mb5e8a69[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to b5e8a69
+[33m606941d[m HEAD@{1}: commit (merge): Merge branches 'main' and 'main' of https://github.com/camilamolina-alt/Cafeteria
+[33mb5e8a69[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{2}: reset: moving to HEAD
+[33mb5e8a69[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{3}: commit: CRUD del admin listo
+[33m826c374[m HEAD@{4}: commit: Merge branch 'main' of https://github.com/camilamolina-alt/Cafeteria
+[33mb01f9fe[m HEAD@{5}: commit: Actualizado
+[33m8235a8c[m HEAD@{6}: commit: admin actualizado
+[33mf3bbeee[m HEAD@{7}: pull origin main: Fast-forward
+[33mba5d5c6[m HEAD@{8}: reset: moving to HEAD
+[33mba5d5c6[m HEAD@{9}: commit: fix: solucion definitiva de migraciones y db
+[33mdaad4d4[m HEAD@{10}: commit (merge): index operativo con bd
+[33m1ede0db[m HEAD@{11}: checkout: moving from rama-recuperada to main
+[33ma923fd3[m[33m ([m[1;31morigin/rama-recuperada[m[33m, [m[1;32mrama-recuperada[m[33m)[m HEAD@{12}: commit: index operativo con bd
+[33m0f92b99[m HEAD@{13}: commit: index operativo con bd
+[33mba527a6[m HEAD@{14}: checkout: moving from main to rama-recuperada
+[33m1ede0db[m HEAD@{15}: reset: moving to HEAD
+[33m1ede0db[m HEAD@{16}: commit (merge): Fix: merge resuelto
+[33m1ce00fe[m HEAD@{17}: reset: moving to HEAD
+[33m1ce00fe[m HEAD@{18}: commit: EL INICIO DE LA PAGINA ADMIN
+[33mab68cb0[m HEAD@{19}: commit: Menu,shop,cart, actualizados y funcional con bd
+[33m6096c1e[m HEAD@{20}: commit: OFFCANVAS de carro, funciones js act, index act segun carro
+[33me36aec9[m HEAD@{21}: pull origin main: Fast-forward
+[33ma703090[m HEAD@{22}: commit: Carro y js actualizado
+[33me9aa781[m HEAD@{23}: pull origin main: Fast-forward
+[33m801590d[m HEAD@{24}: commit: herencias de las tres navs, listas, grid, de shop y menu casi listos
+[33mb17d3a5[m HEAD@{25}: commit: herencias de las tres navs, listas, grid, de shop y menu casi listos
+[33m09eea7e[m HEAD@{26}: commit: Navs actualizados, con su herencia, eventos actualizados en css
+[33m18810be[m HEAD@{27}: pull origin main: Merge made by the 'ort' strategy.
+[33m70b6645[m HEAD@{28}: commit: ACTUALIZADO LO DE DEL FOOTER
+[33m88b91fe[m HEAD@{29}: commit: base dde datos integrada de django, sql3
+[33ma67da61[m HEAD@{30}: commit: base de datos agregada, config de esta
+[33m8a9f3ea[m HEAD@{31}: commit: Core actualizado
+[33m22bc241[m HEAD@{32}: commit (merge): Herencia y algunas funciones
+[33m280c229[m HEAD@{33}: commit: Actualizado
+[33m6142a6d[m HEAD@{34}: pull origin main: updating HEAD
+[33m6142a6d[m HEAD@{35}: commit: actualizado settings
+[33m96ab22b[m HEAD@{36}: commit: Actualizado
+[33m7cd13c9[m HEAD@{37}: commit: ACTUALIZADO URL Y SETTING CON LIBRERIA DE LOGIN DJANGO
+[33mfbe8fd2[m HEAD@{38}: commit: AHORA SI ACTUALIZADO LOGIN E IMAGENES CARRUSEL
+[33mb9c24e6[m HEAD@{39}: commit (merge): Guardado final desde la raiz
+[33m5bc2818[m HEAD@{40}: reset: moving to HEAD
+[33m5bc2818[m HEAD@{41}: commit: Guardando configuraciones de core
+[33m74276f0[m HEAD@{42}: reset: moving to HEAD
+[33m74276f0[m HEAD@{43}: reset: moving to HEAD
+[33m74276f0[m HEAD@{44}: commit: index casi listo, imagenes actualizadas, login casi listo
+[33m4bd31b4[m HEAD@{45}: commit: Imagenes banners actualizadas
+[33m8b1833f[m HEAD@{46}: pull origin main: Fast-forward
+[33m3ed1e1e[m HEAD@{47}: commit: Actualizado
+[33mfea5b22[m HEAD@{48}: commit: Nuevos productos actualizados, problemas con el flexbox?
+[33m67eb6c6[m HEAD@{49}: commit: Imagenes y banner, ordenados
+[33md71f55f[m HEAD@{50}: commit: Nuevo menu y algunos estilos nuevos actualizados
+[33m0696976[m HEAD@{51}: commit: Carrusel y estilos, configuraciones de static listos
+[33m7eebbb5[m HEAD@{52}: commit (initial): Cafeteria Django
