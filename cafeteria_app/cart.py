@@ -15,7 +15,7 @@ class Cart(object):
         if product_id not in self.cart:
             self.cart[product_id] = {
                 'quantity': 0,
-                'price': str(product.price)
+                'price': str(product.precio_final)
             }
         self.cart[product_id]['quantity'] += quantity
         self.save()
@@ -36,6 +36,7 @@ class Cart(object):
         for product in products:
             cart[str(product.id)]['product'] = product
         for item in cart.values():
+            precio_actual=item['product'].precio_final
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']
             yield item
@@ -44,7 +45,16 @@ class Cart(object):
         return sum(item['quantity'] for item in self.cart.values())
 
     def get_total(self):
-        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+        product_ids = self.cart.keys()
+        products = Product.objects.filter(id__in=product_ids)
+        
+        total = 0
+        for product in products:
+            product_id = str(product.id)
+            if product_id in self.cart:
+                quantity = self.cart[product_id]['quantity']
+                total += product.precio_final * quantity
+        return total
 
     def clear(self):
         del self.session[settings.CART_SESSION_ID]

@@ -17,16 +17,22 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
-    price = models.PositiveIntegerField() 
+    price = models.PositiveIntegerField()
+    descuento = models.IntegerField(default=0, verbose_name="Descuento")
     details = models.TextField(blank=True)
     image = models.ImageField(upload_to='products/', blank=True, null=True)
     stock = models.PositiveIntegerField(default=0, verbose_name="Stock disponible")
 
     is_new = models.BooleanField(default=False, verbose_name="menu nuevo")
     is_best = models.BooleanField(default=False, verbose_name="mas queridos")
-
     def __str__(self):
         return self.name
+    @property
+    def precio_final(self):
+        if self.descuento > 0:
+            nuevo_precio = self.price * (1 - self.descuento / 100)
+            return int(nuevo_precio)
+        return self.price
     
 class ImagenProducto(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='imagenes')
