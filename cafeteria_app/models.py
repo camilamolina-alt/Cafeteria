@@ -21,11 +21,8 @@ class Product(models.Model):
     descuento = models.IntegerField(default=0, verbose_name="Descuento")
     details = models.TextField(blank=True)
     image = models.ImageField(upload_to='products/', blank=True, null=True)
-<<<<<<< HEAD
-=======
     stock = models.PositiveIntegerField(default=0, verbose_name="Stock disponible")
 
->>>>>>> 91f3e00900938ce7f2cbb4062ab7efcae7b14353
     is_new = models.BooleanField(default=False, verbose_name="menu nuevo")
     is_best = models.BooleanField(default=False, verbose_name="mas queridos")
     def __str__(self):
