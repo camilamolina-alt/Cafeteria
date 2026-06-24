@@ -8,7 +8,7 @@
         <h2 style="font-family: 'Montserrat', sans-serif; color: #e4228d;">Lista de eventos</h2>
         <hr class="border-secondary opacity-25">
 
-        <a href="{% url 'agregar_evento' %}" class="btn btn-sm mb-3" style="background-color: #FCB2D3; color: white; font-weight: bold;">+ Agregar evento</a>
+        <a href="{% url 'admin_agregar_evento' %}" class="btn btn-sm mb-3" style="background-color: #FCB2D3; color: white; font-weight: bold;">+ Agregar evento</a>
 
         <table class="table table-striped table-hover table-responsive-sm">
             <tr>
@@ -40,8 +40,8 @@
                     {% endif %}
                 </td>
                 <td>
-                    <a href="{% url 'modificar_evento' e.id %}" class="btn btn-info btn-sm">Modificar</a>
-                    <a href="{% url 'eliminar_evento' e.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    <a href="{% url 'admin_modificar_evento' e.id %}" class="btn btn-sm" style="background-color: #B28DFF; color: white;">Modificar</a>
+                    <a href="{% url 'admin_eliminar_evento' e.id %}" class="btn btn-sm" style="background-color: #db0c7e; color: white;">Eliminar</a>
                 </td>
             </tr>
             {% endfor %}
