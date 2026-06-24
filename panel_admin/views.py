@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login
 from panel_admin.forms import ProductoForm, CategoryForm, EventoForm, ExclusiveFoodForm, ImagenEventoForm, BannerForm
@@ -78,6 +79,7 @@ def modificar_producto(request,id):
         formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, 'modificado correctamente')
             return redirect(to="admin_listar_producto")
         else:
             data["form"] = formulario
@@ -86,6 +88,7 @@ def modificar_producto(request,id):
 def eliminar_producto(request, id):
     producto = get_object_or_404(Product, id = id)
     producto.delete()
+    messages.success(request, 'eliminado correctamente')
     return redirect(to="admin_listar_producto")
 
 ###Para las categorias###
