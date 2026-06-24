@@ -7,10 +7,10 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .cart import Cart
 from .models import Product, Category, CategoryEvents, Events,Pedido, PedidoItem
-#from django.views import View
-#from django.template.loader import get_template
-#from django.core.mail import EmailMultiAlternatives
-#from core import settings
+from django.views import View
+from django.template.loader import get_template
+from django.core.mail import EmailMultiAlternatives
+from core import settings
 #---------------------------------------------------------------------------------
 #Eventos gemnerales 
 #---------------------------------------------------------------------------------
@@ -178,17 +178,26 @@ def product_detail(request, id):
         'product': producto
     })
 
-#class Send(View):
-    def get(self, request):
-        return render(request, 'cafeteria_app/event_detail.html')
+class Send(View):
+    def get(self, request, id):
+        event = get_object_or_404(Events, id=id)
+        return render(request, 'cafeteria_app/event_detail.html', {'event': event})
 
-    def post(self, request):
+    def post(self, request, id):
         email = request.POST.get('email')
+        event_name = request.POST.get('event_name')
+        event = get_object_or_404(Events, id=id)
+        event_name = event.name
         print(email)
+        print(event_name)
 
         template = get_template('cafeteria_app/email_template.html')
         
-        content =template.render({'email': email})
+        context = {
+        'email': email,
+        'event_name': event_name
+    }
+        content = template.render(context)
         msg = EmailMultiAlternatives(
             'correo de prueba',
             'Este es un correo de prueba',
@@ -198,4 +207,6 @@ def product_detail(request, id):
         msg.attach_alternative(content, 'text/html')
         msg.send()
         
-        return render(request, 'cafeteria_app/event_detail.html', {'message': 'Correo enviado correctamente'})
+        messages.success(request, 'Correo enviado correctamente')
+        
+        return redirect(request.META.get('HTTP_REFERER', '/'))

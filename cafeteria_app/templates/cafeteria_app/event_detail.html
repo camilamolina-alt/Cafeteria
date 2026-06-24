@@ -83,18 +83,19 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="POST">
-            {% csrf_token %}
-            <div class="col-12">
-                        <label class="form-label">Correo</label>
-                        <input type="email" class="form-control" name="email" id="email"  required="required">
-                    </div>
-            <hr class="my-4">
-                <button class="w-100 btn btn-lg" type="submit"
-                        style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold;">
-                    Reservar 
-                </button>
-        </form>
+        <form method="POST" action="{% url 'send' event.id %}">
+    {% csrf_token %}
+    <input type="hidden" name="event_name" value="{{ event.name }}">
+    <div class="col-12">
+        <label class="form-label">Correo</label>
+        <input type="email" class="form-control" name="email" id="email" required="required">
+    </div>
+    <hr class="my-4">
+    <button class="w-100 btn btn-lg" type="submit"
+            style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold;">
+        Reservar 
+    </button>
+</form>
       </div>
       
     </div>

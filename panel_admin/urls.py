@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import agregar_producto , listar_producto, modificar_producto, panel_admin, products, eliminar_producto, listar_categoria, modificar_categoria,eliminar_categoria, agregar_categoria
-from .views import events, agregar_evento, listar_evento, modificar_evento, eliminar_evento
+from .views import event, agregar_evento, listar_evento, modificar_evento, eliminar_evento
 
 urlpatterns = [
 
@@ -18,7 +18,7 @@ urlpatterns = [
     path('categorias/eliminar/<id>/', eliminar_categoria, name='eliminar_categoria'),
 
     #URLS PARA EVENTOS
-    path('events', events, name='events'),
+    path('event', event, name='event'),
     path('eventos/agregar/', agregar_evento, name='agregar_evento'),
     path('eventos/listar/', listar_evento, name='listar_evento'),
     path('eventos/modificar/<id>/', modificar_evento, name='modificar_evento'),
