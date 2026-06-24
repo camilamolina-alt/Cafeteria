@@ -12,7 +12,15 @@
 
         <div class="col-md-6">
             <h1 style="font-size:40px ;font-family: 'Montserrat', sans-serif; color: #7B7171;font-weight :light;">{{ product.name }}</h1>
-            <p style="font-family: 'Montserrat', sans-serif; color: #7B7171; font-size: 1.2rem; font-weight: bold;">Precio: ${{ product.price }}</p>
+            <div class="d-flex align-items-center gap-2 mb-3">
+    {% if product.descuento > 0 %}
+        <span style="color: #ff5c5c; font-weight: 600; font-size: 1.8rem; font-family: 'Montserrat', sans-serif;">{{ product.descuento }}%</span>
+        <span style="color: #8b807e; font-weight: bold; font-size: 1.8rem; font-family: 'Montserrat', sans-serif;">${{ product.precio_final }}</span>
+        <span class="text-decoration-line-through" style="color: #b5b5b5; font-size: 1.2rem; font-family: 'Montserrat', sans-serif;">${{ product.price }}</span>
+    {% else %}
+        <span style="color: #8b807e; font-weight: bold; font-size: 1.8rem; font-family: 'Montserrat', sans-serif;">Precio: ${{ product.price }}</span>
+    {% endif %}
+</div>
             <hr class="border-secondary opacity-25">          
         <br>
         <p style="font-size:12px; font-family: 'Montserrat', sans-serif; color: #7B7171;">Disponibilidad de entrega depende de stocks en tienda</p>
@@ -43,9 +51,9 @@
             </form>
             <hr class="border-secondary opacity-25">
             <p style="font-size: 1.2rem; font-weight: bold;">
-            Total: $<span id="total-precio">{{ product.price }}</span>
+            Total: $<span id="total-precio">{{ product.precio_final }}</span>
             </p>
-            <div id="precio-detail" data-precio="{{ product.price }}" style="display:none;"></div>
+            <div id="precio-detail" data-precio="{{ product.precio_final }}" style="display:none;"></div>
             <hr class="border-secondary opacity-25">
             
         </div>

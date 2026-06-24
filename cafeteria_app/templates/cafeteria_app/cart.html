@@ -29,7 +29,7 @@
         {% endif %}
         <div>
             <p class="mb-2" style="font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 1.1rem;letter-spacing: 1px">{{ item.product.name }}</p>
-            <small style="color: #7B7171; font-size: 0.95rem;">${{ item.price }} x {{ item.quantity }} = <strong>${{ item.total_price }}</strong></small>
+            <small style="color: #7B7171; font-size: 0.95rem;">${{ item.product.precio_final }} x {{ item.quantity }} = <strong>${{ item.total_price }}</strong></small>
             <br>
             <a class="mt-3 d-inline-block link-remove" href="{% url 'remove_from_cart' item.product.id %}">Remove</a>
         </div>

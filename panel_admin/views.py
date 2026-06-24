@@ -133,7 +133,7 @@ def eliminar_categoria(request, id):
     return redirect(to="admin_listar_categoria")
 
 ##Inicio de vistas para eventos 
-def event(request):
+def events(request):
     eventos = Events.objects.all()
     return render(request, 'panel_admin/eventos/event.html', {'event': eventos})
 
