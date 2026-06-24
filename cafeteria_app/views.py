@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib import messages
 from .cart import Cart
-from .models import Product, Category, CategoryEvents, Events,Pedido, PedidoItem
+from .models import Product, Category, CategoryEvents, Events,Pedido, PedidoItem,Banner
 from django.views import View
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
@@ -44,6 +44,8 @@ def ejemplo(request):
 
 def home(request):
     Product_all = Product.objects.all()
+    banners = Banner.objects.all()   # ← nuevo
+
     #para los carruseles con ids dinamicas
     ##filtro de nuevos
     new = Product.objects.filter(is_new=True)
@@ -55,9 +57,9 @@ def home(request):
         "products" : Product_all,
         "group_new" : group_new,
         "group_best" : group_best,
+        "banners" : banners,   # ← nuevo
     }
     return render(request, 'cafeteria_app/index.html', context)
-
 def shop(request):
     products = Product.objects.all()
     return render(request, 'cafeteria_app/shop.html', {'products': products})
@@ -152,11 +154,19 @@ def checkout(request):
     if len(cart) == 0:
         return redirect('cart')
     if request.method == 'POST':
-        retiro = request.POST.get('retiro', 'local')
+
+        # validar stock ANTES de crear el pedido
+        for item in cart:
+            if item['quantity'] > item['product'].stock:
+                return render(request, 'cafeteria_app/checkout.html', {
+                    'cart': cart,
+                    'error': f"No hay suficiente stock de {item['product'].name}"
+                })
+
         pedido = Pedido.objects.create(
             usuario=request.user,
             total=cart.get_total(),
-            retiro=retiro
+            retiro='local'
         )
         for item in cart:
             PedidoItem.objects.create(
@@ -165,12 +175,15 @@ def checkout(request):
                 cantidad=item['quantity'],
                 precio=item['price']
             )
+            # esto es para el stock, lo resta y eso
+            producto = item['product']
+            producto.stock -= item['quantity']
+            producto.save()
+
         cart.clear()
         return render(request, 'cafeteria_app/finish.html', {'pedido': pedido})
     return render(request, 'cafeteria_app/checkout.html', {'cart': cart})
 
-from django.shortcuts import render, get_object_or_404
-from .models import Product
 
 def product_detail(request, id):
     producto = get_object_or_404(Product, id=id)

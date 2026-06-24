@@ -51,10 +51,16 @@
                 {% endif %}
                 
                 <p>{{ product.details }}</p>
-                
-                <a href="{% url 'add_to_cart' product.id %}" class="btn" style="background-color: #FCB2D3; color: white; border-radius: 50px;">
-                    Agregar al Carro
-                </a>
+
+                {% if product.stock > 0 %}
+                    <a href="{% url 'add_to_cart' product.id %}" class="btn" style="background-color: #FCB2D3; color: white; border-radius: 50px;">
+                        Agregar al Carro
+                    </a>
+                {% else %}
+                    <span class="btn disabled" style="background-color: #ccc; color: white; border-radius: 50px;">
+                        Agotado
+                    </span>
+                {% endif %}
             </div>
         </div>
         {% endfor %}
@@ -67,7 +73,3 @@
     </div>
 
 {% endblock %}
-
-
-        
-    

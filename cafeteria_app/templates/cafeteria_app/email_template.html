@@ -2,10 +2,53 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+    </style>
 </head>
-<body>
-    <h1>¡Confirmación de Reserva!</h1>
-    <p>Hola, hemos recibido tu solicitud de reserva para el evento: <strong>{{ event_name }}</strong>.</p>
-    <p>Nos comunicaremos contigo a este correo: {{ email }}</p>
+<body style="margin: 0; padding: 0; background-color: #fafafa; font-family: 'Montserrat', Arial, sans-serif;">
+
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+            <td align="center" style="padding: 50px 20px;">
+                
+                <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; border-radius: 20px; border: 1px solid #f0f0f0; box-shadow: 0 10px 25px rgba(0,0,0,0.02);">
+                    <tr>
+                        <td style="padding: 50px 40px; text-align: center;">
+                            
+                            <h1 style="color: #7B7171; font-size: 32px; font-weight: 300; margin-top: 0; margin-bottom: 25px; letter-spacing: -0.5px;">
+                                ¡Tu reserva está lista!
+                            </h1>
+                            
+                            <p style="color: #7B7171; font-size: 16px; line-height: 1.6; margin-bottom: 30px; font-weight: 400;">
+                                Hola, hemos recibido tu solicitud de reserva para el evento:
+                            </p>
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #fff5f9; border-radius: 12px; margin-bottom: 35px; border: 1px dashed #FCB2D3;">
+                                <tr>
+                                    <td align="center" style="padding: 25px 20px;">
+                                        <strong style="color: #FCB2D3; font-size: 22px; font-weight: 700; letter-spacing: 1px;">
+                                            {{ event_name }}
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </table>
+                            <hr style="border: none; border-top: 1px solid #eae8e8; margin: 0 0 30px 0;">
+                            <p style="color: #7B7171; font-size: 14px; margin-bottom: 10px; font-weight: 300;">
+                                Nos comunicaremos contigo a este correo:
+                            </p>
+                            <p style="color: #7B7171; font-size: 18px; font-weight: 600; margin: 0;">
+                                {{ email }}
+                            </p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
