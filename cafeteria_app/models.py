@@ -48,10 +48,19 @@ class Events(models.Model):
     CategoryEvents = models.ForeignKey(CategoryEvents, on_delete=models.CASCADE, related_name='events')
     name = models.CharField(max_length=30)
     description = models.TextField(blank=True)
-    image = models.ImageField(upload_to='events/', blank= True, null=True)
+    image = models.ImageField(upload_to='events/', blank=True, null=True)
+    fecha_inicio = models.DateTimeField(verbose_name="Inicio del evento", null=True, blank=True)
+    fecha_fin = models.DateTimeField(verbose_name="Fin del evento", null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+    def ya_paso(self):
+        from django.utils import timezone
+        if self.fecha_fin is None:
+            return False
+        return timezone.now() > self.fecha_fin
+
 
 class ExclusiveFood(models.Model):
     event = models.ForeignKey(Events, on_delete=models.CASCADE, related_name='exclusive')
