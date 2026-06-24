@@ -45,8 +45,8 @@
                     {% endif %}
                 </td>
                 <td>
-                    <a href="{% url 'modificar_producto' p.id %}" class="btn btn-info btn-sm">Modificar</a>
-                    <a href="{% url 'eliminar_producto' p.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    <a href="{% url 'modificar_producto' p.id %}" class="btn btn-sm" style="background-color: #B28DFF; color: white;">Modificar</a>
+                    <a href="{% url 'eliminar_producto' p.id %}" class="btn btn-sm" style="background-color: #db0c7e; color: white;">Eliminar</a>
                 </td>
             </tr>
             {% endfor %}
