@@ -1,0 +1,29 @@
+{% extends 'panel_admin/base.html' %}
+{% load crispy_forms_tags %}
+{% block main %}
+
+<br><br>
+<div class="col-12 col-md-6 offset-md-3">
+    <div class="class">
+        <h2 style="font-family: 'Montserrat', sans-serif; color: #e4228d;">Agregar Banner</h2>
+        <hr class="border-secondary opacity-25">
+        <br>
+        <div class="card-body">
+            <div class="row">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+
+                    <div class="dflex- justify-content-center">
+                        <hr class="border-secondary opacity-25">
+                        <input type="submit" value="Guardar" class="btn px-2 py-2" style="background-color: #FCB2D3; color: white; font-weight: bold; font-size: 1.1rem;">
+                        <input type="reset" value="Cancelar" class="btn btn-secondary">
+                    </div>
+                </form>
+                {{ mensaje }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

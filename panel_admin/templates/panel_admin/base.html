@@ -16,7 +16,7 @@
     <div class="row">
 
         {% block navbar %}
-        <nav class="navbar-admin col-md-2 bg-light sidebar vh-100">
+        <nav class="navbar-admin col-md-2 bg-light sidebar">
             <h1 style="color: #e4228d; text-align: center; font-size: 1.5rem; margin-top: 1.5rem;">
                 Panel de Administración
             </h1>
@@ -24,6 +24,7 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'admin_panel_admin' %}"><i class="bx bx-home"> </i> Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'products' %}"><i class='bx bx-food-menu'></i> Productos</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'admin_events' %}"><i class='bx bx-calendar-event'></i> Eventos</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'admin_listar_banner' %}"><i class='bx bx-images'></i> Banners</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-receipt'></i> Pedidos</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'exit' %}"><i class='bx bx-log-out'></i> Salir</a></li>
             </ul>

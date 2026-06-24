@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login
-from panel_admin.forms import ProductoForm, CategoryForm, EventoForm
+from panel_admin.forms import ProductoForm, CategoryForm, EventoForm, ExclusiveFoodForm, ImagenEventoForm, BannerForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
 from django.db.models import Sum
-from cafeteria_app.models import Category, Product, Events, Pedido
+from cafeteria_app.models import Category, Product, Events, Pedido, ExclusiveFood, ImagenEvento, Banner
 
 def es_admin(user):
     return user.is_staff
@@ -133,7 +133,7 @@ def eliminar_categoria(request, id):
     return redirect(to="admin_listar_categoria")
 
 ##Inicio de vistas para eventos 
-def event(request):
+def events(request):
     eventos = Events.objects.all()
     return render(request, 'panel_admin/eventos/event.html', {'event': eventos})
 
@@ -172,3 +172,103 @@ def eliminar_evento(request, id):
     evento.delete()
     return redirect(to="admin_listar_evento")
 
+##exclusivo del evento###
+def listar_exclusivo(request):
+    exclusivos = ExclusiveFood.objects.all()
+    data = {'exclusivos': exclusivos}
+    return render(request, 'panel_admin/eventos/listarExclusivo.html', data)
+
+def agregar_exclusivo(request):
+    data = {'form': ExclusiveFoodForm()}
+    if request.method == 'POST':
+        formulario = ExclusiveFoodForm(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="admin_listar_exclusivo")
+        else:
+            data["form"] = formulario
+    return render(request, 'panel_admin/eventos/agregarExclusivo.html', data)
+
+def modificar_exclusivo(request, id):
+    exclusivo = get_object_or_404(ExclusiveFood, id=id)
+    data = {'form': ExclusiveFoodForm(instance=exclusivo)}
+    if request.method == 'POST':
+        formulario = ExclusiveFoodForm(data=request.POST, instance=exclusivo, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="admin_listar_exclusivo")
+        else:
+            data["form"] = formulario
+    return render(request, 'panel_admin/eventos/modificarExclusivo.html', data)
+
+def eliminar_exclusivo(request, id):
+    exclusivo = get_object_or_404(ExclusiveFood, id=id)
+    exclusivo.delete()
+    return redirect(to="admin_listar_exclusivo")
+
+def listar_imagen_evento(request):
+    imagenes = ImagenEvento.objects.all()
+    data = {'imagenes': imagenes}
+    return render(request, 'panel_admin/eventos/listarImagenEvento.html', data)
+
+def agregar_imagen_evento(request):
+    data = {'form': ImagenEventoForm()}
+    if request.method == 'POST':
+        formulario = ImagenEventoForm(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="admin_listar_imagen_evento")
+        else:
+            data["form"] = formulario
+    return render(request, 'panel_admin/eventos/agregarImagenEvento.html', data)
+
+def modificar_imagen_evento(request, id):
+    imagen = get_object_or_404(ImagenEvento, id=id)
+    data = {'form': ImagenEventoForm(instance=imagen)}
+    if request.method == 'POST':
+        formulario = ImagenEventoForm(data=request.POST, instance=imagen, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="admin_listar_imagen_evento")
+        else:
+            data["form"] = formulario
+    return render(request, 'panel_admin/eventos/modificarImagenEvento.html', data)
+
+def eliminar_imagen_evento(request, id):
+    imagen = get_object_or_404(ImagenEvento, id=id)
+    imagen.delete()
+    return redirect(to="admin_listar_imagen_evento")
+
+##BANNER
+def listar_banner(request):
+    banners = Banner.objects.all()
+    data = {'banners': banners}
+    return render(request, 'panel_admin/banners/listarBanner.html', data)
+
+def agregar_banner(request):
+    data = {'form': BannerForm()}
+    if request.method == 'POST':
+        formulario = BannerForm(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="admin_listar_banner")
+        else:
+            data["form"] = formulario
+    return render(request, 'panel_admin/banners/agregarBanner.html', data)
+
+def modificar_banner(request, id):
+    banner = get_object_or_404(Banner, id=id)
+    data = {'form': BannerForm(instance=banner)}
+    if request.method == 'POST':
+        formulario = BannerForm(data=request.POST, instance=banner, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="admin_listar_banner")
+        else:
+            data["form"] = formulario
+    return render(request, 'panel_admin/banners/modificarBanner.html', data)
+
+def eliminar_banner(request, id):
+    banner = get_object_or_404(Banner, id=id)
+    banner.delete()
+    return redirect(to="admin_listar_banner")

@@ -34,3 +34,6 @@ body{
     color: #e4228d;
 } 
 
+.sidebar {
+    min-height: 100vh;
+}
