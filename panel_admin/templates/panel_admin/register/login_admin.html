@@ -1,0 +1,35 @@
+{% extends "panel_admin/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="text-center login-body mt-5">
+    <main class="form-signin" style="max-width: 400px; margin: auto;">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h1 class="mb-4 fw-normal" style="font-family: 'Bubbler One', sans-serif; color: #e4228d; font-size: 3rem; font-weight: bold; letter-spacing: 1px;">Panel Admin</h1>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-floating position-relative mb-3">
+                        <input type="text" name="username" class="form-control" id="floatingUser" placeholder="Username">
+                        <label for="floatingUser" style="color: #B3AAAA; font-family: 'Montserrat', sans-serif;">Username</label>
+                        <i class="bx bx-user" style="color:#B3AAAA; font-size: 1.5rem; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); z-index: 10;"></i>
+                    </div>
+
+                    <div class="form-floating position-relative">
+                        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword" style="color: #B3AAAA; font-family: 'Montserrat', sans-serif;">Password</label>
+                        <i class="bx bx-lock-alt" style="color:#B3AAAA; font-size: 1.5rem; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); z-index: 10;"></i>
+                    </div>
+
+                    <button class="w-100 mt-4 btn btn-lg" style="background-color: #e4228d; color: white; font-family: 'Montserrat', sans-serif;" type="submit">Ingresar</button>
+
+                    {% if error %}
+                    <div class="alert alert-danger mt-3" style="color: #7B7171; font-family: 'Montserrat', sans-serif; border-radius: 5px;">{{ error }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+    </main>
+</div>
+{% endblock %}
