@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cafeteria_app', '0017_banner'),
+        ('cafeteria_app', '0018_banner'),
     ]
 
     operations = [
