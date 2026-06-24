@@ -65,16 +65,21 @@ class Events(models.Model):
 class ExclusiveFood(models.Model):
     event = models.ForeignKey(Events, on_delete=models.CASCADE, related_name='exclusive')
     nombre = models.CharField(max_length=100)
-    descripcion = models.TextField(blank=True)
+    descripcion = models.CharField(max_length=200, blank=True)
     precio = models.PositiveIntegerField() 
     image = models.ImageField(upload_to='alimentos/', blank=True, null=True)
     def __str__(self):
         return f"{self.nombre} ($ {self.precio})"
 
+
 class ImagenEvento(models.Model):
     event = models.ForeignKey(Events, on_delete=models.CASCADE, related_name='imagenes')
     imagen = models.ImageField(upload_to='eventos_galeria/')
-    descripcion = models.CharField(max_length=200, blank=True)
+    descripcion = models.TextField(blank=True)
+    orden = models.PositiveIntegerField(default=0, verbose_name="Orden de aparición")
+
+    class Meta:
+        ordering = ['orden']
 
     def __str__(self):
         return f"Galeria: {self.event.name}"

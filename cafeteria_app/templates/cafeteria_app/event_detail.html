@@ -11,10 +11,13 @@
 <div class= "container g-5 my-5">
     <div class="row justify-content-center">
         <div class="col-md-7">
+            <br>
             <hr class="border-secondary opacity-25">
+            <br>
             <img src="{{ event.image.url }}" class="img-fluid rounded-5 shadow-sm" alt="...">
             <hr class="border-secondary opacity-25" style="margin-top: 80px; margin-bottom: 60px;">
             <h2 class="fw-light mb-4" style="color: #4a3e3d; letter-spacing: 2px;">Sobre el evento</h2>
+            <hr class="border-secondary opacity-25" style="margin-top: 80px; margin-bottom: 60px;">
             <p class="text-muted" style="line-height: 1.8; font-size: 1.1rem;">{{ event.description }}</p> 
         </div>
     </div>
@@ -53,7 +56,7 @@
 </div>
 <div class="container my-5">
     <div class="row g-3">
-        {% for img in imagenes|slice:":2" %}
+        {% for img in mosaico %}
         <div class="col-md-6">
             <img src="{{ img.imagen.url }}" alt="{{ img.descripcion }}" class="img-fluid rounded-4 shadow-sm w-100" style="height: 400px; object-fit: cover;">
         </div>
@@ -64,21 +67,19 @@
 <div class="container my-5">
     <h4 class="text-center mb-5 fw-light" style="letter-spacing: 3px;">Galeria</h4>
 
-    {% for img in imagenes|slice:"2:" %}
-    <div class="row align-items-center mb-5 {% if forloop.counter|divisibleby:2 %}flex-row-reverse{% endif %}">
-        <div class="col-md-7">
+    {% for img in galeria %}
+    <div class="row align-items-center justify-content-center {% if forloop.counter|divisibleby:2 %}flex-row-reverse{% endif %}" style="margin-bottom: 100px;">
+        <div class="col-md-5 text-center">
             <img src="{{ img.imagen.url }}" alt="{{ img.descripcion }}" class="img-fluid rounded-4 shadow-sm">
         </div>
         <div class="col-md-5">
             {% if img.descripcion %}
-                <p class="text-muted" style="line-height: 1.8; font-size: 1.05rem;">{{ img.descripcion }}</p>
+                <p class="text-muted px-md-4" style="line-height: 1.8; font-size: 1.05rem;">{{ img.descripcion }}</p>
             {% endif %}
         </div>
     </div>
     {% endfor %}
 </div>
-
-
 
 
 <div class="container my-5">
@@ -97,6 +98,9 @@
 </div>
 
 <div class="container text-center my-5 py-5">
+    <br><br>
+    <hr>
+    <br>
     <h2 class="fw-light mb-4" style="letter-spacing: 2px; color: #4a3e3d;">Reservar</h2>
     <button type="button" class="btn btn-lg px-5 py-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
             style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold; letter-spacing: 1px;">

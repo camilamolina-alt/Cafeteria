@@ -33,10 +33,12 @@ def events_view(request):
 #Detalles de eventos, onda el template pss 
 def event_detail(request, id):
     evento = get_object_or_404(Events, id=id)
+    todas_imagenes = evento.imagenes.all().order_by('orden')
     return render(request, 'cafeteria_app/event_detail.html', {
         'event': evento,
         'alimentos': evento.exclusive.all(),
-        'imagenes': evento.imagenes.all()
+        'mosaico': todas_imagenes.filter(orden__lt=2),
+        'galeria': todas_imagenes.filter(orden__gte=2),
     })
 
 def ejemplo(request):
