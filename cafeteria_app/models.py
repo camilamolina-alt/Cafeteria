@@ -21,6 +21,11 @@ class Product(models.Model):
     descuento = models.IntegerField(default=0, verbose_name="Descuento")
     details = models.TextField(blank=True)
     image = models.ImageField(upload_to='products/', blank=True, null=True)
+<<<<<<< HEAD
+=======
+    stock = models.PositiveIntegerField(default=0, verbose_name="Stock disponible")
+
+>>>>>>> 91f3e00900938ce7f2cbb4062ab7efcae7b14353
     is_new = models.BooleanField(default=False, verbose_name="menu nuevo")
     is_best = models.BooleanField(default=False, verbose_name="mas queridos")
     def __str__(self):
@@ -33,12 +38,11 @@ class Product(models.Model):
         return self.price
     
 class ImagenProducto(models.Model):
-    event = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='imagenes')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='imagenes')
     imageProduct = models.ImageField(upload_to='galeria_producto/')
     descripcion = models.CharField(max_length=200, blank=True)
-
     def __str__(self):
-        return f"Galeria: {self.event.name}"
+        return f"Galeria: {self.product.name}"
 
 #---------------------------------------------------------------------------------
 #EVENTOS
@@ -71,7 +75,7 @@ class ExclusiveFood(models.Model):
     event = models.ForeignKey(Events, on_delete=models.CASCADE, related_name='exclusive')
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True)
-    precio = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    precio = models.PositiveIntegerField() 
     image = models.ImageField(upload_to='alimentos/', blank=True, null=True)
     def __str__(self):
         return f"{self.nombre} ($ {self.precio})"
@@ -131,3 +135,16 @@ class PedidoItem(models.Model):
         return f"{self.producto.name} x{self.cantidad}"
     
 #---------------------------------------------------------------------------------
+
+#LOS BANNERS
+class Banner(models.Model):
+    image = models.ImageField(upload_to='banners/')
+    texto_boton = models.CharField(max_length=30, blank=True, verbose_name="Texto del botón")
+    link = models.CharField(max_length=200, blank=True, verbose_name="Enlace del botón")
+    orden = models.PositiveIntegerField(default=0, verbose_name="Orden de aparición")
+
+    class Meta:
+        ordering = ['orden']
+
+    def __str__(self):
+        return f"Banner #{self.id}"

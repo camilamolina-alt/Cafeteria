@@ -1,6 +1,18 @@
 from django import forms
-from cafeteria_app.models import Product, Category, Events
+from cafeteria_app.models import Product, Category, Events, ExclusiveFood, ImagenEvento,Banner
 from django.contrib.auth.forms import UserCreationForm
+
+
+class BannerForm(forms.ModelForm):
+    class Meta:
+        model = Banner
+        fields = ['image', 'texto_boton', 'link', 'orden']
+        labels = {
+            'image': 'Imagen',
+            'texto_boton': 'Texto del botón',
+            'link': 'Enlace',
+            'orden': 'Orden de aparición',
+        }
 
 
 class ProductoForm(forms.ModelForm):
@@ -16,12 +28,21 @@ class ProductoForm(forms.ModelForm):
     
     class Meta:
         model = Product
+<<<<<<< HEAD
         fields = ['category', 'name', 'price', 'descuento', 'details', 'image', 'is_new', 'is_best']
         labels = {
             'category': 'Categoría',
             'name': 'Nombre del producto',
             'price': 'Precio Original',
             'descuento': 'Descuento',
+=======
+        fields = ['category', 'name', 'price', 'stock', 'details', 'image', 'is_new', 'is_best']
+        labels = {
+            'category': 'Categoría',
+            'name': 'Nombre del producto',
+            'price': 'Precio',
+            'stock': 'Stock disponible',
+>>>>>>> 91f3e00900938ce7f2cbb4062ab7efcae7b14353
             'details': 'Descripción',
             'image': 'Imagen',
             'is_new': 'Nuedvo ingreso',
@@ -54,4 +75,24 @@ class EventoForm(forms.ModelForm):
             'fecha_fin': forms.DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
         }
 
-        
+class ExclusiveFoodForm(forms.ModelForm):
+    class Meta:
+        model = ExclusiveFood
+        fields = ['event', 'nombre', 'descripcion', 'precio', 'image']
+        labels = {
+            'event': 'Evento',
+            'nombre': 'Nombre del producto exclusivo',
+            'descripcion': 'Descripción',
+            'precio': 'Precio',
+            'image': 'Imagen',
+        }
+
+class ImagenEventoForm(forms.ModelForm):
+    class Meta:
+        model = ImagenEvento
+        fields = ['event', 'imagen', 'descripcion']
+        labels = {
+            'event': 'Evento',
+            'imagen': 'Imagen',
+            'descripcion': 'Descripción',
+        }
