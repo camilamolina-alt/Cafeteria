@@ -181,7 +181,32 @@ def checkout(request):
             producto = item['product']
             producto.stock -= item['quantity']
             producto.save()
-
+        try:
+            customer_name = request.POST.get('name', request.user.first_name)
+            email = request.POST.get('email', request.user.email)
+            template = get_template('cafeteria_app/email_cart_template.html')
+            context = {
+                'customer_name': customer_name,
+                'email': email,
+                'cart': cart,
+                'pedido': pedido,  # También le pasamos el ID del pedido por si quieres mostrarlo
+            }
+            content = template.render(context)
+            
+            # 3. Armamos y enviamos el correo
+            msg = EmailMultiAlternatives(
+                f'¡Confirmación de tu Pedido #{pedido.id}! - SHIBAL',
+                f'Hola {customer_name}, gracias por tu compra.',
+                settings.EMAIL_HOST_USER,
+                [email]
+            )
+            msg.attach_alternative(content, 'text/html')
+            msg.send()
+            
+        except Exception as e:
+            
+            print(f"Error al enviar el correo: {e}")
+            
         cart.clear()
         return render(request, 'cafeteria_app/finish.html', {'pedido': pedido})
     return render(request, 'cafeteria_app/checkout.html', {'cart': cart})
