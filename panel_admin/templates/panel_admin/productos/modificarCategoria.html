@@ -1,23 +1,51 @@
 {% extends 'panel_admin/base.html' %}
 {% load crispy_forms_tags %}
-{% block main %}
 
+{% block js %}
+{{ block.super }}
+<script>
+    function confirmarModificacionCategoria() {
+        Swal.fire({
+            "title": "¿Confirmar cambios?",
+            "text": "Vas a modificar los datos de esta categoría",
+            "icon": "warning",
+            "showCancelButton": true,
+            "confirmButtonText": "Sí, guardar",
+            "cancelButtonText": "No, cancelar",
+            "reverseButtons": true
+        })
+        .then(function(result) {
+            if (result.isConfirmed) {
+                document.getElementById('formModificarCategoria').submit();
+            }
+        });
+    }
+</script>
+{% endblock %}
+
+{% block main %}
 <br><br>
 <div class="col-12 col-md-6 offset-md-3">
-    <div class="class">
-        <h2 style="font-family: 'Montserrat', sans-serif; color: #e4228d;">Editar Categoría</h2>
-        <hr class="border-secondary opacity-25">
-        <br>
+    <div class="card">
         <div class="card-body">
+            <h2 style="font-family: 'Montserrat', sans-serif; color: #e4228d;">Editar Categoría</h2>
+            <hr class="border-secondary opacity-25">
+            <br>
             <div class="row">
-                <form action="" method="post">
+                <form action="" method="post" id="formModificarCategoria">
                     {% csrf_token %}
                     {{ form | crispy }}
 
-                    <div class="dflex- justify-content-center">
+                    <div class="d-flex justify-content-center gap-2">
                         <hr class="border-secondary opacity-25">
-                        <input type="submit" value="Editar" class="btn px-2 py-2" style="background-color: #FCB2D3; color: white; font-weight: bold; font-size: 1.1rem;">
-                        <input type="reset" value="Cancelar" class="btn btn-secondary">
+                        
+                        <button type="button" onclick="confirmarModificacionCategoria()" class="btn px-3 py-2" style="background-color: #FCB2D3; color: white; font-weight: bold; font-size: 1.1rem;">
+                            Editar
+                        </button>
+                        
+                        <a href="{% url 'admin_listar_categoria' %}" class="btn btn-secondary d-flex align-items-center">
+                            Cancelar
+                        </a>
                     </div>
                 </form>
                 {{ mensaje }}
@@ -25,5 +53,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

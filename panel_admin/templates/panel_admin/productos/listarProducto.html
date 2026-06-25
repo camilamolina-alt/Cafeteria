@@ -9,7 +9,7 @@
         Swal.fire({
             "title": "Estas seguro?",
             "text":"Esta accion no se puede deshacer",
-            "icon":"question",
+            "icon":"error",
             "showCancelButton":true,
             "confirmButtonText": "Sí, eliminar",
             "reverseButtons":true
@@ -21,6 +21,7 @@
         })
 
     }
+
 </script>
 {% endblock %}
 
@@ -77,6 +78,7 @@
                     {% endif %}
                 </td>
                 <td>
+                    
                     <a href="{% url 'admin_modificar_producto' p.id %}" class="btn btn-sm" style="background-color: #B28DFF; color: white;">Modificar</a>
                     <a href="#" onclick="eliminarProducto({{p.id}})" class="btn btn-sm" style="background-color: #db0c7e; color: white;">Eliminar</a>
                 </td>

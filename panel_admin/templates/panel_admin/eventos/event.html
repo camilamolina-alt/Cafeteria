@@ -1,10 +1,12 @@
 {% extends 'panel_admin/base.html' %}
 
 {% block main %}
+<br><br>
 <h2 class="mb-4" style="font-family: 'Montserrat', sans-serif; color: #e4228d;">Gestión de Eventos</h2>
 <hr class="border-secondary opacity-25 mb-4">
 
-<div class="row g-5 mb-5">
+<div class="row g-5 mb-5 justify-content-center">
+    
     <div class="col-md-4">
         <div class="card shadow-sm h-100" style="border-radius:5px">
             <div class="card-body text-center">
@@ -12,11 +14,12 @@
                 <br>
                 <hr>
                 <i class="bx bx-calendar-star fs-1 mb-2" style="color:#e4228d;"></i>
-                <p>Cantidad de eventos totales</p>
-                <a href="{% url 'admin_listar_evento' %}" class="btn btn-md" style="background-color: #e4228d;color:white;">IR</a>
+                <p>Cantidad de eventos totales: <strong>{{ event|length }}</strong></p>
+                <a href="{% url 'admin_listar_evento' %}" class="btn btn-md" style="background-color: #e4228d; color:white;">IR</a>
             </div>
         </div>
     </div>
+
     <div class="col-md-4">
         <div class="card shadow-sm h-100" style="border-radius:5px">
             <div class="card-body text-center">
@@ -25,10 +28,11 @@
                 <hr>
                 <i class="bx bx-calendar-plus fs-1 mb-2" style="color:#e4228d;"></i>
                 <p>Agregar eventos a la cartelera</p>
-                <a href="{% url 'admin_agregar_evento' %}" class="btn btn-md" style="background-color: #e4228d;color:white;">IR</a>
+                <a href="{% url 'admin_agregar_evento' %}" class="btn btn-md" style="background-color: #e4228d; color:white;">IR</a>
             </div>
         </div>
     </div>
+
     <div class="col-md-4">
         <div class="card shadow-sm h-100" style="border-radius:5px">
             <div class="card-body text-center">
@@ -37,10 +41,11 @@
                 <hr>
                 <i class="bx bx-food-menu fs-1 mb-2" style="color:#e4228d;"></i>
                 <p>Menú exclusivo por evento</p>
-                <a href="{% url 'admin_listar_exclusivo' %}" class="btn btn-md" style="background-color: #e4228d;color:white;">IR</a>
+                <a href="{% url 'admin_listar_exclusivo' %}" class="btn btn-md" style="background-color: #e4228d; color:white;">IR</a>
             </div>
         </div>
     </div>
+
     <div class="col-md-4">
         <div class="card shadow-sm h-100" style="border-radius:5px">
             <div class="card-body text-center">
@@ -49,7 +54,7 @@
                 <hr>
                 <i class="bx bx-images fs-1 mb-2" style="color:#e4228d;"></i>
                 <p>Fotos de cada evento</p>
-                <a href="{% url 'admin_listar_imagen_evento' %}" class="btn btn-md" style="background-color: #e4228d;color:white;">IR</a>
+                <a href="{% url 'admin_listar_imagen_evento' %}" class="btn btn-md" style="background-color: #e4228d; color:white;">IR</a>
             </div>
         </div>
     </div>
