@@ -2,6 +2,28 @@
 {% load crispy_forms_tags %}
 {% load humanize %}
 
+{%block js%}
+{{ block.super }}
+<script>
+    function eliminarProducto(id){
+        Swal.fire({
+            "title": "Estas seguro?",
+            "text":"Esta accion no se puede deshacer",
+            "icon":"question",
+            "showCancelButton":true,
+            "confirmButtonText": "Sí, eliminar",
+            "reverseButtons":true
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                window.location.href = "/panel_admin/eliminar-producto/" + id + "/";
+            }
+        })
+
+    }
+</script>
+{% endblock %}
+
 {% block main %}
 <br><br>
 <div class="card">
@@ -56,7 +78,7 @@
                 </td>
                 <td>
                     <a href="{% url 'admin_modificar_producto' p.id %}" class="btn btn-sm" style="background-color: #B28DFF; color: white;">Modificar</a>
-                    <a href="{% url 'admin_eliminar_producto' p.id %}" class="btn btn-sm" style="background-color: #db0c7e; color: white;">Eliminar</a>
+                    <a href="#" onclick="eliminarProducto({{p.id}})" class="btn btn-sm" style="background-color: #db0c7e; color: white;">Eliminar</a>
                 </td>
             </tr>
             {% endfor %}

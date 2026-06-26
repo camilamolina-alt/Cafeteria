@@ -2,39 +2,56 @@
 {% load crispy_forms_tags %}
 
 {% block main %}
-<br><br>
-<div class="card">
+<div class="card mt-3">
     <div class="card-body">
-        <h2 style="font-family: 'Montserrat', sans-serif; color: #e4228d;">Galería de eventos</h2>
+        <h2 class="mb-3" style="font-family: 'Montserrat', sans-serif; color: #e4228d;">Galería de eventos</h2>
         <hr class="border-secondary opacity-25">
 
         <a href="{% url 'admin_agregar_imagen_evento' %}" class="btn btn-sm mb-3" style="background-color: #FCB2D3; color: white; font-weight: bold;">+ Agregar imagen</a>
 
-        <table class="table table-striped table-hover table-responsive-sm">
-            <tr>
-                <th>Imagen</th>
-                <th>Evento</th>
-                <th>Descripción</th>
-                <th>Opciones</th>
-            </tr>
-
-            {% for img in imagenes %}
-            <tr>
-                <td>
-                    {% if img.imagen %}
-                        <img src="{{ img.imagen.url }}" width="50" alt="{{ img.descripcion }}">
-                    {% endif %}
-                </td>
-                <td>{{ img.event|title }}</td>
-                <td>{{ img.descripcion }}</td>
-                <td>
-                    <a href="{% url 'admin_modificar_imagen_evento' img.id %}" class="btn btn-sm" style="background-color: #B28DFF; color: white;">Modificar</a>
-                    <a href="{% url 'admin_eliminar_imagen_evento' img.id %}" class="btn btn-sm" style="background-color: #db0c7e; color: white;">Eliminar</a>
-                </td>
-            </tr>
-            {% endfor %}
-
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Evento</th>
+                        <th>Orden</th>
+                        <th>Sección</th>
+                        <th>Descripción</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for img in imagenes %}
+                    <tr>
+                        <td>
+                            {% if img.imagen %}
+                                <img src="{{ img.imagen.url }}" width="50" alt="{{ img.descripcion }}">
+                            {% endif %}
+                        </td>
+                        <td>{{ img.event|title }}</td>
+                        <td>{{ img.orden }}</td>
+                        <td>
+                            {% if img.orden < 2 %}
+                                <span class="badge bg-info">Mosaico</span>
+                            {% else %}
+                                <span class="badge bg-secondary">Galería</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ img.descripcion }}</td>
+                        <td>
+                            <a href="{% url 'admin_modificar_imagen_evento' img.id %}" class="btn btn-sm" style="background-color: #B28DFF; color: white;">Modificar</a>
+                            <a href="{% url 'admin_eliminar_imagen_evento' img.id %}" class="btn btn-sm" style="background-color: #db0c7e; color: white;">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">No hay imágenes registradas.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 {% endblock %}

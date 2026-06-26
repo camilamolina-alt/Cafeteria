@@ -8,8 +8,8 @@ class BannerForm(forms.ModelForm):
         model = Banner
         fields = ['image', 'texto_boton', 'link', 'orden']
         labels = {
-            'image': 'Imagen',
-            'texto_boton': 'Texto del botón',
+            'image': 'Imagen del banner',
+            'texto_boton': 'Texto del botón de enlace',
             'link': 'Enlace',
             'orden': 'Orden de aparición',
         }
@@ -71,9 +71,10 @@ class ExclusiveFoodForm(forms.ModelForm):
 class ImagenEventoForm(forms.ModelForm):
     class Meta:
         model = ImagenEvento
-        fields = ['event', 'imagen', 'descripcion']
+        fields = ['event', 'imagen', 'orden', 'descripcion']
         labels = {
             'event': 'Evento',
             'imagen': 'Imagen',
+            'orden': 'Posición (0 y 1 van al mosaico superior, 2 en adelante a la galería)',
             'descripcion': 'Descripción',
         }

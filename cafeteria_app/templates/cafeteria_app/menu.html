@@ -53,14 +53,17 @@
                 <p>{{ product.details }}</p>
 
                 {% if product.stock > 0 %}
-                    <a href="{% url 'add_to_cart' product.id %}" class="btn" style="background-color: #FCB2D3; color: white; border-radius: 50px;">
-                        Agregar al Carro
-                    </a>
-                {% else %}
-                    <span class="btn disabled" style="background-color: #ccc; color: white; border-radius: 50px;">
-                        Agotado
-                    </span>
-                {% endif %}
+    <form action="{% url 'add_to_cart' product.id %}" method="POST" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn" style="background-color: #FCB2D3; color: white; border-radius: 50px; border: none; padding: 8px 20px;">
+            Agregar al Carro
+        </button>
+    </form>
+{% else %}
+    <span class="btn disabled" style="background-color: #ccc; color: white; border-radius: 50px;">
+        Agotado
+    </span>
+{% endif %}
             </div>
         </div>
         {% endfor %}
