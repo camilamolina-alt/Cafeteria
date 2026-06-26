@@ -1,3 +1,4 @@
+from django.views import View
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout
@@ -7,7 +8,6 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .cart import Cart
 from .models import Product, Category, CategoryEvents, Events,Pedido, PedidoItem,Banner
-from django.views import View
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from core import settings
@@ -46,7 +46,7 @@ def ejemplo(request):
 
 def home(request):
     Product_all = Product.objects.all()
-    banners = Banner.objects.all()   # ← nuevo
+    banners = Banner.objects.all() 
 
     #para los carruseles con ids dinamicas
     ##filtro de nuevos
@@ -59,7 +59,7 @@ def home(request):
         "products" : Product_all,
         "group_new" : group_new,
         "group_best" : group_best,
-        "banners" : banners,   # ← nuevo
+        "banners" : banners,  
     }
     return render(request, 'cafeteria_app/index.html', context)
 def shop(request):
@@ -189,11 +189,9 @@ def checkout(request):
                 'customer_name': customer_name,
                 'email': email,
                 'cart': cart,
-                'pedido': pedido,  # También le pasamos el ID del pedido por si quieres mostrarlo
+                'pedido': pedido, 
             }
-            content = template.render(context)
-            
-            # 3. Armamos y enviamos el correo
+            content = template.render(context)  
             msg = EmailMultiAlternatives(
                 f'¡Confirmación de tu Pedido #{pedido.id}! - SHIBAL',
                 f'Hola {customer_name}, gracias por tu compra.',
@@ -250,3 +248,33 @@ class Send(View):
         messages.success(request, 'Correo enviado correctamente')
         
         return redirect(request.META.get('HTTP_REFERER', '/'))
+
+##-------------------------------------------------------------------------------------------##
+#PROMOCIONES
+def promotions_view(request):
+    promociones = Promotion.objects.prefetch_related('productos').all()
+    return render(request, 'cafeteria_app/promotions.html', {
+        'promociones': promociones,
+    })
+
+def promotion_detail(request, id):
+    promo = get_object_or_404(Promotion, id=id)
+    return render(request, 'cafeteria_app/promotion_detail.html', {
+        'promo': promo,
+        'productos_promo': promo.productos.all(),
+    })
+
+@login_required
+def add_promo_to_cart(request, promo_id):
+    cart = Cart(request)
+    promo_product = get_object_or_404(PromoProduct, id=promo_id)
+    quantity = int(request.POST.get('quantity', 1))
+    cart.add(product=promo_product, quantity=quantity)
+    return redirect('cart')
+
+@login_required
+def remove_from_promo_cart(request, promo_id):
+    cart = Cart(request)
+    promo_product = get_object_or_404(PromoProduct, id=promo_id)
+    cart.remove(promo_product)
+    return redirect('cart')

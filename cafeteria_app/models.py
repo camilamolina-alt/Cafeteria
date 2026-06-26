@@ -91,11 +91,6 @@ class ImagenEvento(models.Model):
         return f"Galeria: {self.event.name}"
 
 #---------------------------------------------------------------------------------
-
-class Promotion(models.Model):
-    name = models.CharField(max_length=100)
-    discount = models.DecimalField(max_digits=5, decimal_places=2)
-    target_food = models.OneToOneField(ExclusiveFood, on_delete=models.CASCADE)
 #---------------------------------------------------------------------------------
 
 #Carro

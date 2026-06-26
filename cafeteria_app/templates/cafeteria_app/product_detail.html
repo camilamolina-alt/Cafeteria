@@ -2,7 +2,6 @@
 {% load static %}
 {% block banner_titulo %}DETALLES{% endblock %}
 
-
 {% block main_content %}
 <div class="container py-5">
     <div class="row g-5">
@@ -11,58 +10,72 @@
         </div>
 
         <div class="col-md-6">
-            <h1 style="font-size:40px ;font-family: 'Montserrat', sans-serif; color: #7B7171;font-weight :light;">{{ product.name }}</h1>
+            <h1 style="font-size:40px ;font-family: 'Montserrat', sans-serif; color: #7B7171; font-weight: light;">{{ product.name }}</h1>
+            
             <div class="d-flex align-items-center gap-2 mb-3">
-    {% if product.descuento > 0 %}
-        <span style="color: #ff5c5c; font-weight: 600; font-size: 1.8rem; font-family: 'Montserrat', sans-serif;">{{ product.descuento }}%</span>
-        <span style="color: #8b807e; font-weight: bold; font-size: 1.8rem; font-family: 'Montserrat', sans-serif;">${{ product.precio_final }}</span>
-        <span class="text-decoration-line-through" style="color: #b5b5b5; font-size: 1.2rem; font-family: 'Montserrat', sans-serif;">${{ product.price }}</span>
-    {% else %}
-        <span style="color: #8b807e; font-weight: bold; font-size: 1.8rem; font-family: 'Montserrat', sans-serif;">Precio: ${{ product.price }}</span>
-    {% endif %}
-</div>
+                {% if product.descuento > 0 %}
+                    <span style="color: #ff5c5c; font-weight: 600; font-size: 1.8rem; font-family: 'Montserrat', sans-serif;">{{ product.descuento }}%</span>
+                    <span style="color: #8b807e; font-weight: bold; font-size: 1.8rem; font-family: 'Montserrat', sans-serif;">${{ product.precio_final }}</span>
+                    <span class="text-decoration-line-through" style="color: #b5b5b5; font-size: 1.2rem; font-family: 'Montserrat', sans-serif;">${{ product.price }}</span>
+                {% else %}
+                    <span style="color: #8b807e; font-weight: bold; font-size: 1.8rem; font-family: 'Montserrat', sans-serif;">Precio: ${{ product.price }}</span>
+                {% endif %}
+            </div>
+            
             <hr class="border-secondary opacity-25">          
-        <br>
-        <p style="font-size:12px; font-family: 'Montserrat', sans-serif; color: #7B7171;">Disponibilidad de entrega depende de stocks en tienda</p>
+            <br>
+            <p style="font-size:12px; font-family: 'Montserrat', sans-serif; color: #7B7171;">Disponibilidad de entrega depende de stocks en tienda</p>
 
-        <br>
+            <br>
             <hr class="border-secondary opacity-25">        
             <p style="font-size:20px ;font-family: 'Montserrat', sans-serif; color: #7B7171;">{{ product.details }}</p>
-        <br>
-        <br>
+            <br>
+            <br>
 
             <hr class="border-secondary opacity-25">          
-            <form action="{% url 'add_to_cart' product.id %}" method="POST">
-                {% csrf_token %}                
-                <div class="d-flex align-items-center justify-content-start gap-3 mt-4">
-                    
-                    <div class="producto-controles d-flex align-items-center border rounded-pill overflow-hidden">
-                        <button type="button" class="btn btn-light border-0 px-3" onclick="cambiarCantidad(this, -1)">−</button>
-                        <span class="cantidad px-3" style="min-width: 30px; text-align: center;">1</span>
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="button" class="btn btn-light border-0 px-3" onclick="cambiarCantidad(this, 1)">+</button>
-                    </div>
+            
+            {% if product.stock > 0 %}
+                <form action="{% url 'add_to_cart' product.id %}" method="POST">
+                    {% csrf_token %}                
+                    <div class="d-flex align-items-center justify-content-start gap-3 mt-4">
+                        
+                        <div class="producto-controles d-flex align-items-center border rounded-pill overflow-hidden"
+                            data-stock="{{ product.stock }}">
+                            <button type="button" class="btn btn-light border-0 px-3 btn-menos" onclick="cambiarCantidad(this, -1)">−</button>
+                            <span class="cantidad px-3" style="min-width: 30px; text-align: center; font-weight: bold;">1</span>
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="button" class="btn btn-light border-0 px-3 btn-mas" onclick="cambiarCantidad(this, 1)">+</button>
+                        </div>
 
-                    <button type="submit" class="btn px-5 py-3"
-                            style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold; font-size: 1.1rem; border:none;">
-                        Agregar a la bolsa
-                    </button>
+                        <button type="submit" class="btn px-5 py-3"
+                                style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold; font-size: 1.1rem; border:none;">
+                            Agregar a la bolsa
+                        </button>
+                    </div>
+                </form>
+                
+                <hr class="border-secondary opacity-25">
+                <p style="font-size: 1.2rem; font-weight: bold; font-family: 'Montserrat', sans-serif; color: #7B7171;">
+                    Total: $<span id="total-precio">{{ product.precio_final }}</span>
+                </p>
+                <div id="precio-detail" data-precio="{{ product.precio_final }}" style="display:none;"></div>
+            
+            {% else %}
+                <div class="mt-4">
+                    <span class="btn disabled px-5 py-3" style="background-color: #ccc; color: white; border-radius: 50px; font-weight: bold; font-size: 1.1rem;">
+                        Agotado temporalmente
+                    </span>
                 </div>
-            </form>
-            <hr class="border-secondary opacity-25">
-            <p style="font-size: 1.2rem; font-weight: bold;">
-            Total: $<span id="total-precio">{{ product.precio_final }}</span>
-            </p>
-            <div id="precio-detail" data-precio="{{ product.precio_final }}" style="display:none;"></div>
+            {% endif %}
+            
             <hr class="border-secondary opacity-25">
             
         </div>
     </div>
 
     <hr class="border-secondary opacity-25" style="margin-top: 80px; margin-bottom: 60px;">
-</div>
 
-<div class="row">
+    <div class="row">
         <div class="col-12">
             <ul class="nav nav-tabs justify-content-center" id="productTabs" role="tablist">
                 <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#detalles" style="color: #7B7171;">Detalles</button></li>
@@ -72,7 +85,9 @@
             <div class="tab-content mt-4 text-center">
                 <div class="tab-pane fade show active" id="detalles">
                     {% for imgProduct in imageProduct %}
-                    <p>sin foto :D</p>
+                        <p>sin foto :D</p>
+                    {% empty %}
+                        <p style="color: #7B7171;">No hay imágenes adicionales.</p>
                     {% endfor %}
                 </div>
                 <div class="tab-pane fade" id="reseñas"><p>Sin reseñas por ahora</p></div>
@@ -81,9 +96,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 <script src="{% static 'cafeteria_app/js/contadores.js' %}"></script>
 {% endblock %}
