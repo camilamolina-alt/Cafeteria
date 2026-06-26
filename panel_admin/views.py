@@ -5,7 +5,7 @@ from panel_admin.forms import ProductoForm, CategoryForm, EventoForm, ExclusiveF
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
 from django.db.models import Sum
-from cafeteria_app.models import Category, Product, Events, Pedido, ExclusiveFood, ImagenEvento, Banner
+from cafeteria_app.models import Category, Product, Events, Pedido, ExclusiveFood, ImagenEvento, Banner, PedidoItem
 
 def es_admin(user):
     return user.is_staff
@@ -372,3 +372,24 @@ def eliminar_banner(request, id):
     banner.delete()
     messages.success(request, 'eliminado correctamente')
     return redirect(to="admin_listar_banner")
+
+##registro de pedidos (compras)##
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
+def listar_pedido(request):
+    pedidos = Pedido.objects.select_related('usuario').order_by('-fecha')
+    data = {'pedidos': pedidos}
+    return render(request, 'panel_admin/pedidos/listarPedido.html', data)
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
+def detalle_pedido(request, id):
+    pedido = get_object_or_404(Pedido, id=id)
+    items = pedido.items.select_related('producto').all()
+    data = {
+        'pedido': pedido,
+        'items': items,
+    }
+    return render(request, 'panel_admin/pedidos/detallePedido.html', data)

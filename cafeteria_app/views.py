@@ -133,7 +133,7 @@ def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id) 
     quantity = int(request.POST.get('quantity', 1))
     cart.add(product=product, quantity=quantity)
-    return redirect('cart') 
+    return redirect(request.META.get('HTTP_REFERER','/')) 
 
 @login_required
 def remove_from_cart(request, product_id):
@@ -250,31 +250,3 @@ class Send(View):
         return redirect(request.META.get('HTTP_REFERER', '/'))
 
 ##-------------------------------------------------------------------------------------------##
-#PROMOCIONES
-def promotions_view(request):
-    promociones = Promotion.objects.prefetch_related('productos').all()
-    return render(request, 'cafeteria_app/promotions.html', {
-        'promociones': promociones,
-    })
-
-def promotion_detail(request, id):
-    promo = get_object_or_404(Promotion, id=id)
-    return render(request, 'cafeteria_app/promotion_detail.html', {
-        'promo': promo,
-        'productos_promo': promo.productos.all(),
-    })
-
-@login_required
-def add_promo_to_cart(request, promo_id):
-    cart = Cart(request)
-    promo_product = get_object_or_404(PromoProduct, id=promo_id)
-    quantity = int(request.POST.get('quantity', 1))
-    cart.add(product=promo_product, quantity=quantity)
-    return redirect('cart')
-
-@login_required
-def remove_from_promo_cart(request, promo_id):
-    cart = Cart(request)
-    promo_product = get_object_or_404(PromoProduct, id=promo_id)
-    cart.remove(promo_product)
-    return redirect('cart')

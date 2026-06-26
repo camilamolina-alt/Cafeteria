@@ -3,6 +3,8 @@ from .views import agregar_producto , listar_producto, modificar_producto, panel
 from .views import events, agregar_evento, listar_evento, modificar_evento, eliminar_evento, login_admin
 from .views import agregar_exclusivo,listar_exclusivo,modificar_exclusivo,eliminar_exclusivo, agregar_imagen_evento,modificar_imagen_evento,eliminar_imagen_evento,listar_imagen_evento
 from .views import agregar_banner,listar_banner,modificar_banner,eliminar_banner
+from .views import agregar_banner,listar_banner,modificar_banner,eliminar_banner
+from .views import listar_pedido, detalle_pedido
 
 urlpatterns = [
     path('', panel_admin, name='admin_panel_admin'),
@@ -41,4 +43,8 @@ path('imagenes-evento/agregar/', agregar_imagen_evento, name='admin_agregar_imag
     path('imagenes-evento/listar/', listar_imagen_evento, name='admin_listar_imagen_evento'),
     path('imagenes-evento/modificar/<id>/', modificar_imagen_evento, name='admin_modificar_imagen_evento'),
     path('imagenes-evento/eliminar/<id>/', eliminar_imagen_evento, name='admin_eliminar_imagen_evento'),
+
+##
+    path('pedidos/listar/', listar_pedido, name='admin_listar_pedido'),
+    path('pedidos/detalle/<id>/', detalle_pedido, name='admin_detalle_pedido'),
 ]
