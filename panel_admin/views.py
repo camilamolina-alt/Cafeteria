@@ -26,7 +26,7 @@ def login_admin(request):
         auth_login(request, user)
         return redirect('admin_panel_admin')
 
-@login_required
+@login_required(login_url='login_admin')
 @user_passes_test(es_admin)
 def panel_admin(request):
     top_productos = Product.objects.annotate(
@@ -42,10 +42,16 @@ def panel_admin(request):
     }
     return render(request, 'panel_admin/panel_admin.html', data)
 
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def products(request):
     products = Product.objects.all()
     return render(request, 'panel_admin/productos/products.html', {'products': products})
 
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def agregar_producto(request):
     data={
         'form': ProductoForm()
@@ -62,6 +68,9 @@ def agregar_producto(request):
 
     return render (request,'panel_admin/productos/agregarProducto.html',data)
 
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def listar_producto(request):
     productos = Product.objects.all()
 
@@ -70,6 +79,9 @@ def listar_producto(request):
     }
     return render (request,'panel_admin/productos/listarProducto.html', data)
 
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def modificar_producto(request,id):
     producto = get_object_or_404(Product, id = id)
     data = {
@@ -85,6 +97,10 @@ def modificar_producto(request,id):
             data["form"] = formulario
     return render (request,'panel_admin/productos/modificarProducto.html',data)
 
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def eliminar_producto(request, id):
     producto = get_object_or_404(Product, id = id)
     producto.delete()
@@ -92,6 +108,11 @@ def eliminar_producto(request, id):
     return redirect(to="admin_listar_producto")
 
 ###Para las categorias###
+
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def agregar_categoria(request):
     data = {
         'form': CategoryForm()
@@ -108,6 +129,9 @@ def agregar_categoria(request):
 
     return render(request, 'panel_admin/productos/agregarCategoria.html', data)
 
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def listar_categoria(request):
     categorias = Category.objects.all()
 
@@ -116,6 +140,9 @@ def listar_categoria(request):
     }
     return render(request, 'panel_admin/productos/listarCategoria.html', data)
 
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def modificar_categoria(request, id):
     categoria = get_object_or_404(Category, id=id)
     data = {
@@ -130,23 +157,36 @@ def modificar_categoria(request, id):
             data["form"] = formulario
     return render(request, 'panel_admin/productos/modificarCategoria.html', data)
 
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def eliminar_categoria(request, id):
     categoria = get_object_or_404(Category, id=id)
     categoria.delete()
+    messages.success(request, 'eliminado correctamente')
     return redirect(to="admin_listar_categoria")
 
 ##Inicio de vistas para eventos 
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def events(request):
     eventos = Events.objects.all()
     return render(request, 'panel_admin/eventos/event.html', {'event': eventos})
 
 
-
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def listar_evento(request):
     eventos = Events.objects.all()
     data = {'eventos': eventos}
     return render(request, 'panel_admin/eventos/listarEvento.html', data)
 
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def agregar_evento(request):
     data = {'form': EventoForm()}
     if request.method == 'POST':
@@ -158,6 +198,10 @@ def agregar_evento(request):
             data["form"] = formulario
     return render(request, 'panel_admin/eventos/agregarEvento.html', data)
 
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def modificar_evento(request, id):
     evento = get_object_or_404(Events, id=id)
     data = {'form': EventoForm(instance=evento)}
@@ -170,17 +214,28 @@ def modificar_evento(request, id):
             data["form"] = formulario
     return render(request, 'panel_admin/eventos/modificarEvento.html', data)
 
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def eliminar_evento(request, id):
     evento = get_object_or_404(Events, id=id)
     evento.delete()
+    messages.success(request, 'eliminado correctamente')
     return redirect(to="admin_listar_evento")
 
 ##exclusivo del evento###
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def listar_exclusivo(request):
     exclusivos = ExclusiveFood.objects.all()
     data = {'exclusivos': exclusivos}
     return render(request, 'panel_admin/eventos/listarExclusivo.html', data)
 
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def agregar_exclusivo(request):
     data = {'form': ExclusiveFoodForm()}
     if request.method == 'POST':
@@ -192,6 +247,10 @@ def agregar_exclusivo(request):
             data["form"] = formulario
     return render(request, 'panel_admin/eventos/agregarExclusivo.html', data)
 
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def modificar_exclusivo(request, id):
     exclusivo = get_object_or_404(ExclusiveFood, id=id)
     data = {'form': ExclusiveFoodForm(instance=exclusivo)}
@@ -204,16 +263,29 @@ def modificar_exclusivo(request, id):
             data["form"] = formulario
     return render(request, 'panel_admin/eventos/modificarExclusivo.html', data)
 
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def eliminar_exclusivo(request, id):
     exclusivo = get_object_or_404(ExclusiveFood, id=id)
     exclusivo.delete()
+    messages.success(request, 'eliminado correctamente')
     return redirect(to="admin_listar_exclusivo")
 
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def listar_imagen_evento(request):
     imagenes = ImagenEvento.objects.all()
     data = {'imagenes': imagenes}
     return render(request, 'panel_admin/eventos/listarImagenEvento.html', data)
 
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def agregar_imagen_evento(request):
     data = {'form': ImagenEventoForm()}
     if request.method == 'POST':
@@ -225,6 +297,10 @@ def agregar_imagen_evento(request):
             data["form"] = formulario
     return render(request, 'panel_admin/eventos/agregarImagenEvento.html', data)
 
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def modificar_imagen_evento(request, id):
     imagen = get_object_or_404(ImagenEvento, id=id)
     data = {'form': ImagenEventoForm(instance=imagen)}
@@ -237,17 +313,30 @@ def modificar_imagen_evento(request, id):
             data["form"] = formulario
     return render(request, 'panel_admin/eventos/modificarImagenEvento.html', data)
 
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def eliminar_imagen_evento(request, id):
     imagen = get_object_or_404(ImagenEvento, id=id)
     imagen.delete()
+    messages.success(request, 'eliminado correctamente')
     return redirect(to="admin_listar_imagen_evento")
 
 ##BANNER
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def listar_banner(request):
     banners = Banner.objects.all()
     data = {'banners': banners}
     return render(request, 'panel_admin/banners/listarBanner.html', data)
 
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def agregar_banner(request):
     data = {'form': BannerForm()}
     if request.method == 'POST':
@@ -259,6 +348,9 @@ def agregar_banner(request):
             data["form"] = formulario
     return render(request, 'panel_admin/banners/agregarBanner.html', data)
 
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def modificar_banner(request, id):
     banner = get_object_or_404(Banner, id=id)
     data = {'form': BannerForm(instance=banner)}
@@ -271,7 +363,12 @@ def modificar_banner(request, id):
             data["form"] = formulario
     return render(request, 'panel_admin/banners/modificarBanner.html', data)
 
+
+
+@login_required(login_url='login_admin')
+@user_passes_test(es_admin)
 def eliminar_banner(request, id):
     banner = get_object_or_404(Banner, id=id)
     banner.delete()
+    messages.success(request, 'eliminado correctamente')
     return redirect(to="admin_listar_banner")

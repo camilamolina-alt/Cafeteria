@@ -4,8 +4,8 @@
 
 <br><br>
 <div class="col-12 col-md-6 offset-md-3">
-    <div class="class">
-        <h2 style="font-family: 'Montserrat', sans-serif; color: #e4228d;">Editar Banner</h2>
+    <div class="card">
+        <h2 style="font-family: 'Montserrat', sans-serif; color: #e4228d; padding-top: 20px; padding-left: 20px;">Editar Banner</h2>
         <hr class="border-secondary opacity-25">
         <br>
         <div class="card-body">
@@ -14,10 +14,12 @@
                     {% csrf_token %}
                     {{ form | crispy }}
 
-                    <div class="dflex- justify-content-center">
+                    <div class="d-flex justify-content-center">
                         <hr class="border-secondary opacity-25">
-                        <input type="submit" value="Editar" class="btn px-2 py-2" style="background-color: #FCB2D3; color: white; font-weight: bold; font-size: 1.1rem;">
-                        <input type="reset" value="Cancelar" class="btn btn-secondary">
+                        
+                        <input type="submit" value="Guardar Cambios" class="btn px-2 py-2" style="background-color: #FCB2D3; color: white; font-weight: bold; font-size: 1.1rem; margin-right: 10px;">
+                        
+                        <a href="{% url 'admin_listar_banner' %}" class="btn btn-secondary d-flex align-items-center">Cancelar</a>
                     </div>
                 </form>
                 {{ mensaje }}

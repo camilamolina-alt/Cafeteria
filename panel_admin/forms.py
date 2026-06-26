@@ -16,13 +16,24 @@ class BannerForm(forms.ModelForm):
 
 
 class ProductoForm(forms.ModelForm):
+    
+    descuento = forms.IntegerField(
+        label = 'Descuento',
+        required=False,
+        min_value=0,
+        max_value=100,
+        initial=0,
+        help_text='ingresar un valor de 0 a 100, dejar en 0 si no hay descuento'
+    )
+    
     class Meta:
         model = Product
-        fields = ['category', 'name', 'price', 'stock', 'details', 'image', 'is_new', 'is_best']
+        fields = ['category', 'name', 'price', 'descuento', 'stock', 'details', 'image', 'is_new', 'is_best']
         labels = {
             'category': 'Categoría',
             'name': 'Nombre del producto',
             'price': 'Precio',
+            'descuento': 'Descuento',
             'stock': 'Stock disponible',
             'details': 'Descripción',
             'image': 'Imagen',

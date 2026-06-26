@@ -3,8 +3,6 @@
 
 {% block content %}
 
-
-<!-- Banner Carousel -->
 <!-- Banner Carousel -->
 <div id="carousel-Indicators" class="carousel slide mt-5" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -119,8 +117,8 @@
         {% endif %}
       </div>
       <div class="modal-footer justify-content-center border-0">
-        <a href="{% url 'add_to_cart' product.id %}" class="btn px-4 py-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
-          Agregar al Carro
+        <a href="{% url 'products_detail' product.id %}" class="btn px-4 py-2" style="background-color: #FCB2D3; color: white; border-radius: 10px; font-weight: bold; letter-spacing: 1px;">
+          Ir a producto
         </a>
       </div>
     </div>

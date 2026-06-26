@@ -1,9 +1,12 @@
 {% extends 'panel_admin/base.html' %}
 
 {% block main %}
-<div class="row g-5 mb-5">
+<br><br>
+<h2 class="mb-4" style="font-family: 'Montserrat', sans-serif; color: #e4228d;">Gestión de Productos</h2>
+<hr class="border-secondary opacity-25 mb-4">
+
+<div class="row g-5 mb-5 justify-content-center">
     
-    <!-- Tarjeta 1 -->
     <div class="col-md-4">
         <div class="card shadow-sm h-100" style="border-radius:5px">
             <div class="card-body text-center">
@@ -11,11 +14,12 @@
                 <br>
                 <hr>
                 <i class="bx bx-edit bx-remove-padding fs-1 mb-2" style="color:#e4228d;"></i>
-                <p>Total productos existentes</p>
-                <a href="{% url 'admin_listar_producto' %}" class="btn btn-md" style="background-color: #e4228d;color:white;">IR</a>
+                <p>Total productos existentes: <strong>{{ products|length }}</strong></p>
+                <a href="{% url 'admin_listar_producto' %}" class="btn btn-md" style="background-color: #e4228d; color:white;">IR</a>
             </div>
         </div>
     </div>
+
     <div class="col-md-4">
         <div class="card shadow-sm h-100" style="border-radius:5px">
             <div class="card-body text-center">
@@ -24,10 +28,11 @@
                 <hr>
                 <i class="bx bxs-cart-add fs-1 mb-2" style="color:#e4228d;"></i>
                 <p>Agregar productos al inventario</p>
-                <a href="{% url 'admin_agregar_producto' %}" class="btn btn-md" style="background-color: #e4228d;color:white;">IR</a>
+                <a href="{% url 'admin_agregar_producto' %}" class="btn btn-md" style="background-color: #e4228d; color:white;">IR</a>
             </div>
         </div>
     </div>
+
     <div class="col-md-4">
         <div class="card shadow-sm h-100" style="border-radius:5px">
             <div class="card-body text-center">
@@ -36,7 +41,7 @@
                 <hr>
                 <i class="bx bx-list-check fs-1 mb-2" style="color:#e4228d;"></i>
                 <p>Crear y organizar categorías</p>
-                <a href="{% url 'admin_listar_categoria' %}" class="btn btn-md" style="background-color: #e4228d;color:white;">IR</a>
+                <a href="{% url 'admin_listar_categoria' %}" class="btn btn-md" style="background-color: #e4228d; color:white;">IR</a>
             </div>
         </div>
     </div>

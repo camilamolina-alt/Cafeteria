@@ -37,3 +37,12 @@ body{
 .sidebar {
     min-height: 100vh !important;
 }
+
+#menuProductos .nav-link {
+    font-size: 0.75rem !important; 
+    color: #999 !important;       
+    padding: 5px 0 !important;    
+}
+.nav-link[data-bs-toggle="collapse"] {
+    cursor: pointer;
+}

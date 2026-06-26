@@ -1,30 +1,56 @@
-
 {% extends 'panel_admin/base.html' %}
 {% load crispy_forms_tags %}
-{% block main %}
 
+{% block js %}
+{{ block.super }}
+<script>
+    function confirmarModificacionProducto() {
+        Swal.fire({
+            "title": "¿Confirmar cambios?",
+            "text": "Vas a modificar los datos de este producto",
+            "icon": "warning",
+            "showCancelButton": true,
+            "confirmButtonText": "Sí, guardar",
+            "cancelButtonText": "No, cancelar",
+            "reverseButtons": true
+        })
+        .then(function(result) {
+            if (result.isConfirmed) {
+                document.getElementById('formModificarProducto').submit();
+            }
+        });
+    }
+</script>
+{% endblock %}
+
+{% block main %}
 <br><br>
-    <div class="col-12 col-md-6 offset-md-3">
-        <div class="class">
-            <h2 style="font-family: 'Montserrat', sans-serif;color: #e4228d;">Editar Productos</h2>
+<div class="col-12 col-md-6 offset-md-3">
+    <div class="card">
+        <div class="card-body">
+            <h2 style="font-family: 'Montserrat', sans-serif; color: #e4228d;">Editar Producto</h2>
             <hr class="border-secondary opacity-25">
             <br>
-            <div class="card-body">
-                <div class="row">
-                    <form action="" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{form | crispy}}
+            <div class="row">
+                <form action="" method="post" enctype="multipart/form-data" id="formModificarProducto">
+                    {% csrf_token %}
+                    {{ form|crispy }}
 
-                        <div class="dflex- justify-content-center">
-                            <hr class="border-secondary opacity-25">
-                        <input type="submit" value="Editar" class="btn px-2 py-2"style="background-color: #FCB2D3; color: white; font-weight: bold; font-size: 1.1rem;">
-                        <input type="reset" value="Cancelar "class="btn btn-secondary">
-                        </div>
-                    </form>
-                    {{mensaje}}
-                </div>
+                    <div class="d-flex justify-content-center gap-2">
+                        <hr class="border-secondary opacity-25">
+                        
+                        <button type="button" onclick="confirmarModificacionProducto()" class="btn px-3 py-2" style="background-color: #FCB2D3; color: white; font-weight: bold; font-size: 1.1rem;">
+                            Editar
+                        </button>
+                        
+                        <a href="{% url 'admin_listar_producto' %}" class="btn btn-secondary d-flex align-items-center">
+                            Cancelar
+                        </a>
+                    </div>
+                </form>
+                {{ mensaje }}
             </div>
         </div>
     </div>
-
+</div>
 {% endblock %}

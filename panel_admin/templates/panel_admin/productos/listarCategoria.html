@@ -1,6 +1,29 @@
 {% extends 'panel_admin/base.html' %}
 {% load crispy_forms_tags %}
 
+{%block js%}
+{{ block.super }}
+<script>
+    function eliminarCategoria(id){
+        Swal.fire({
+            "title": "Estas seguro?",
+            "text":"Esta accion no se puede deshacer",
+            "icon":"question",
+            "showCancelButton":true,
+            "confirmButtonText": "Sí, eliminar",
+            "reverseButtons":true
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                window.location.href = "/panel_admin/categorias/eliminar/" + id + "/";
+            }
+        })
+
+    }
+</script>
+{% endblock %}
+
+
 {% block main %}
 <br><br>
 <div class="card">
@@ -23,7 +46,7 @@
                     <td>{{ c.name|title }}</td>
                     <td>
                         <a href="{% url 'admin_modificar_categoria' c.id %}" class="btn btn-sm" style="background-color: #B28DFF; color: white;">Modificar</a>
-                        <a href="{% url 'admin_eliminar_categoria' c.id %}" class="btn btn-sm" style="background-color: #db0c7e; color: white;">Eliminar</a>
+                        <a href="#" onclick="eliminarCategoria({{c.id}})" class="btn btn-sm" style="background-color: #db0c7e; color: white;">Eliminar</a>
                     </td>
                 </tr>
                 {% endfor %}
