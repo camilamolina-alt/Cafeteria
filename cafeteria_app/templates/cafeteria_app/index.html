@@ -17,11 +17,11 @@
   <div class="carousel-inner">
     {% for banner in banners %}
     <div class="carousel-item {% if forloop.first %}active{% endif %}">
-      <img src="{{ banner.image.url }}" class="d-block w-100" alt="Banner {{ forloop.counter }}">
+      <img src="{{ banner.image.url }}" class="d-block w-100" alt="Banner {{ forloop.counter0 }}">
       {% if banner.texto_boton and banner.link %}
       <div class="carousel-caption d-flex justify-content-center" style="bottom: 30px;">
         <a href="{{ banner.link }}" class="btn px-4 py-2"
-          style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold;">
+          style="background-color: #e31b75; color: white; border-radius: 50px; font-weight: bold;">
           {{ banner.texto_boton }}
         </a>
       </div>
