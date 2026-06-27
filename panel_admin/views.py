@@ -373,7 +373,7 @@ def eliminar_banner(request, id):
     messages.success(request, 'eliminado correctamente')
     return redirect(to="admin_listar_banner")
 
-##registro de pedidos (compras)##
+##registro de pedidos realizados por el usuario ps##
 
 @login_required(login_url='login_admin')
 @user_passes_test(es_admin)

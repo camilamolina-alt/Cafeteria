@@ -182,7 +182,9 @@ def checkout(request):
             producto.stock -= item['quantity']
             producto.save()
         try:
-            customer_name = request.POST.get('name', request.user.first_name)
+            first_name = request.POST.get('name', request.user.first_name)
+            last_name = request.POST.get('last_name', request.user.last_name)
+            customer_name = f"{first_name} {last_name}".strip()
             email = request.POST.get('email', request.user.email)
             template = get_template('cafeteria_app/email_cart_template.html')
             context = {
@@ -208,7 +210,6 @@ def checkout(request):
         cart.clear()
         return render(request, 'cafeteria_app/finish.html', {'pedido': pedido})
     return render(request, 'cafeteria_app/checkout.html', {'cart': cart})
-
 
 def product_detail(request, id):
     producto = get_object_or_404(Product, id=id)

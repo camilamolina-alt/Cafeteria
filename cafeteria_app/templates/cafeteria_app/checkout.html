@@ -41,14 +41,15 @@
                         <input type="text" class="form-control" id="name" name="name" value="{{ request.user.first_name }}" required="required">
                     </div>
                     <div class="col-sm-6">
-                        <label class="form-label">Usuario</label>
-                        <input type="text" class="form-control" id="username" name="username" value="{{ request.user.username }}" readonly>
+                        <label class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" value="{{ request.user.last_name }}" required="required">
                     </div>
                     <div class="col-12">
                         <label class="form-label">Correo</label>
                         <input type="email" class="form-control" id="email" name="email" value="{{ request.user.email }}" required="required">
                     </div>
                 </div>
+
                 <hr class="my-4">
                 <button class="w-100 btn btn-lg" type="submit"
                         style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold;">

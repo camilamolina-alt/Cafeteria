@@ -63,7 +63,11 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a href="{% url 'admin_modificar_evento' e.id %}" class="btn btn-sm" style="background-color: #B28DFF; color: white;">Modificar</a>
+                        {% if e.ya_paso %}
+                            <a href="#" class="btn btn-sm disabled" aria-disabled="true" tabindex="-1" style="background-color: #B28DFF; color: white;">Modificar</a>
+                        {% else %}
+                            <a href="{% url 'admin_modificar_evento' e.id %}" class="btn btn-sm" style="background-color: #B28DFF; color: white;">Modificar</a>
+                        {% endif %}
                         <a href="#" onclick="eliminarEvento({{ e.id }})" class="btn btn-sm" style="background-color: #db0c7e; color: white;">Eliminar</a>
                     </td>
                 </tr>

@@ -33,7 +33,7 @@
             {% for item in alimentos %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
                 <div class="d-flex justify-content-center">
-                    <div class="food-card" style="width: 380px;">
+                    <div class="food-card" style="width: 380px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalExclusivo{{ item.id }}">
                         <img src="{{ item.image.url }}" class="food-img" alt="{{ item.nombre }}">
                         <div class="food-overlay text-center">
                             <h5 class="mb-1">{{ item.nombre }}</h5>
@@ -54,6 +54,28 @@
         </button>
     </div>
 </div>
+
+<!--MODALS DE LA COMIDA EXCLUSIVA-->
+{% for item in alimentos %}
+<div class="modal fade" id="modalExclusivo{{ item.id }}" tabindex="-1" aria-labelledby="modalLabelExclusivo{{ item.id }}" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 30px; padding: 20px;">
+      <div class="modal-header text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171; letter-spacing: 1px;">
+        <h5 class="modal-title" id="modalLabelExclusivo{{ item.id }}">{{ item.nombre }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center pt-0 px-4" style="font-family: 'Montserrat', sans-serif; color: #7B7171">
+        {% if item.image %}
+        <img src="{{ item.image.url }}" alt="{{ item.nombre }}" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+        {% endif %}
+        <p>{{ item.descripcion }}</p>
+        <p class="fw-bold" style="color: #e4228d;">$ {{ item.precio }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
 <div class="container my-5">
     <div class="row g-3">
         {% for img in mosaico %}
@@ -102,10 +124,17 @@
     <hr>
     <br>
     <h2 class="fw-light mb-4" style="letter-spacing: 2px; color: #4a3e3d;">Reservar</h2>
-    <button type="button" class="btn btn-lg px-5 py-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-            style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold; letter-spacing: 1px;">
-        Reservar Evento
-    </button>
+    {% if event.ya_paso %}
+        <button type="button" class="btn btn-lg px-5 py-3" disabled
+                style="background-color: #cccccc; color: white; border-radius: 50px; font-weight: bold; letter-spacing: 1px;">
+            Evento finalizado
+        </button>
+    {% else %}
+        <button type="button" class="btn btn-lg px-5 py-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                style="background-color: #FCB2D3; color: white; border-radius: 50px; font-weight: bold; letter-spacing: 1px;">
+            Reservar Evento
+        </button>
+    {% endif %}
 </div>
 
 
@@ -135,18 +164,4 @@
     </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {% endblock %}

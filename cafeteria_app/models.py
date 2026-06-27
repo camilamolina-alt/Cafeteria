@@ -123,7 +123,7 @@ class PedidoItem(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE, related_name='items')
     producto = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     cantidad = models.IntegerField()
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    precio = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def subtotal(self):
         return self.precio * self.cantidad
